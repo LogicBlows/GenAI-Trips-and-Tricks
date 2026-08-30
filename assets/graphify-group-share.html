@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Graphify — Group Share Card</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; }
+    html, body {
+      width: 1200px;
+      margin: 0;
+      padding: 0;
+      background: #F7F5EF;
+      overflow: hidden;
+      font-family: 'Inter', system-ui, sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <div id="share-card" style="
+    width: 1200px;
+    background: #F7F5EF;
+    color: #161B2E;
+    font-family: 'Inter', system-ui, sans-serif;
+    padding: 48px 56px 28px;
+  ">
+    <p style="font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #3D3FC9; margin-bottom: 14px;">
+      .NET COMPETENCY · INTERNAL
+    </p>
+    <h1 style="font-family: 'Space Grotesk', sans-serif; font-size: 42px; font-weight: 700; line-height: 1.1; margin-bottom: 8px;">
+      Graphify
+    </h1>
+    <p style="font-size: 17px; color: #5B6070; line-height: 1.5; max-width: 920px; margin-bottom: 28px;">
+      Cursor reads files one at a time. Graphify maps your repo into a queryable knowledge graph — functions, callers, imports, SQL tables, config keys. The agent queries the graph instead of grepping. ~71× fewer tokens on relationship questions.
+    </p>
+
+    <div style="background: #FFFFFF; border: 1px solid #E4E0D6; border-radius: 14px; padding: 22px 26px; margin-bottom: 22px;">
+      <p style="font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: #3D3FC9; margin-bottom: 12px;">What it does</p>
+      <p style="font-size: 15px; color: #161B2E; line-height: 1.55;">
+        One command builds <span style="font-family:'JetBrains Mono',monospace;font-size:13px;background:#ECEBFB;color:#3D3FC9;padding:2px 6px;border-radius:4px;">graphify-out/graph.json</span> from your codebase. Ask <span style="font-family:'JetBrains Mono',monospace;font-size:13px;background:#ECEBFB;color:#3D3FC9;padding:2px 6px;border-radius:4px;">graphify query</span> or <span style="font-family:'JetBrains Mono',monospace;font-size:13px;background:#ECEBFB;color:#3D3FC9;padding:2px 6px;border-radius:4px;">graphify path</span> — answers come back as explicit graph paths with file:line citations. On-device, no API keys, Apache 2.0.
+      </p>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #E4E0D6; border-radius: 14px; padding: 22px 26px; margin-bottom: 22px;">
+      <p style="font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: #3D3FC9; margin-bottom: 16px;">Install on Windows + Cursor (~10 min)</p>
+
+      <div style="display: grid; gap: 14px;">
+        <div style="display: flex; gap: 14px; align-items: flex-start;">
+          <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;color:#3D3FC9;font-size:15px;min-width:24px;">1</span>
+          <div style="flex:1;">
+            <p style="font-weight: 600; font-size: 15px; margin-bottom: 8px;">Install CLI</p>
+            <pre style="background:#12162A;color:#8FF7C4;font-family:'JetBrains Mono',monospace;font-size:12px;padding:12px 16px;border-radius:10px;line-height:1.5;margin:0;">uv tool install graphifyy</pre>
+            <p style="font-size: 13px; color: #5B6070; margin-top: 8px;">Package is <strong>graphifyy</strong> (double-y). Command is <strong>graphify</strong>. If not found: <span style="font-family:'JetBrains Mono',monospace;font-size:12px;">uv tool update-shell</span> → new terminal.</p>
+          </div>
+        </div>
+        <div style="display: flex; gap: 14px; align-items: flex-start;">
+          <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;color:#3D3FC9;font-size:15px;min-width:24px;">2</span>
+          <div style="flex:1;">
+            <p style="font-weight: 600; font-size: 15px; margin-bottom: 8px;">Hook Cursor</p>
+            <pre style="background:#12162A;color:#8FF7C4;font-family:'JetBrains Mono',monospace;font-size:12px;padding:12px 16px;border-radius:10px;line-height:1.5;margin:0;">graphify cursor install</pre>
+            <p style="font-size: 13px; color: #5B6070; margin-top: 8px;">Creates <span style="font-family:'JetBrains Mono',monospace;font-size:12px;">.cursor/rules/graphify.mdc</span> — restart Cursor.</p>
+          </div>
+        </div>
+        <div style="display: flex; gap: 14px; align-items: flex-start;">
+          <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;color:#3D3FC9;font-size:15px;min-width:24px;">3</span>
+          <div style="flex:1;">
+            <p style="font-weight: 600; font-size: 15px; margin-bottom: 8px;">Build graph (in your repo)</p>
+            <pre style="background:#12162A;color:#8FF7C4;font-family:'JetBrains Mono',monospace;font-size:12px;padding:12px 16px;border-radius:10px;line-height:1.5;margin:0;">cd your-repo
+graphify .</pre>
+            <p style="font-size: 13px; color: #5B6070; margin-top: 8px;">PowerShell: use <strong>graphify .</strong> not <strong>/graphify .</strong> (slash = path separator).</p>
+          </div>
+        </div>
+        <div style="display: flex; gap: 14px; align-items: flex-start;">
+          <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;color:#3D3FC9;font-size:15px;min-width:24px;">4</span>
+          <div style="flex:1;">
+            <p style="font-weight: 600; font-size: 15px; margin-bottom: 8px;">Test</p>
+            <pre style="background:#12162A;color:#8FF7C4;font-family:'JetBrains Mono',monospace;font-size:12px;padding:12px 16px;border-radius:10px;line-height:1.5;margin:0;">graphify query "what calls this method?"
+graphify path "A" "B"</pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 0;">
+      <div style="background:#FFFFFF;border:1px solid #E4E0D6;border-radius:14px;padding:20px 22px;">
+        <p style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:#3D3FC9;margin-bottom:12px;">Where it earns its keep</p>
+        <ul style="margin:0 0 0 1.1rem;font-size:14px;color:#5B6070;line-height:1.6;">
+          <li>Onboarding new repos</li>
+          <li>Impact analysis before edits</li>
+          <li>Fewer wrong cross-file changes</li>
+          <li>Architecture / call-flow questions</li>
+        </ul>
+      </div>
+      <div style="background:#FFFFFF;border:1px solid #E4E0D6;border-radius:14px;padding:20px 22px;">
+        <p style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:#3D3FC9;margin-bottom:12px;">Works great with RTK</p>
+        <p style="font-size:14px;color:#5B6070;line-height:1.55;margin:0;">RTK compresses terminal output. Graphify cuts exploration tokens. Together: longer sessions, smarter answers on big codebases.</p>
+      </div>
+    </div>
+
+    <div style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid #E4E0D6;padding-top:18px;margin-top:22px;">
+      <p style="font-size:13px;color:#5B6070;">.NET GenAI Adoption initiative · Internal only</p>
+      <p style="font-size:13px;color:#3D3FC9;font-weight:500;">graphify.com · github.com/Graphify-Labs/graphify</p>
+    </div>
+  </div>
+</body>
+</html>

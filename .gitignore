@@ -1,0 +1,11 @@
+# Cursor / Graphify local project files
+.cursor/
+graphify-out/
+
+# Vendored reference clone (not part of the static site)
+chatgpt-skills-packages/
+
+# OS
+Thumbs.db
+Desktop.ini
+.DS_Store

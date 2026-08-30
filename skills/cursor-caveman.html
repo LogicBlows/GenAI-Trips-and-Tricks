@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Caveman — GenAI Adoption</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <main class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">AI Tools</a>
+      <span class="breadcrumb-sep" aria-hidden="true">›</span>
+      <a href="../tools/cursor.html">Cursor</a>
+      <span class="breadcrumb-sep" aria-hidden="true">›</span>
+      <span class="breadcrumb-current">Caveman</span>
+    </nav>
+
+    <header class="site-header">
+      <h1>Caveman</h1>
+      <p class="meta-line">
+        Added this week
+        <span class="meta-dot" aria-hidden="true">·</span>
+        Token optimization
+      </p>
+    </header>
+
+    <article class="prose">
+      <p>Ever ask Cursor something simple and get back a 3-paragraph essay? Caveman is a free Cursor skill that strips the filler — no "let me explain," no restating your question, no walkthrough you didn't ask for. Just the answer. Code quality is untouched; only the wording around it shrinks.</p>
+
+      <section class="example-block" aria-labelledby="example-heading">
+        <h2 id="example-heading" class="example-heading">Example — "What is a closure in JavaScript?"</h2>
+
+        <div class="example-row">
+          <p class="example-label">Without Caveman:</p>
+          <pre class="code-dim"><code>A closure is a function that remembers variables from its outer scope, even after that outer function has finished executing...</code></pre>
+        </div>
+
+        <div class="example-row">
+          <p class="example-label">With <span class="inline-code">/caveman full</span>:</p>
+          <pre><code>Fn + remembered outer vars, even after outer fn returns.</code></pre>
+        </div>
+      </section>
+
+      <p class="stat-line">Their own benchmarks show up to ~65% fewer output tokens in full mode — faster replies, less scrolling.</p>
+
+      <section class="screenshots" aria-label="Installation screenshots">
+        <!-- Swap each .img-placeholder for: <img src="../assets/install-prompt.png" alt="..."> -->
+   <figure class="screenshot">
+          <img src="../assets/install-prompt.png" alt="Terminal prompt after running the install command.">
+          <figcaption>Terminal prompt after running the install command.</figcaption>
+        </figure>
+        <figure class="screenshot">
+          <img src="../assets/skill-picker.png" alt="Skill picker showing caveman already checked.">
+          <figcaption>Skill picker — caveman is already checked, just press Enter.</figcaption>
+        </figure>
+      </section>
+
+      <section class="steps" aria-label="Installation steps">
+        <div class="step">
+          <div class="step-header">
+            <span class="step-num">1.</span>
+            <span class="step-title">Install</span>
+          </div>
+          <pre><code>npx skills add JuliusBrussee/caveman -a cursor</code></pre>
+        </div>
+
+        <div class="step">
+          <div class="step-header">
+            <span class="step-num">2.</span>
+            <span class="step-title">Verify</span>
+          </div>
+          <pre><code>npx skills list</code></pre>
+        </div>
+
+        <div class="step">
+          <div class="step-header">
+            <span class="step-num">3.</span>
+            <span class="step-title">Use it</span>
+          </div>
+          <pre><code>/caveman full</code></pre>
+        </div>
+      </section>
+
+      <p class="caveat">Requires Node.js. Run install commands in a terminal (PowerShell or Command Prompt), not in the Cursor chat. If Cursor does not pick up the skill, reinstall with <span class="inline-code">-g</span>: <span class="inline-code">npx skills add JuliusBrussee/caveman -a cursor -g --skill caveman</span></p>
+
+      <aside class="modes-note">
+        Modes: lite · full (default) · ultra · off — start with full, switch to lite if replies feel too clipped.
+      </aside>
+    </article>
+
+    <footer class="site-footer">
+      Maintained by the .NET GenAI Adoption initiative · updated weekly.
+    </footer>
+  </main>
+</body>
+</html>

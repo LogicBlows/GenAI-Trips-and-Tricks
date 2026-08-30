@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChatGPT plugins — GenAI Adoption</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <main class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">AI Tools</a>
+      <span class="breadcrumb-sep" aria-hidden="true">›</span>
+      <span class="breadcrumb-current">ChatGPT</span>
+    </nav>
+
+    <header class="site-header">
+      <h1>ChatGPT plugins</h1>
+      <p class="subtitle">Reusable workflows set up as Projects on ChatGPT Go. Click a plugin to see what it does and how to install it.</p>
+    </header>
+
+    <div class="plan-callout">
+      <div class="plan-callout-header">
+        <p class="plan-callout-text">
+          <strong>ChatGPT Go note:</strong> The Skills tab is not available on Go or Free. These plugins use <strong>Project instructions</strong> instead — one project per plugin, paste the SKILL.md block from each plugin page.
+        </p>
+        <button type="button" class="install-tab" id="install-tab" aria-expanded="false" aria-controls="install-guide">
+          Installation guide
+        </button>
+      </div>
+
+      <div id="install-guide" class="install-panel" hidden>
+        <div class="plan-table-wrap">
+          <table class="plan-table">
+            <caption style="caption-side:top;text-align:left;font-weight:600;margin-bottom:0.5rem;font-size:0.875rem;color:var(--ink);">Which account type can use these plugins?</caption>
+            <thead>
+              <tr>
+                <th scope="col">Plan</th>
+                <th scope="col">Skills tab</th>
+                <th scope="col">This guide (Projects)</th>
+                <th scope="col">Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Free</strong></td>
+                <td class="plan-no">No</td>
+                <td class="plan-yes">Yes</td>
+                <td>Use Projects + paste instructions. File uploads limited to 3 per day.</td>
+              </tr>
+              <tr>
+                <td><strong>Go</strong></td>
+                <td class="plan-no">No</td>
+                <td class="plan-yes">Yes</td>
+                <td>Same as Free for Skills — use Projects. ~80 file uploads per 3 hours.</td>
+              </tr>
+              <tr>
+                <td><strong>Plus / Pro</strong></td>
+                <td>Maybe (Work mode)</td>
+                <td class="plan-yes">Yes</td>
+                <td>Check Plugins → Skills in Work. Projects method always works.</td>
+              </tr>
+              <tr>
+                <td><strong>Business / Enterprise</strong></td>
+                <td class="plan-yes">Yes</td>
+                <td class="plan-yes">Yes</td>
+                <td>Admin may need to enable Skills. Projects method works on all plans.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p style="font-size:0.875rem;color:var(--ink-soft);margin:0 0 1.25rem;">Follow these steps once per plugin. Repeat for each of the four plugins below.</p>
+
+        <ol class="install-steps">
+          <li>
+            <p class="install-step-title">Step 1 — Confirm your plan (Go or Free)</p>
+            <p class="install-step-desc">On <strong>Go</strong> and <strong>Free</strong>, you will see <strong>Plugins</strong> in the sidebar but <em>no Skills tab</em>. That is expected — use <strong>Projects</strong> instead (sidebar → Projects).</p>
+            <figure class="screenshot">
+              <img src="../assets/chatgpt/01-plugins-page.png" alt="ChatGPT Go project view — Plugins in the sidebar, no Skills tab; plugin runs inside a Project with Chats and Sources tabs.">
+              <figcaption>ChatGPT Go — use <strong>Projects</strong> for plugins. <strong>Plugins</strong> in the sidebar is for connectors only (no Skills tab).</figcaption>
+            </figure>
+          </li>
+
+          <li>
+            <p class="install-step-title">Step 2 — Create a new project</p>
+            <p class="install-step-desc">Sidebar → <strong>Projects</strong> → <strong>New project</strong>. Name it exactly after the plugin (e.g. <span class="inline-code">OCR Document Processor</span> or <span class="inline-code">Document Converter Suite</span>). Leave memory as <strong>Default memory</strong> → <strong>Create project</strong>.</p>
+            <figure class="screenshot">
+              <img src="../assets/chatgpt/02-create-project.png" alt="Create project dialog with Document Converter Suite as the project name.">
+              <figcaption>Create project — use the plugin name as the project name.</figcaption>
+            </figure>
+          </li>
+
+          <li>
+            <p class="install-step-title">Step 3 — Open project settings</p>
+            <p class="install-step-desc">Inside the project, click the <strong>⋯</strong> (three dots) next to <strong>Share</strong> in the top-right → select <strong>Project settings</strong>. There is no gear icon on Go — settings are in this menu.</p>
+            <figure class="screenshot">
+              <img src="../assets/chatgpt/03-project-menu.png" alt="Project menu showing Project settings and Pin project options.">
+              <figcaption>⋯ menu → Project settings (gear icon is inside this menu).</figcaption>
+            </figure>
+          </li>
+
+          <li>
+            <p class="install-step-title">Step 4 — Paste plugin instructions</p>
+            <p class="install-step-desc">In <strong>Project settings</strong>, paste the full instructions block from the plugin page (or the matching <span class="inline-code">.md</span> file in <span class="inline-code">skills/instructions/</span>) → <strong>Save</strong>.</p>
+            <figure class="screenshot">
+              <img src="../assets/chatgpt/04-project-settings.png" alt="Project settings modal with Instructions field containing plugin SKILL.md content.">
+              <figcaption>Paste the SKILL.md block into Instructions → Save.</figcaption>
+            </figure>
+          </li>
+
+          <li>
+            <p class="install-step-title">Step 5 — Start a chat and test</p>
+            <p class="install-step-desc">Open the <strong>Chats</strong> tab (not Sources — Sources is for connecting Drive/Slack, optional). Click <strong>+ New chat in [project name]</strong>, upload a file or ask a question, and confirm the plugin behaviour matches the instructions.</p>
+            <figure class="screenshot">
+              <img src="../assets/chatgpt/05-ocr-test.png" alt="OCR Document Processor project chat showing successfully extracted text from a scanned document.">
+              <figcaption>Working example — OCR Document Processor extracting text from a scan.</figcaption>
+            </figure>
+          </li>
+        </ol>
+
+        <aside class="caveat" style="margin:0;">
+          <strong>Go &amp; Free limits:</strong> File uploads are capped (Free: 3/day; Go: ~80 per 3 hours). Large scans may need to be split. Outputs are drafts — verify before official use.
+        </aside>
+      </div>
+    </div>
+
+    <section aria-labelledby="plugins-heading">
+      <h2 id="plugins-heading" class="section-title">Plugins</h2>
+      <div class="grid">
+        <a class="card" href="../skills/chatgpt-ocr-document-processor.html">
+          <p class="card-title">OCR Document Processor</p>
+          <p class="card-desc">Extract text from scans, receipts, and business cards.</p>
+          <span class="card-tag">Documents</span>
+        </a>
+
+        <a class="card" href="../skills/chatgpt-document-converter-suite.html">
+          <p class="card-title">Document Converter Suite</p>
+          <p class="card-desc">Convert PDFs, Office docs, markdown, and tables between formats.</p>
+          <span class="card-tag">Documents</span>
+        </a>
+
+        <a class="card" href="../skills/chatgpt-data-storyteller.html">
+          <p class="card-title">Data Storyteller</p>
+          <p class="card-desc">Turn CSV and spreadsheet data into narrative reports with charts.</p>
+          <span class="card-tag">Analytics</span>
+        </a>
+
+        <a class="card" href="../skills/chatgpt-financial-calculator.html">
+          <p class="card-title">Financial Calculator</p>
+          <p class="card-desc">Loan EMI, NPV, retirement projections, and scenario comparisons.</p>
+          <span class="card-tag">Finance</span>
+        </a>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      Maintained by the .NET GenAI Adoption initiative · updated weekly.
+    </footer>
+  </main>
+
+  <script>
+    (function () {
+      var tab = document.getElementById('install-tab');
+      var panel = document.getElementById('install-guide');
+      if (!tab || !panel) return;
+
+      tab.addEventListener('click', function () {
+        var open = panel.hidden;
+        panel.hidden = !open;
+        tab.setAttribute('aria-expanded', open ? 'true' : 'false');
+        tab.textContent = open ? 'Hide guide' : 'Installation guide';
+        if (open) {
+          panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>RTK — Group Share Card</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; }
+    body {
+      background: #e8e4dc;
+      display: flex;
+      justify-content: center;
+      padding: 24px;
+      font-family: 'Inter', system-ui, sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <!-- Fixed-size card for screenshot / export (1200 × 1680) -->
+  <div id="share-card" style="
+    width: 1200px;
+    background: #F7F5EF;
+    color: #161B2E;
+    font-family: 'Inter', system-ui, sans-serif;
+    padding: 48px 56px 44px;
+    border-radius: 20px;
+    box-shadow: 0 8px 40px rgba(22,27,46,0.12);
+  ">
+    <!-- Header -->
+    <p style="font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #3D3FC9; margin-bottom: 14px;">
+      .NET COMPETENCY · INTERNAL
+    </p>
+    <h1 style="font-family: 'Space Grotesk', sans-serif; font-size: 42px; font-weight: 700; line-height: 1.1; margin-bottom: 8px;">
+      RTK — Rust Token Killer
+    </h1>
+    <p style="font-size: 17px; color: #5B6070; line-height: 1.5; max-width: 900px; margin-bottom: 28px;">
+      Compresses terminal output before it hits Cursor's context window. Git status, tests, grep — less noise, longer sessions. You don't change how you work.
+    </p>
+
+  <!-- What it does -->
+  <div style="background: #FFFFFF; border: 1px solid #E4E0D6; border-radius: 14px; padding: 22px 26px; margin-bottom: 22px;">
+    <p style="font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: #3D3FC9; margin-bottom: 12px;">What it does</p>
+    <p style="font-size: 15px; color: #161B2E; line-height: 1.55;">
+      Every time Cursor runs <code style="background:#ECEBFB;color:#3D3FC9;padding:2px 6px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:13px;">git status</code>,
+      <code style="background:#ECEBFB;color:#3D3FC9;padding:2px 6px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:13px;">ls</code>,
+      <code style="background:#ECEBFB;color:#3D3FC9;padding:2px 6px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:13px;">grep</code>, or a test suite, the raw output floods the context window. RTK auto-rewrites those commands and returns a compact summary — same signal, ~80% fewer tokens.
+    </p>
+  </div>
+
+  <!-- Install steps -->
+  <div style="background: #FFFFFF; border: 1px solid #E4E0D6; border-radius: 14px; padding: 22px 26px; margin-bottom: 22px;">
+    <p style="font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: #3D3FC9; margin-bottom: 16px;">Install on Windows + Cursor (~10 min)</p>
+
+    <div style="display: grid; gap: 14px;">
+      <div style="display: flex; gap: 14px; align-items: flex-start;">
+        <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;color:#3D3FC9;font-size:15px;min-width:24px;">1</span>
+        <div>
+          <p style="font-weight: 600; font-size: 15px; margin-bottom: 6px;">Download RTK</p>
+          <p style="font-size: 14px; color: #5B6070; margin-bottom: 8px;">github.com/rtk-ai/rtk/releases → <strong style="color:#161B2E;">rtk-x86_64-pc-windows-msvc.zip</strong></p>
+        </div>
+      </div>
+      <div style="display: flex; gap: 14px; align-items: flex-start;">
+        <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;color:#3D3FC9;font-size:15px;min-width:24px;">2</span>
+        <div>
+          <p style="font-weight: 600; font-size: 15px; margin-bottom: 6px;">Put rtk.exe on PATH</p>
+          <p style="font-size: 14px; color: #5B6070; margin-bottom: 8px;">Copy to <code style="background:#ECEBFB;color:#3D3FC9;padding:2px 6px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:12px;">%USERPROFILE%\.local\bin</code> (Win+R → paste that path)</p>
+        </div>
+      </div>
+      <div style="display: flex; gap: 14px; align-items: flex-start;">
+        <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;color:#3D3FC9;font-size:15px;min-width:24px;">3</span>
+        <div style="flex:1;">
+          <p style="font-weight: 600; font-size: 15px; margin-bottom: 8px;">Hook Cursor (new PowerShell)</p>
+          <pre style="background:#12162A;color:#8FF7C4;font-family:'JetBrains Mono',monospace;font-size:13px;padding:12px 16px;border-radius:10px;line-height:1.5;">rtk init -g --agent cursor</pre>
+          <p style="font-size: 13px; color: #5B6070; margin-top: 8px;">Say <strong>N</strong> to Claude settings.json if you only use Cursor · <strong>N</strong> to telemetry (optional)</p>
+        </div>
+      </div>
+      <div style="display: flex; gap: 14px; align-items: flex-start;">
+        <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;color:#3D3FC9;font-size:15px;min-width:24px;">4</span>
+        <div>
+          <p style="font-weight: 600; font-size: 15px; margin-bottom: 4px;">Restart Cursor</p>
+          <p style="font-size: 14px; color: #5B6070;">Fully close and reopen. Verify: <code style="background:#ECEBFB;color:#3D3FC9;padding:2px 6px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:12px;">rtk init --show</code></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Savings grid -->
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 22px;">
+    <div style="background:#FFFFFF;border:1px solid #E4E0D6;border-radius:14px;padding:20px 22px;">
+      <p style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:#3D3FC9;margin-bottom:12px;">Typical savings</p>
+      <table style="width:100%;font-size:14px;border-collapse:collapse;">
+        <tr><td style="padding:4px 0;color:#5B6070;">Directory listing</td><td style="text-align:right;font-weight:600;">80%</td></tr>
+        <tr><td style="padding:4px 0;color:#5B6070;">Git status</td><td style="text-align:right;font-weight:600;">80%</td></tr>
+        <tr><td style="padding:4px 0;color:#5B6070;">Test runners</td><td style="text-align:right;font-weight:600;">90%</td></tr>
+        <tr><td style="padding:4px 0;color:#5B6070;">Whole session</td><td style="text-align:right;font-weight:600;">~80%</td></tr>
+      </table>
+    </div>
+    <div style="background:#FFFFFF;border:1px solid #E4E0D6;border-radius:14px;padding:20px 22px;">
+      <p style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:#3D3FC9;margin-bottom:12px;">Check your numbers</p>
+      <pre style="background:#12162A;color:#8FF7C4;font-family:'JetBrains Mono',monospace;font-size:12px;padding:12px 14px;border-radius:10px;line-height:1.65;">rtk gain
+rtk gain --graph
+rtk gain --history</pre>
+      <p style="font-size:13px;color:#5B6070;margin-top:10px;line-height:1.45;">~3× longer sessions before context limits — fewer “start a new chat” resets.</p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid #E4E0D6;padding-top:18px;">
+    <p style="font-size:13px;color:#5B6070;">.NET GenAI Adoption initiative · Internal only</p>
+    <p style="font-size:13px;color:#3D3FC9;font-weight:500;">rtk-ai.app · github.com/rtk-ai/rtk</p>
+  </div>
+  </div>
+</body>
+</html>
