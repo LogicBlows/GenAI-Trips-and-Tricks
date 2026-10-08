@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tips &amp; tricks — GenAI Adoption</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <main class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a>
+      <span class="breadcrumb-sep" aria-hidden="true">›</span>
+      <span class="breadcrumb-current">Tips &amp; tricks</span>
+    </nav>
+
+    <header class="site-header">
+      <h1>Tips &amp; tricks</h1>
+      <p class="subtitle">Short wins for Cursor, ChatGPT, and everyday AI use.</p>
+    </header>
+
+    <div class="tips-toolbar">
+      <label class="tips-search-wrap">
+        <span class="visually-hidden">Search tips</span>
+        <input type="search" class="tips-search" id="tips-search" placeholder="Search tips…" autocomplete="off">
+      </label>
+      <div class="filter-chips" role="group" aria-label="Filter by tool">
+        <button type="button" class="filter-chip is-active" data-filter="all">All</button>
+        <button type="button" class="filter-chip" data-filter="cursor">Cursor</button>
+        <button type="button" class="filter-chip" data-filter="chatgpt">ChatGPT</button>
+        <button type="button" class="filter-chip" data-filter="general">General</button>
+      </div>
+    </div>
+
+    <p class="tips-empty" id="tips-empty" hidden>No tips match your search.</p>
+
+    <nav class="tip-list" id="tip-list" aria-label="All tips">
+      <a class="tip-row" href="cursor-one-task-one-chat.html" data-tool="cursor" data-search="one task one chat optimization tokens context new chat">
+        <img class="tip-row-logo" src="../assets/brands/cursor.svg" alt="" width="24" height="24">
+        <span class="tip-row-body">
+          <span class="tip-row-title">One task, one chat</span>
+          <span class="tip-row-desc">Finish a task, start a new chat — sharper answers and fewer tokens.</span>
+        </span>
+        <time class="tip-row-date" datetime="2026-10-08">8 Oct 2026</time>
+      </a>
+
+      <a class="tip-row" href="cursor-at-files.html" data-tool="cursor" data-search="point cursor at files mention productivity">
+        <img class="tip-row-logo" src="../assets/brands/cursor.svg" alt="" width="24" height="24">
+        <span class="tip-row-body">
+          <span class="tip-row-title">Point Cursor at the right files</span>
+          <span class="tip-row-desc">Use @ mentions so the agent reads your code instead of guessing.</span>
+        </span>
+        <time class="tip-row-date" datetime="2026-10-08">8 Oct 2026</time>
+      </a>
+
+      <a class="tip-row" href="chatgpt-one-project-per-plugin.html" data-tool="chatgpt" data-search="one chatgpt project per plugin go free skills setup">
+        <img class="tip-row-logo" src="../assets/brands/chatgpt.svg" alt="" width="24" height="24">
+        <span class="tip-row-body">
+          <span class="tip-row-title">One ChatGPT project per plugin</span>
+          <span class="tip-row-desc">On Go and Free, Projects replace the Skills tab — keep each workflow separate.</span>
+        </span>
+        <time class="tip-row-date" datetime="2026-10-08">8 Oct 2026</time>
+      </a>
+
+      <a class="tip-row" href="general-say-what-you-dont-want.html" data-tool="general" data-search="say what you dont want constraints prompting">
+        <img class="tip-row-logo" src="../assets/brands/general.svg" alt="" width="24" height="24">
+        <span class="tip-row-body">
+          <span class="tip-row-title">Say what you don’t want</span>
+          <span class="tip-row-desc">Constraints in the prompt cut wrong answers faster than more detail alone.</span>
+        </span>
+        <time class="tip-row-date" datetime="2026-10-08">8 Oct 2026</time>
+      </a>
+    </nav>
+
+    <footer class="site-footer">
+      <p class="site-footer-main">Maintained by the .NET GenAI Adoption initiative · updated weekly.</p>
+      <p class="song-of-week"><a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=nVhNCTH8pDs&amp;list=RDnVhNCTH8pDs&amp;start_radio=1">♪ song of the week</a></p>
+    </footer>
+  </main>
+
+  <script>
+    (function () {
+      var search = document.getElementById('tips-search');
+      var list = document.getElementById('tip-list');
+      var empty = document.getElementById('tips-empty');
+      var chips = document.querySelectorAll('.filter-chip');
+      var rows = list ? list.querySelectorAll('.tip-row') : [];
+      var toolFilter = 'all';
+
+      function normalize(s) {
+        return (s || '').toLowerCase().trim();
+      }
+
+      function applyFilters() {
+        var q = normalize(search && search.value);
+        var visible = 0;
+        rows.forEach(function (row) {
+          var tool = row.getAttribute('data-tool');
+          var hay = normalize(row.getAttribute('data-search')) + ' ' + normalize(row.textContent);
+          var toolOk = toolFilter === 'all' || tool === toolFilter;
+          var searchOk = !q || hay.indexOf(q) !== -1;
+          var show = toolOk && searchOk;
+          row.hidden = !show;
+          if (show) visible++;
+        });
+        if (empty) empty.hidden = visible > 0;
+      }
+
+      if (search) search.addEventListener('input', applyFilters);
+      chips.forEach(function (chip) {
+        chip.addEventListener('click', function () {
+          chips.forEach(function (c) { c.classList.remove('is-active'); });
+          chip.classList.add('is-active');
+          toolFilter = chip.getAttribute('data-filter') || 'all';
+          applyFilters();
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

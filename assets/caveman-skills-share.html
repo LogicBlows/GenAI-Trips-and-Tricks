@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Caveman Skills — Group Share Card</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; }
+    html, body {
+      width: 1200px;
+      margin: 0;
+      padding: 0;
+      background: #F7F5EF;
+      overflow: hidden;
+      font-family: 'Inter', system-ui, sans-serif;
+      color: #161B2E;
+    }
+    .card { padding: 44px 52px 32px; }
+    .eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #3D3FC9;
+      margin-bottom: 10px;
+    }
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 38px;
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+    .lead {
+      font-size: 15px;
+      color: #5B6070;
+      line-height: 1.5;
+      margin-bottom: 22px;
+      max-width: 1000px;
+    }
+    .box {
+      background: #FFFFFF;
+      border: 1px solid #E4E0D6;
+      border-radius: 14px;
+      padding: 18px 22px;
+      margin-bottom: 16px;
+    }
+    .box-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #3D3FC9;
+      margin-bottom: 12px;
+    }
+    pre {
+      background: #12162A;
+      color: #8FF7C4;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11.5px;
+      padding: 11px 14px;
+      border-radius: 10px;
+      line-height: 1.55;
+      margin: 0;
+      white-space: pre-wrap;
+    }
+    .note {
+      font-size: 12.5px;
+      color: #5B6070;
+      margin-top: 8px;
+      line-height: 1.45;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12.5px;
+    }
+    th {
+      text-align: left;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #5B6070;
+      padding: 0 8px 8px 0;
+      border-bottom: 1px solid #E4E0D6;
+    }
+    td {
+      padding: 9px 8px 9px 0;
+      vertical-align: top;
+      border-bottom: 1px solid #F0EDE6;
+      line-height: 1.4;
+    }
+    td:first-child {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: #3D3FC9;
+      white-space: nowrap;
+      width: 148px;
+    }
+    .modes {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-top: 4px;
+    }
+    .mode-pill {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px;
+      background: #ECEBFB;
+      color: #3D3FC9;
+      padding: 5px 8px;
+      border-radius: 6px;
+      text-align: center;
+    }
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      border-top: 1px solid #E4E0D6;
+      padding-top: 14px;
+      margin-top: 6px;
+      font-size: 12px;
+      color: #5B6070;
+    }
+    .footer a { color: #3D3FC9; text-decoration: none; font-weight: 500; }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <p class="eyebrow">.NET COMPETENCY · INTERNAL · CURSOR</p>
+    <h1>Caveman skill pack</h1>
+    <p class="lead">Free skills that cut AI output noise — shorter replies, commits, and reviews without losing technical accuracy. One install gives you 9 skills. Use in any Cursor chat with <strong>/command</strong> or natural language.</p>
+
+    <div class="grid-2">
+      <div class="box">
+        <p class="box-title">Install globally (once)</p>
+        <pre>npx skills add JuliusBrussee/caveman -a cursor</pre>
+        <p class="note">Installs to <code style="font-family:'JetBrains Mono',monospace;font-size:11px;background:#ECEBFB;color:#3D3FC9;padding:1px 5px;border-radius:4px;">%USERPROFILE%\.agents\skills\</code> — works in every project.</p>
+      </div>
+      <div class="box">
+        <p class="box-title">See what's installed</p>
+        <pre>npx skills list -g</pre>
+        <p class="note">Without <code style="font-family:'JetBrains Mono',monospace;font-size:11px;">-g</code> only shows skills inside the current repo folder.</p>
+      </div>
+    </div>
+
+    <div class="box">
+      <p class="box-title">How to call in Cursor chat</p>
+      <p class="note" style="margin-top:0;margin-bottom:10px;">Type <strong>/</strong> in agent chat → pick skill, or type the command below. Start with <strong>/caveman full</strong> for shorter replies.</p>
+      <div class="modes">
+        <span class="mode-pill">/caveman lite</span>
+        <span class="mode-pill">/caveman full</span>
+        <span class="mode-pill">/caveman ultra</span>
+        <span class="mode-pill">/caveman wenyan</span>
+        <span class="mode-pill">/caveman off</span>
+        <span class="mode-pill">/caveman-help</span>
+      </div>
+    </div>
+
+    <div class="box" style="padding-bottom:14px;">
+      <p class="box-title">All 9 skills — purpose &amp; how to invoke</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Skill</th>
+            <th>Purpose</th>
+            <th>Call in chat</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>caveman</td>
+            <td>Terse AI replies — ~65% fewer output tokens. Code quality unchanged.</td>
+            <td><strong>/caveman full</strong> (default) · lite · ultra · wenyan · off</td>
+          </tr>
+          <tr>
+            <td>caveman-commit</td>
+            <td>Short Conventional Commit messages — subject ≤50 chars, body only when needed.</td>
+            <td><strong>/caveman-commit</strong> or "write a commit message"</td>
+          </tr>
+          <tr>
+            <td>caveman-review</td>
+            <td>One-line PR comments: location, problem, fix. No essay feedback.</td>
+            <td><strong>/caveman-review</strong> or "review this PR"</td>
+          </tr>
+          <tr>
+            <td>caveman-compress</td>
+            <td>Shrink CLAUDE.md / memory files to caveman prose — saves input tokens.</td>
+            <td><strong>/caveman-compress &lt;filepath&gt;</strong></td>
+          </tr>
+          <tr>
+            <td>caveman-help</td>
+            <td>Quick reference card for all modes and commands.</td>
+            <td><strong>/caveman-help</strong></td>
+          </tr>
+          <tr>
+            <td>caveman-optimize</td>
+            <td>Evaluate token-optimization observations (needs Caveman CLI login).</td>
+            <td>Ask to inspect optimization report · advanced</td>
+          </tr>
+          <tr>
+            <td>investigate-first</td>
+            <td>Diagnose before editing — evidence first, no shotgun fixes.</td>
+            <td>Say "investigate first" on bugs / unknown failures</td>
+          </tr>
+          <tr>
+            <td>lean-build</td>
+            <td>Keep feature scope narrow — stop when acceptance criteria met.</td>
+            <td>Use when building new features — avoids over-engineering</td>
+          </tr>
+          <tr>
+            <td>find-skills</td>
+            <td>Discover &amp; install more skills from the ecosystem.</td>
+            <td>"Find a skill for X" · <strong>npx skills find</strong> in terminal</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="box">
+      <p class="box-title">Suggested starter combo</p>
+      <p class="note" style="margin-top:0;line-height:1.55;">
+        <strong>1.</strong> Install once globally → <strong>2.</strong> <code style="font-family:'JetBrains Mono',monospace;font-size:11px;">/caveman full</code> in every chat →
+        <strong>3.</strong> Add RTK + Graphify for terminal &amp; codebase tokens →
+        <strong>4.</strong> Use <code style="font-family:'JetBrains Mono',monospace;font-size:11px;">investigate-first</code> on bugs,
+        <code style="font-family:'JetBrains Mono',monospace;font-size:11px;">lean-build</code> on new features.
+      </p>
+    </div>
+
+    <div class="footer">
+      <span>.NET GenAI Adoption initiative · Internal only</span>
+      <span>github.com/JuliusBrussee/caveman · skills.sh</span>
+    </div>
+  </div>
+</body>
+</html>
