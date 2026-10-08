@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Point Cursor at the right files — GenAI Adoption</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="tip-page tip-page--cursor">
+  <main class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a>
+      <span class="breadcrumb-sep" aria-hidden="true">›</span>
+      <a href="index.html">Tips &amp; tricks</a>
+      <span class="breadcrumb-sep" aria-hidden="true">›</span>
+      <span class="breadcrumb-current">Point Cursor at the right files</span>
+    </nav>
+
+    <header class="site-header">
+      <div class="tip-brand-row">
+        <img class="tip-tool-logo" src="../assets/brands/cursor.svg" alt="" width="28" height="28">
+        <span class="tip-brand-label">Cursor</span>
+      </div>
+      <h1>Point Cursor at the right files</h1>
+      <p class="meta-line">
+        8 Oct 2026
+        <span class="meta-dot" aria-hidden="true">·</span>
+        Cursor
+        <span class="meta-dot" aria-hidden="true">·</span>
+        Productivity
+      </p>
+    </header>
+
+    <article class="prose">
+      <p>Cursor works best when it reads the files you care about. Use <span class="inline-code">@</span> in chat to attach a file, folder, or symbol instead of describing paths from memory.</p>
+
+      <section class="example-block" aria-labelledby="example-heading">
+        <h2 id="example-heading" class="example-heading">Example prompt</h2>
+        <div class="example-row">
+          <p class="example-label">Vague:</p>
+          <pre class="code-dim"><code>Fix the ChatGPT install guide images.</code></pre>
+        </div>
+        <div class="example-row">
+          <p class="example-label">Better:</p>
+          <pre><code>@tools/chatgpt.html — Step 1 caption should match the new Go screenshot in @assets/chatgpt/01-plugins-page.png</code></pre>
+        </div>
+      </section>
+
+      <section class="steps" aria-label="Steps">
+        <div class="step">
+          <div class="step-header">
+            <span class="step-num">1.</span>
+            <span class="step-title">Attach context</span>
+          </div>
+          <p style="font-size:0.9375rem;color:var(--ink-soft);">Type <span class="inline-code">@</span> and pick files or folders relevant to the task.</p>
+        </div>
+        <div class="step">
+          <div class="step-header">
+            <span class="step-num">2.</span>
+            <span class="step-title">State the outcome</span>
+          </div>
+          <p style="font-size:0.9375rem;color:var(--ink-soft);">One sentence on what should change and what should stay the same.</p>
+        </div>
+        <div class="step">
+          <div class="step-header">
+            <span class="step-num">3.</span>
+            <span class="step-title">Add constraints if needed</span>
+          </div>
+          <p style="font-size:0.9375rem;color:var(--ink-soft);">e.g. “match existing CSS”, “no new dependencies”, “don’t commit”.</p>
+        </div>
+      </section>
+
+      <p style="font-size:0.9375rem;color:var(--ink-soft);margin-top:1.5rem;">Related: <a href="../tools/cursor.html">Cursor skills</a></p>
+    </article>
+
+    <footer class="site-footer">
+      <p class="site-footer-main">Maintained by the .NET GenAI Adoption initiative · updated weekly.</p>
+      <p class="song-of-week"><a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=nVhNCTH8pDs&amp;list=RDnVhNCTH8pDs&amp;start_radio=1">♪ song of the week</a></p>
+    </footer>
+  </main>
+</body>
+</html>

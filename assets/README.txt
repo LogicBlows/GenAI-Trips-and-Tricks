@@ -8,3 +8,6 @@
 #
 # ChatGPT plugin install guide images → assets/chatgpt/
 # See assets/chatgpt/README.txt for filenames.
+#
+# Tip screenshots → assets/tips/
+# See assets/tips/README.txt

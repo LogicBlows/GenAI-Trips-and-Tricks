@@ -666,6 +666,486 @@ pre code {
   color: var(--ink-soft);
 }
 
+/* Home portals */
+
+.portals {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.portal {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-decoration: none;
+  color: inherit;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: calc(var(--radius) + 4px);
+  padding: 1.75rem 1.5rem 1.5rem;
+  min-height: 15rem;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.portal::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--portal-accent, var(--brand));
+}
+
+.portal-tools {
+  --portal-accent: var(--brand);
+}
+
+.portal-tips {
+  --portal-accent: var(--brass);
+}
+
+.portal:hover {
+  border-color: color-mix(in srgb, var(--portal-accent) 35%, var(--line));
+  box-shadow: 0 8px 28px rgba(22, 27, 46, 0.07);
+  transform: translateY(-3px);
+  text-decoration: none;
+}
+
+.portal-medallion {
+  margin-bottom: 1.1rem;
+  line-height: 0;
+}
+
+.portal-medallion img {
+  display: block;
+  border-radius: 10px;
+}
+
+.portal-eyebrow {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin: 0 0 0.35rem;
+}
+
+.portal-title {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: clamp(1.35rem, 3vw, 1.65rem);
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+  color: var(--ink);
+}
+
+.portal-desc {
+  font-size: 0.9375rem;
+  color: var(--ink-soft);
+  margin: 0 0 1rem;
+  flex: 1;
+  max-width: 28rem;
+}
+
+.portal-stat {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--portal-accent, var(--brand));
+  margin: 0 0 0.5rem;
+}
+
+.portal-cta {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--brand);
+}
+
+.portal-tips .portal-cta {
+  color: var(--brass);
+}
+
+/* Tips hub */
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.tips-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 1.25rem;
+  align-items: center;
+  margin-bottom: 1.25rem;
+  max-width: 42rem;
+}
+
+.tips-search-wrap {
+  flex: 1 1 12rem;
+  min-width: 0;
+}
+
+.tips-search {
+  width: 100%;
+  font-family: inherit;
+  font-size: 0.9375rem;
+  padding: 0.55rem 0.85rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--ink);
+}
+
+.tips-search:focus {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+  border-color: color-mix(in srgb, var(--brand) 40%, var(--line));
+}
+
+.filter-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.filter-chip {
+  font-family: inherit;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink-soft);
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.filter-chip:hover {
+  border-color: color-mix(in srgb, var(--brand) 30%, var(--line));
+}
+
+.filter-chip.is-active {
+  background: var(--brand);
+  border-color: var(--brand);
+  color: #fff;
+}
+
+.filter-chip:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
+
+.tip-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: 42rem;
+}
+
+.tip-row {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 0.85rem 1rem;
+  align-items: center;
+  padding: 1rem 1.1rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.tip-row:hover {
+  border-color: color-mix(in srgb, var(--brand) 35%, var(--line));
+  box-shadow: 0 2px 12px rgba(22, 27, 46, 0.05);
+  text-decoration: none;
+}
+
+.tip-row[hidden] {
+  display: none;
+}
+
+.tip-row-logo {
+  display: block;
+  flex-shrink: 0;
+}
+
+.tip-row-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.tip-row-title {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--ink);
+}
+
+.tip-row-desc {
+  font-size: 0.8125rem;
+  color: var(--ink-soft);
+  line-height: 1.45;
+}
+
+.tip-row-date {
+  font-size: 0.75rem;
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+
+.tips-empty {
+  font-size: 0.875rem;
+  color: var(--ink-soft);
+  margin: 0 0 1rem;
+}
+
+/* Tip detail */
+
+.tip-brand-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.tip-tool-logo {
+  display: block;
+}
+
+.tip-brand-label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.tip-page--cursor .prose {
+  border-top: 2px solid color-mix(in srgb, var(--brand) 25%, transparent);
+  padding-top: 1.25rem;
+}
+
+.tip-page--chatgpt .prose {
+  border-top: 2px solid color-mix(in srgb, #10a37f 25%, transparent);
+  padding-top: 1.25rem;
+}
+
+.tip-page--general .prose {
+  border-top: 2px solid color-mix(in srgb, var(--brass) 35%, transparent);
+  padding-top: 1.25rem;
+}
+
+.tip-infographic {
+  max-width: none;
+}
+
+.tip-infographic img {
+  width: 100%;
+  max-width: 52rem;
+}
+
+/* Shareable tip card (HTML infographic) */
+
+.tip-share-card {
+  margin: 1.5rem 0 2rem;
+  padding: 1.5rem 1.35rem 1.35rem;
+  background: linear-gradient(180deg, #eef0f4 0%, #e8eaef 100%);
+  border: 1px solid var(--line);
+  border-radius: calc(var(--radius) + 2px);
+  max-width: 52rem;
+}
+
+.tip-share-eyebrow {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-align: center;
+  color: var(--ink);
+  margin: 0 0 0.25rem;
+}
+
+.tip-share-sub {
+  text-align: center;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--brand);
+  margin: 0 0 1.1rem;
+}
+
+.tip-share-highlight {
+  background: var(--surface);
+  border: 2px solid var(--brand);
+  border-radius: var(--radius);
+  padding: 0.85rem 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.tip-share-highlight h3 {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 0 0 0.4rem;
+  color: var(--ink);
+}
+
+.tip-share-highlight p {
+  font-size: 0.8125rem;
+  color: var(--ink-soft);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.tip-share-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.tip-share-col {
+  border-radius: var(--radius);
+  padding: 0.75rem 0.85rem;
+  font-size: 0.75rem;
+}
+
+.tip-share-col-bad {
+  background: #fde8ea;
+  border: 1px solid #f0c4c8;
+}
+
+.tip-share-col-good {
+  background: #e6f4ea;
+  border: 1px solid #b7dfc3;
+}
+
+.tip-share-col-label {
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+  font-size: 0.8125rem;
+}
+
+.tip-share-col-bad .tip-share-col-label {
+  color: #b42318;
+}
+
+.tip-share-col-good .tip-share-col-label {
+  color: #1a7f4b;
+}
+
+.tip-share-chat {
+  background: var(--surface);
+  border-radius: 8px;
+  padding: 0.5rem 0.6rem;
+  margin-bottom: 0.35rem;
+  border: 1px solid color-mix(in srgb, var(--ink) 8%, transparent);
+}
+
+.tip-share-chat strong {
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--ink-soft);
+}
+
+.tip-share-chat ul {
+  margin: 0.35rem 0 0;
+  padding-left: 1rem;
+  color: var(--ink);
+}
+
+.tip-share-chat li {
+  margin-bottom: 0.15rem;
+}
+
+.tip-share-mini-chats {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.tip-share-mini {
+  background: var(--surface);
+  border-radius: 8px;
+  padding: 0.4rem 0.55rem;
+  border: 1px solid color-mix(in srgb, var(--ink) 8%, transparent);
+  font-size: 0.6875rem;
+  color: var(--ink);
+}
+
+.tip-share-col-note {
+  font-size: 0.6875rem;
+  color: var(--ink-soft);
+  margin: 0.5rem 0 0;
+  line-height: 1.4;
+}
+
+.tip-share-how {
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+.tip-share-how-title {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  margin: 0 0 0.65rem;
+}
+
+.tip-share-steps {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.35rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.tip-share-step-pill {
+  background: var(--brand-soft);
+  color: var(--brand);
+  padding: 0.35rem 0.65rem;
+  border-radius: 999px;
+}
+
+.tip-share-step-arrow {
+  color: var(--ink-soft);
+  font-weight: 400;
+}
+
+.tip-share-footer {
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--ink-soft);
+  margin: 0.85rem 0 0;
+  font-style: italic;
+}
+
+@media (max-width: 640px) {
+  .tip-share-columns {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* Footer */
 
 .site-footer {
@@ -675,6 +1155,27 @@ pre code {
   font-size: 0.8125rem;
   color: var(--ink-soft);
   text-align: center;
+}
+
+.site-footer-main {
+  margin: 0;
+}
+
+.song-of-week {
+  margin: 0.35rem 0 0;
+  font-size: 0.625rem;
+  opacity: 0.55;
+  letter-spacing: 0.02em;
+}
+
+.song-of-week a {
+  color: var(--ink-soft);
+  text-decoration: none;
+}
+
+.song-of-week a:hover {
+  text-decoration: underline;
+  color: var(--ink);
 }
 
 /* Responsive */
@@ -727,5 +1228,22 @@ pre code {
 
   .install-tab {
     align-self: flex-start;
+  }
+
+  .portals {
+    grid-template-columns: 1fr;
+  }
+
+  .portal {
+    min-height: 0;
+  }
+
+  .tip-row {
+    grid-template-columns: auto 1fr;
+  }
+
+  .tip-row-date {
+    grid-column: 2;
+    justify-self: start;
   }
 }
