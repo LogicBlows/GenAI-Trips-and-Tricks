@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Metrics narrative — GenAI Adoption</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="prompt-page prompt-page--data">
+  <main class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a>
+      <span class="breadcrumb-sep" aria-hidden="true">›</span>
+      <a href="index.html">Useful prompts</a>
+      <span class="breadcrumb-sep" aria-hidden="true">›</span>
+      <span class="breadcrumb-current">Metrics narrative</span>
+    </nav>
+
+    <header class="site-header">
+      <div class="prompt-meta-row">
+        <span class="prompt-badge prompt-badge--data">Data</span>
+        <span class="prompt-meta-pill">ChatGPT</span>
+      </div>
+      <h1>Turn metrics into a short narrative</h1>
+      <p class="subtitle">Executive summary from KPI bullets — use synthetic or rounded numbers only.</p>
+    </header>
+
+    <div class="prompt-panel" data-prompt-root>
+      <section class="prompt-customize" aria-label="Customize placeholders">
+        <h2 class="prompt-section-title">Customize</h2>
+        <div class="prompt-fields">
+          <label class="prompt-field">
+            <span class="prompt-field-label">Audience</span>
+            <input type="text" class="prompt-input" data-prompt-var="audience" placeholder="Competency leadership, 5-minute read" autocomplete="off">
+          </label>
+          <label class="prompt-field prompt-field--wide">
+            <span class="prompt-field-label">KPI bullets (synthetic)</span>
+            <textarea class="prompt-textarea" data-prompt-var="kpis" rows="5" placeholder="- Adoption: 42% active users (up 3pp)&#10;- Incidents: 2 P3, 0 P1&#10;- Training: 18 sessions delivered"></textarea>
+          </label>
+          <label class="prompt-field">
+            <span class="prompt-field-label">Tone</span>
+            <input type="text" class="prompt-input" data-prompt-var="tone" placeholder="confident, factual, no hype" autocomplete="off">
+          </label>
+        </div>
+      </section>
+
+      <section class="prompt-output-wrap" aria-label="Prompt text">
+        <div class="prompt-output-header">
+          <h2 class="prompt-section-title">Prompt</h2>
+          <button type="button" class="prompt-copy-btn" data-prompt-copy>
+            <span class="prompt-copy-label" data-default-label="Copy prompt">Copy prompt</span>
+          </button>
+        </div>
+        <pre class="prompt-output"><code data-prompt-output></code></pre>
+      </section>
+
+      <script type="text/plain" data-prompt-template>Write a short narrative for {audience}.
+
+Metrics (treat as confidential internal figures):
+{kpis}
+
+Tone: {tone}
+
+Structure:
+- Headline (one line)
+- What improved and why it matters (2 short paragraphs)
+- Risks or watch-outs (bullet list)
+- Recommended next actions (3 bullets, verb-led)
+
+Do not invent metrics not listed above. If a trend is unclear, say what data would be needed.</script>
+    </div>
+
+    <article class="prose prompt-notes">
+      <p>Works well in a ChatGPT Project with the <a href="../skills/chatgpt-data-storyteller.html">Data Storyteller</a> instructions.</p>
+      <p class="caveat">Round or anonymize figures; do not paste unreleased financial or customer metrics.</p>
+    </article>
+
+    <footer class="site-footer">
+      <p class="site-footer-main">Maintained by the .NET GenAI Adoption initiative · updated weekly.</p>
+      <p class="song-of-week"><a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=2KdymN0xDQQ&amp;list=RD2KdymN0xDQQ&amp;start_radio=1">♪ song of the week</a></p>
+    </footer>
+  </main>
+  <script src="prompt-page.js"></script>
+</body>
+</html>

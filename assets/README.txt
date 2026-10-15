@@ -11,3 +11,5 @@
 #
 # Tip screenshots → assets/tips/
 # See assets/tips/README.txt
+#
+# Prompt library pages → prompts/ (hub + detail pages; icon prompts.svg in assets/brands/)

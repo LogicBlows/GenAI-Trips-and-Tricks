@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Excel / Power Query cleanup — GenAI Adoption</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="prompt-page prompt-page--data">
+  <main class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a>
+      <span class="breadcrumb-sep" aria-hidden="true">›</span>
+      <a href="index.html">Useful prompts</a>
+      <span class="breadcrumb-sep" aria-hidden="true">›</span>
+      <span class="breadcrumb-current">Excel / Power Query cleanup</span>
+    </nav>
+
+    <header class="site-header">
+      <div class="prompt-meta-row">
+        <span class="prompt-badge prompt-badge--data">Data</span>
+        <span class="prompt-meta-pill">Excel</span>
+        <span class="prompt-meta-pill">Power BI</span>
+        <span class="prompt-meta-pill">ChatGPT</span>
+      </div>
+      <h1>Excel / Power Query cleanup plan</h1>
+      <p class="subtitle">Describe messy columns; get steps and sample M without uploading sensitive workbooks.</p>
+    </header>
+
+    <div class="prompt-panel" data-prompt-root>
+      <section class="prompt-customize" aria-label="Customize placeholders">
+        <h2 class="prompt-section-title">Customize</h2>
+        <div class="prompt-fields">
+          <label class="prompt-field">
+            <span class="prompt-field-label">Tool</span>
+            <select class="prompt-input" data-prompt-var="tool">
+              <option value="Excel Power Query">Excel Power Query</option>
+              <option value="Power BI Power Query">Power BI Power Query</option>
+            </select>
+          </label>
+          <label class="prompt-field prompt-field--wide">
+            <span class="prompt-field-label">Column issues (describe structure, not real values)</span>
+            <textarea class="prompt-textarea" data-prompt-var="issues" rows="4" placeholder="Dates as text DD/MM/YYYY, Amount has currency symbols, Region has trailing spaces"></textarea>
+          </label>
+          <label class="prompt-field">
+            <span class="prompt-field-label">Desired output</span>
+            <input type="text" class="prompt-input" data-prompt-var="output" placeholder="One row per transaction, typed columns, UK locale" autocomplete="off">
+          </label>
+        </div>
+      </section>
+
+      <section class="prompt-output-wrap" aria-label="Prompt text">
+        <div class="prompt-output-header">
+          <h2 class="prompt-section-title">Prompt</h2>
+          <button type="button" class="prompt-copy-btn" data-prompt-copy>
+            <span class="prompt-copy-label" data-default-label="Copy prompt">Copy prompt</span>
+          </button>
+        </div>
+        <pre class="prompt-output"><code data-prompt-output></code></pre>
+      </section>
+
+      <script type="text/plain" data-prompt-template>I am cleaning a dataset in {tool}.
+
+Problems:
+{issues}
+
+Target shape:
+{output}
+
+Give me:
+1. Step-by-step transformation plan (rename, type, split, unpivot as needed)
+2. Power Query M snippets for each step (comment each step)
+3. Validation checks (row counts, null rates) I should run manually
+
+Use fictional column names in examples. Do not assume you can see my file.</script>
+    </div>
+
+    <article class="prose prompt-notes">
+      <p>Pair with the <a href="../skills/chatgpt-document-converter-suite.html">Document Converter Suite</a> plugin when you need format conversion before cleanup.</p>
+      <p class="caveat">Do not upload or paste customer spreadsheets into external tools without approval.</p>
+    </article>
+
+    <footer class="site-footer">
+      <p class="site-footer-main">Maintained by the .NET GenAI Adoption initiative · updated weekly.</p>
+      <p class="song-of-week"><a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=2KdymN0xDQQ&amp;list=RD2KdymN0xDQQ&amp;start_radio=1">♪ song of the week</a></p>
+    </footer>
+  </main>
+  <script src="prompt-page.js"></script>
+</body>
+</html>

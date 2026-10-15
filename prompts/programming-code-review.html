@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Focused code review — GenAI Adoption</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="prompt-page prompt-page--programming">
+  <main class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a>
+      <span class="breadcrumb-sep" aria-hidden="true">›</span>
+      <a href="index.html">Useful prompts</a>
+      <span class="breadcrumb-sep" aria-hidden="true">›</span>
+      <span class="breadcrumb-current">Focused code review</span>
+    </nav>
+
+    <header class="site-header">
+      <div class="prompt-meta-row">
+        <span class="prompt-badge prompt-badge--programming">Programming</span>
+        <span class="prompt-meta-pill">Cursor</span>
+        <span class="prompt-meta-pill">ChatGPT</span>
+      </div>
+      <h1>Focused code review</h1>
+      <p class="subtitle">Structured review for a PR or diff — security and correctness first, style last.</p>
+    </header>
+
+    <div class="prompt-panel" data-prompt-root>
+      <section class="prompt-customize" aria-label="Customize placeholders">
+        <h2 class="prompt-section-title">Customize</h2>
+        <div class="prompt-fields">
+          <label class="prompt-field">
+            <span class="prompt-field-label">Change summary</span>
+            <input type="text" class="prompt-input" data-prompt-var="change_summary" placeholder="Add retry policy to HTTP client wrapper" autocomplete="off">
+          </label>
+          <label class="prompt-field">
+            <span class="prompt-field-label">Language / stack</span>
+            <input type="text" class="prompt-input" data-prompt-var="stack" placeholder=".NET 8, Polly, internal API client" autocomplete="off">
+          </label>
+          <label class="prompt-field">
+            <span class="prompt-field-label">Review focus (optional)</span>
+            <input type="text" class="prompt-input" data-prompt-var="focus" placeholder="thread safety, logging, config secrets" autocomplete="off">
+          </label>
+        </div>
+      </section>
+
+      <section class="prompt-output-wrap" aria-label="Prompt text">
+        <div class="prompt-output-header">
+          <h2 class="prompt-section-title">Prompt</h2>
+          <button type="button" class="prompt-copy-btn" data-prompt-copy>
+            <span class="prompt-copy-label" data-default-label="Copy prompt">Copy prompt</span>
+          </button>
+        </div>
+        <pre class="prompt-output"><code data-prompt-output></code></pre>
+      </section>
+
+      <script type="text/plain" data-prompt-template>Review this change like a senior engineer on my team.
+
+Change: {change_summary}
+Stack: {stack}
+Extra focus: {focus}
+
+Output format:
+1. Summary (2–3 sentences)
+2. Must-fix issues (security, correctness, data loss) — cite file/line if you have the diff
+3. Should-fix (maintainability, tests missing)
+4. Nice-to-have
+5. Questions for the author
+
+Do not rewrite the whole PR. Be specific. Flag anything that could leak secrets or PII.</script>
+    </div>
+
+    <article class="prose prompt-notes">
+      <p><strong>Cursor:</strong> Attach <span class="inline-code">@Branch</span> or the changed files so the review references real code.</p>
+      <p class="caveat">Never paste production secrets, connection strings, or customer payloads into the chat.</p>
+    </article>
+
+    <footer class="site-footer">
+      <p class="site-footer-main">Maintained by the .NET GenAI Adoption initiative · updated weekly.</p>
+      <p class="song-of-week"><a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=2KdymN0xDQQ&amp;list=RD2KdymN0xDQQ&amp;start_radio=1">♪ song of the week</a></p>
+    </footer>
+  </main>
+  <script src="prompt-page.js"></script>
+</body>
+</html>

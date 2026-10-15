@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Explain and improve SQL — GenAI Adoption</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="prompt-page prompt-page--data">
+  <main class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a>
+      <span class="breadcrumb-sep" aria-hidden="true">›</span>
+      <a href="index.html">Useful prompts</a>
+      <span class="breadcrumb-sep" aria-hidden="true">›</span>
+      <span class="breadcrumb-current">Explain and improve SQL</span>
+    </nav>
+
+    <header class="site-header">
+      <div class="prompt-meta-row">
+        <span class="prompt-badge prompt-badge--data">Data</span>
+        <span class="prompt-meta-pill">SQL</span>
+        <span class="prompt-meta-pill">Cursor</span>
+        <span class="prompt-meta-pill">ChatGPT</span>
+      </div>
+      <h1>Explain and improve a SQL query</h1>
+      <p class="subtitle">Understand what a query does, then get a safer rewrite and index ideas.</p>
+    </header>
+
+    <div class="prompt-panel" data-prompt-root>
+      <section class="prompt-customize" aria-label="Customize placeholders">
+        <h2 class="prompt-section-title">Customize</h2>
+        <div class="prompt-fields">
+          <label class="prompt-field">
+            <span class="prompt-field-label">Database engine</span>
+            <input type="text" class="prompt-input" data-prompt-var="engine" placeholder="SQL Server 2019" autocomplete="off">
+          </label>
+          <label class="prompt-field">
+            <span class="prompt-field-label">Table names (fictional OK)</span>
+            <input type="text" class="prompt-input" data-prompt-var="tables" placeholder="dbo.Orders, dbo.Customers" autocomplete="off">
+          </label>
+          <label class="prompt-field prompt-field--wide">
+            <span class="prompt-field-label">Paste query below (no real customer data)</span>
+            <textarea class="prompt-textarea" data-prompt-var="query" rows="5" placeholder="SELECT ..."></textarea>
+          </label>
+        </div>
+      </section>
+
+      <section class="prompt-output-wrap" aria-label="Prompt text">
+        <div class="prompt-output-header">
+          <h2 class="prompt-section-title">Prompt</h2>
+          <button type="button" class="prompt-copy-btn" data-prompt-copy>
+            <span class="prompt-copy-label" data-default-label="Copy prompt">Copy prompt</span>
+          </button>
+        </div>
+        <pre class="prompt-output"><code data-prompt-output></code></pre>
+      </section>
+
+      <script type="text/plain" data-prompt-template>Database: {engine}
+Tables involved: {tables}
+
+Query:
+```
+{query}
+```
+
+Tasks:
+1. Explain in plain English what this query returns (row grain, joins, filters).
+2. List risks: Cartesian products, implicit conversions, non-sargable predicates, SELECT *.
+3. Suggest an improved version with the same semantics.
+4. Suggest indexes or statistics to validate with a DBA (no live execution from you).
+
+Assume read-only analytics workload unless I say otherwise.</script>
+    </div>
+
+    <article class="prose prompt-notes">
+      <p>Replace table/column names with fictional labels if the real query touches regulated data.</p>
+      <p class="caveat">Do not paste production connection strings or row-level customer data.</p>
+    </article>
+
+    <footer class="site-footer">
+      <p class="site-footer-main">Maintained by the .NET GenAI Adoption initiative · updated weekly.</p>
+      <p class="song-of-week"><a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=2KdymN0xDQQ&amp;list=RD2KdymN0xDQQ&amp;start_radio=1">♪ song of the week</a></p>
+    </footer>
+  </main>
+  <script src="prompt-page.js"></script>
+</body>
+</html>
