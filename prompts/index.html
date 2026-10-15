@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../styles.css?v=3">
 </head>
 <body>
   <main class="container">
@@ -298,10 +298,16 @@
         return normalize(attr).split(/\s+/).filter(Boolean);
       }
 
-      function matchToken(filterVal, attr) {
+      function matchCategoryOrTool(filterVal, attr) {
+        if (filterVal === 'all') return true;
+        return tokens(attr).indexOf(filterVal) !== -1;
+      }
+
+      function matchLanguage(filterVal, attr) {
         if (filterVal === 'all') return true;
         var list = tokens(attr);
         if (filterVal === 'any') return list.indexOf('any') !== -1;
+        if (list.indexOf('any') !== -1) return true;
         return list.indexOf(filterVal) !== -1;
       }
 
@@ -311,9 +317,9 @@
         rows.forEach(function (row) {
           var hay = normalize(row.getAttribute('data-search')) + ' ' + normalize(row.textContent);
           var searchOk = !q || hay.indexOf(q) !== -1;
-          var catOk = matchToken(filters.category, row.getAttribute('data-category'));
-          var langOk = matchToken(filters.language, row.getAttribute('data-language'));
-          var toolOk = matchToken(filters.tool, row.getAttribute('data-tool'));
+          var catOk = matchCategoryOrTool(filters.category, row.getAttribute('data-category'));
+          var langOk = matchLanguage(filters.language, row.getAttribute('data-language'));
+          var toolOk = matchCategoryOrTool(filters.tool, row.getAttribute('data-tool'));
           var show = searchOk && catOk && langOk && toolOk;
           row.hidden = !show;
           if (show) visible++;
@@ -334,6 +340,8 @@
           applyFilters();
         });
       });
+
+      applyFilters();
     })();
   </script>
 </body>
