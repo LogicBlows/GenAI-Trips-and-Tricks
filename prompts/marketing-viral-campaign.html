@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Viral marketing campaign — GenAI Adoption</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="prompt-page prompt-page--marketing">
+  <main class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a>
+      <span class="breadcrumb-sep" aria-hidden="true">›</span>
+      <a href="index.html">Useful prompts</a>
+      <span class="breadcrumb-sep" aria-hidden="true">›</span>
+      <span class="breadcrumb-current">Viral campaign</span>
+    </nav>
+    <header class="site-header">
+      <div class="prompt-meta-row">
+        <span class="prompt-badge prompt-badge--marketing">Marketing</span>
+        <span class="prompt-meta-pill">ChatGPT</span>
+      </div>
+      <h1>Viral marketing campaign</h1>
+      <p class="subtitle">Creative ideas within budget, timeline, and market context.</p>
+    </header>
+    <div class="prompt-panel" data-prompt-root>
+      <section class="prompt-customize" aria-label="Customize placeholders">
+        <h2 class="prompt-section-title">Customize</h2>
+        <div class="prompt-fields">
+          <label class="prompt-field"><span class="prompt-field-label">Product name</span>
+            <input type="text" class="prompt-input" data-prompt-var="product_name" placeholder="StudyBuddy AI" autocomplete="off"></label>
+          <label class="prompt-field"><span class="prompt-field-label">Budget</span>
+            <input type="text" class="prompt-input" data-prompt-var="budget_amount" placeholder="£25,000" autocomplete="off"></label>
+          <label class="prompt-field"><span class="prompt-field-label">Time frame</span>
+            <input type="text" class="prompt-input" data-prompt-var="time_frame" placeholder="6 weeks launch window" autocomplete="off"></label>
+          <label class="prompt-field prompt-field--wide"><span class="prompt-field-label">Target audience</span>
+            <input type="text" class="prompt-input" data-prompt-var="target_audience" placeholder="university students revising for exams" autocomplete="off"></label>
+          <label class="prompt-field prompt-field--wide"><span class="prompt-field-label">Current market trends (brief)</span>
+            <textarea class="prompt-textarea" data-prompt-var="market_trends" rows="2" placeholder="short-form study tips, AI study aids scrutiny, exam season peaks"></textarea></label>
+        </div>
+      </section>
+      <section class="prompt-output-wrap" aria-label="Prompt text">
+        <div class="prompt-output-header">
+          <h2 class="prompt-section-title">Prompt</h2>
+          <button type="button" class="prompt-copy-btn" data-prompt-copy><span class="prompt-copy-label" data-default-label="Copy prompt">Copy prompt</span></button>
+        </div>
+        <pre class="prompt-output"><code data-prompt-output></code></pre>
+      </section>
+      <script type="text/plain" data-prompt-template>Create viral marketing campaign ideas to promote {product_name} to {target_audience}.
+
+Budget: {budget_amount}
+Time frame: {time_frame}
+Market trends: {market_trends}
+
+Provide 4–5 creative concepts. For each include:
+- Big idea and why it could spread
+- Primary social platforms to use
+- Content formats (video, UGC challenge, memes, etc.)
+- Influencer partnership angles (tier: nano/micro/macro) and what to brief them
+- Rough budget split and timeline
+- Risks (brand safety, regulatory, backlash) and mitigations
+
+End with a recommended concept and first-week activation checklist.</script>
+    </div>
+    <footer class="site-footer">
+      <p class="site-footer-main">Maintained by the .NET GenAI Adoption initiative · updated weekly.</p>
+      <p class="song-of-week"><a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=2KdymN0xDQQ&amp;list=RD2KdymN0xDQQ&amp;start_radio=1">♪ song of the week</a></p>
+    </footer>
+  </main>
+  <script src="prompt-page.js"></script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-commerce marketing techniques — GenAI Adoption</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="prompt-page prompt-page--marketing">
+  <main class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a>
+      <span class="breadcrumb-sep" aria-hidden="true">›</span>
+      <a href="index.html">Useful prompts</a>
+      <span class="breadcrumb-sep" aria-hidden="true">›</span>
+      <span class="breadcrumb-current">E-commerce marketing</span>
+    </nav>
+    <header class="site-header">
+      <div class="prompt-meta-row">
+        <span class="prompt-badge prompt-badge--marketing">Marketing</span>
+        <span class="prompt-meta-pill">ChatGPT</span>
+      </div>
+      <h1>E-commerce marketing techniques</h1>
+      <p class="subtitle">Tactics mapped to your product, audience, and channels.</p>
+    </header>
+    <div class="prompt-panel" data-prompt-root>
+      <section class="prompt-customize" aria-label="Customize placeholders">
+        <h2 class="prompt-section-title">Customize</h2>
+        <div class="prompt-fields">
+          <label class="prompt-field"><span class="prompt-field-label">Product type</span>
+            <input type="text" class="prompt-input" data-prompt-var="product_type" placeholder="sustainable home goods" autocomplete="off"></label>
+          <label class="prompt-field prompt-field--wide"><span class="prompt-field-label">Target audience</span>
+            <input type="text" class="prompt-input" data-prompt-var="target_audience" placeholder="urban millennials, eco-conscious, mobile-first" autocomplete="off"></label>
+          <label class="prompt-field prompt-field--wide"><span class="prompt-field-label">Primary marketing channels</span>
+            <input type="text" class="prompt-input" data-prompt-var="list_of_channels" placeholder="Instagram, email, Google Shopping, TikTok" autocomplete="off"></label>
+        </div>
+      </section>
+      <section class="prompt-output-wrap" aria-label="Prompt text">
+        <div class="prompt-output-header">
+          <h2 class="prompt-section-title">Prompt</h2>
+          <button type="button" class="prompt-copy-btn" data-prompt-copy><span class="prompt-copy-label" data-default-label="Copy prompt">Copy prompt</span></button>
+        </div>
+        <pre class="prompt-output"><code data-prompt-output></code></pre>
+      </section>
+      <script type="text/plain" data-prompt-template>As an e-commerce marketing expert, suggest effective marketing techniques for our online store.
+
+Product type: {product_type}
+Target audience: {target_audience}
+Primary channels: {list_of_channels}
+
+For each technique provide:
+- Name and one-line description
+- Why it fits this audience and channel mix
+- Potential impact (reach, conversion, retention) — qualitative + what to measure
+- Implementation effort (low / medium / high)
+- One concrete example or creative hook
+
+Prioritise a 30-day test plan with 3 quick wins and 2 longer-term bets.</script>
+    </div>
+    <footer class="site-footer">
+      <p class="site-footer-main">Maintained by the .NET GenAI Adoption initiative · updated weekly.</p>
+      <p class="song-of-week"><a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=2KdymN0xDQQ&amp;list=RD2KdymN0xDQQ&amp;start_radio=1">♪ song of the week</a></p>
+    </footer>
+  </main>
+  <script src="prompt-page.js"></script>
+</body>
+</html>

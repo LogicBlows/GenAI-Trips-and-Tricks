@@ -1,0 +1,340 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Useful prompts — GenAI Adoption</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <main class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a>
+      <span class="breadcrumb-sep" aria-hidden="true">›</span>
+      <span class="breadcrumb-current">Useful prompts</span>
+    </nav>
+
+    <header class="site-header">
+      <h1>Useful prompts</h1>
+      <p class="subtitle">Copy-ready templates for programming, data, marketing, and everyday tasks — filter by category, language, and tool.</p>
+    </header>
+
+    <aside class="prompts-howto" aria-label="How to use this library">
+      <p><strong>How to use:</strong> Open a prompt, tweak placeholders (table name, language, audience), then <strong>Copy prompt</strong>. Paste into Cursor, ChatGPT, or your data tool. Replace any sample names with fictional or approved internal examples — never paste customer data or credentials.</p>
+    </aside>
+
+    <div class="prompts-toolbar">
+      <label class="tips-search-wrap">
+        <span class="visually-hidden">Search prompts</span>
+        <input type="search" class="tips-search" id="prompts-search" placeholder="Search prompts…" autocomplete="off">
+      </label>
+
+      <div class="filter-group">
+        <p class="filter-group-label">Category</p>
+        <div class="filter-chips" role="group" aria-label="Filter by category" data-filter-key="category">
+          <button type="button" class="filter-chip is-active" data-filter="all">All</button>
+          <button type="button" class="filter-chip" data-filter="programming">Programming</button>
+          <button type="button" class="filter-chip" data-filter="data">Data</button>
+          <button type="button" class="filter-chip" data-filter="general">General</button>
+          <button type="button" class="filter-chip" data-filter="marketing">Marketing</button>
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <p class="filter-group-label">Language</p>
+        <div class="filter-chips" role="group" aria-label="Filter by language" data-filter-key="language">
+          <button type="button" class="filter-chip is-active" data-filter="all">All</button>
+          <button type="button" class="filter-chip" data-filter="csharp">C#</button>
+          <button type="button" class="filter-chip" data-filter="python">Python</button>
+          <button type="button" class="filter-chip" data-filter="sql">SQL</button>
+          <button type="button" class="filter-chip" data-filter="any">Any</button>
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <p class="filter-group-label">Tool</p>
+        <div class="filter-chips" role="group" aria-label="Filter by tool" data-filter-key="tool">
+          <button type="button" class="filter-chip is-active" data-filter="all">All</button>
+          <button type="button" class="filter-chip" data-filter="cursor">Cursor</button>
+          <button type="button" class="filter-chip" data-filter="chatgpt">ChatGPT</button>
+          <button type="button" class="filter-chip" data-filter="excel">Excel</button>
+          <button type="button" class="filter-chip" data-filter="powerbi">Power BI</button>
+        </div>
+      </div>
+    </div>
+
+    <p class="tips-empty" id="prompts-empty" hidden>No prompts match your filters.</p>
+
+    <nav class="prompt-list" id="prompt-list" aria-label="All prompts">
+      <a class="prompt-row" href="programming-unit-tests.html"
+         data-category="programming" data-language="csharp python any" data-tool="cursor chatgpt"
+         data-search="unit tests xunit pytest arrange act assert">
+        <span class="prompt-row-badges">
+          <span class="prompt-badge prompt-badge--programming">Programming</span>
+        </span>
+        <span class="prompt-row-body">
+          <span class="prompt-row-title">Generate unit tests (Arrange–Act–Assert)</span>
+          <span class="prompt-row-desc">Structured tests with language tabs for C# or Python.</span>
+          <span class="prompt-row-meta">C# · Python · Cursor · ChatGPT</span>
+        </span>
+        <span class="prompt-row-cta" aria-hidden="true">Open →</span>
+      </a>
+
+      <a class="prompt-row" href="programming-code-review.html"
+         data-category="programming" data-language="csharp python any" data-tool="cursor chatgpt"
+         data-search="code review security performance readability pull request">
+        <span class="prompt-row-badges">
+          <span class="prompt-badge prompt-badge--programming">Programming</span>
+        </span>
+        <span class="prompt-row-body">
+          <span class="prompt-row-title">Focused code review</span>
+          <span class="prompt-row-desc">Security, correctness, and maintainability — with @ files in Cursor.</span>
+          <span class="prompt-row-meta">Any language · Cursor · ChatGPT</span>
+        </span>
+        <span class="prompt-row-cta" aria-hidden="true">Open →</span>
+      </a>
+
+      <a class="prompt-row" href="data-sql-explainer.html"
+         data-category="data" data-language="sql" data-tool="cursor chatgpt"
+         data-search="sql explain query performance indexes execution plan">
+        <span class="prompt-row-badges">
+          <span class="prompt-badge prompt-badge--data">Data</span>
+        </span>
+        <span class="prompt-row-body">
+          <span class="prompt-row-title">Explain and improve a SQL query</span>
+          <span class="prompt-row-desc">Plain-English walkthrough plus safer rewrite suggestions.</span>
+          <span class="prompt-row-meta">SQL · Cursor · ChatGPT</span>
+        </span>
+        <span class="prompt-row-cta" aria-hidden="true">Open →</span>
+      </a>
+
+      <a class="prompt-row" href="data-excel-clean.html"
+         data-category="data" data-language="any" data-tool="chatgpt excel powerbi"
+         data-search="excel power query clean data columns normalize">
+        <span class="prompt-row-badges">
+          <span class="prompt-badge prompt-badge--data">Data</span>
+        </span>
+        <span class="prompt-row-body">
+          <span class="prompt-row-title">Excel / Power Query cleanup plan</span>
+          <span class="prompt-row-desc">Steps and M or DAX hints without touching live customer data.</span>
+          <span class="prompt-row-meta">Excel · Power BI · ChatGPT</span>
+        </span>
+        <span class="prompt-row-cta" aria-hidden="true">Open →</span>
+      </a>
+
+      <a class="prompt-row" href="data-metrics-narrative.html"
+         data-category="data" data-language="any" data-tool="chatgpt"
+         data-search="metrics dashboard narrative executive summary kpi">
+        <span class="prompt-row-badges">
+          <span class="prompt-badge prompt-badge--data">Data</span>
+        </span>
+        <span class="prompt-row-body">
+          <span class="prompt-row-title">Turn metrics into a short narrative</span>
+          <span class="prompt-row-desc">Executive-friendly story from KPI bullets (synthetic numbers only).</span>
+          <span class="prompt-row-meta">ChatGPT · Data Storyteller</span>
+        </span>
+        <span class="prompt-row-cta" aria-hidden="true">Open →</span>
+      </a>
+
+      <a class="prompt-row" href="general-stakeholder-update.html"
+         data-category="general" data-language="any" data-tool="chatgpt cursor"
+         data-search="stakeholder update email status risks decisions">
+        <span class="prompt-row-badges">
+          <span class="prompt-badge prompt-badge--general">General</span>
+        </span>
+        <span class="prompt-row-body">
+          <span class="prompt-row-title">Stakeholder status update</span>
+          <span class="prompt-row-desc">Done / next / risks / asks — tuned for internal audiences.</span>
+          <span class="prompt-row-meta">Any · ChatGPT · Cursor</span>
+        </span>
+        <span class="prompt-row-cta" aria-hidden="true">Open →</span>
+      </a>
+
+      <a class="prompt-row" href="marketing-podcast-guesting.html"
+         data-category="marketing" data-language="any" data-tool="chatgpt"
+         data-search="podcast guest thought leadership host outreach">
+        <span class="prompt-row-badges"><span class="prompt-badge prompt-badge--marketing">Marketing</span></span>
+        <span class="prompt-row-body">
+          <span class="prompt-row-title">Podcast guesting opportunities</span>
+          <span class="prompt-row-desc">Relevant shows and hosts to pitch your expertise.</span>
+          <span class="prompt-row-meta">ChatGPT · Thought leadership</span>
+        </span>
+        <span class="prompt-row-cta" aria-hidden="true">Open →</span>
+      </a>
+
+      <a class="prompt-row" href="marketing-customer-upsell.html"
+         data-category="marketing" data-language="any" data-tool="chatgpt"
+         data-search="upsell cross-sell purchase history recommendations">
+        <span class="prompt-row-badges"><span class="prompt-badge prompt-badge--marketing">Marketing</span></span>
+        <span class="prompt-row-body">
+          <span class="prompt-row-title">Customer upsell program</span>
+          <span class="prompt-row-desc">Identify buyers, personalize offers, track performance.</span>
+          <span class="prompt-row-meta">ChatGPT · CRM</span>
+        </span>
+        <span class="prompt-row-cta" aria-hidden="true">Open →</span>
+      </a>
+
+      <a class="prompt-row" href="marketing-lead-nurturing-finance.html"
+         data-category="marketing" data-language="any" data-tool="chatgpt"
+         data-search="lead nurturing finance campaigns conversion">
+        <span class="prompt-row-badges"><span class="prompt-badge prompt-badge--marketing">Marketing</span></span>
+        <span class="prompt-row-body">
+          <span class="prompt-row-title">Lead nurturing program (finance)</span>
+          <span class="prompt-row-desc">Find leads, run campaigns, monitor and adjust.</span>
+          <span class="prompt-row-meta">ChatGPT · B2B</span>
+        </span>
+        <span class="prompt-row-cta" aria-hidden="true">Open →</span>
+      </a>
+
+      <a class="prompt-row" href="marketing-ecommerce-techniques.html"
+         data-category="marketing" data-language="any" data-tool="chatgpt"
+         data-search="ecommerce online store marketing channels">
+        <span class="prompt-row-badges"><span class="prompt-badge prompt-badge--marketing">Marketing</span></span>
+        <span class="prompt-row-body">
+          <span class="prompt-row-title">E-commerce marketing techniques</span>
+          <span class="prompt-row-desc">Channel-specific tactics, impact, and benefits.</span>
+          <span class="prompt-row-meta">ChatGPT · Retail</span>
+        </span>
+        <span class="prompt-row-cta" aria-hidden="true">Open →</span>
+      </a>
+
+      <a class="prompt-row" href="marketing-brand-loyalty-survey.html"
+         data-category="marketing" data-language="any" data-tool="chatgpt"
+         data-search="brand loyalty survey satisfaction NPS questions">
+        <span class="prompt-row-badges"><span class="prompt-badge prompt-badge--marketing">Marketing</span></span>
+        <span class="prompt-row-body">
+          <span class="prompt-row-title">Brand loyalty survey</span>
+          <span class="prompt-row-desc">Questions and design best practices.</span>
+          <span class="prompt-row-meta">ChatGPT · Research</span>
+        </span>
+        <span class="prompt-row-cta" aria-hidden="true">Open →</span>
+      </a>
+
+      <a class="prompt-row" href="marketing-hashtag-campaign.html"
+         data-category="marketing" data-language="any" data-tool="chatgpt"
+         data-search="hashtag social media buzz engagement">
+        <span class="prompt-row-badges"><span class="prompt-badge prompt-badge--marketing">Marketing</span></span>
+        <span class="prompt-row-body">
+          <span class="prompt-row-title">Hashtag campaign ideas</span>
+          <span class="prompt-row-desc">Catchy tags aligned to product value and audience.</span>
+          <span class="prompt-row-meta">ChatGPT · Social</span>
+        </span>
+        <span class="prompt-row-cta" aria-hidden="true">Open →</span>
+      </a>
+
+      <a class="prompt-row" href="marketing-video-script.html"
+         data-category="marketing" data-language="any" data-tool="chatgpt cursor"
+         data-search="video script product marketing demo">
+        <span class="prompt-row-badges"><span class="prompt-badge prompt-badge--marketing">Marketing</span></span>
+        <span class="prompt-row-body">
+          <span class="prompt-row-title">Marketing video script</span>
+          <span class="prompt-row-desc">Features, benefits, and differentiators on camera.</span>
+          <span class="prompt-row-meta">ChatGPT · Video</span>
+        </span>
+        <span class="prompt-row-cta" aria-hidden="true">Open →</span>
+      </a>
+
+      <a class="prompt-row" href="marketing-social-support-finance.html"
+         data-category="marketing" data-language="any" data-tool="chatgpt"
+         data-search="social media customer support finance FAQ">
+        <span class="prompt-row-badges"><span class="prompt-badge prompt-badge--marketing">Marketing</span></span>
+        <span class="prompt-row-body">
+          <span class="prompt-row-title">Social customer support (finance)</span>
+          <span class="prompt-row-desc">FAQs, response guidelines, tracking, feedback loop.</span>
+          <span class="prompt-row-meta">ChatGPT · Support</span>
+        </span>
+        <span class="prompt-row-cta" aria-hidden="true">Open →</span>
+      </a>
+
+      <a class="prompt-row" href="marketing-viral-campaign.html"
+         data-category="marketing" data-language="any" data-tool="chatgpt"
+         data-search="viral marketing influencers budget buzz">
+        <span class="prompt-row-badges"><span class="prompt-badge prompt-badge--marketing">Marketing</span></span>
+        <span class="prompt-row-body">
+          <span class="prompt-row-title">Viral marketing campaign</span>
+          <span class="prompt-row-desc">Creative ideas, platforms, and influencer angles.</span>
+          <span class="prompt-row-meta">ChatGPT · Campaign</span>
+        </span>
+        <span class="prompt-row-cta" aria-hidden="true">Open →</span>
+      </a>
+
+      <a class="prompt-row" href="marketing-social-contest.html"
+         data-category="marketing" data-language="any" data-tool="chatgpt"
+         data-search="social media contest engagement prize rules">
+        <span class="prompt-row-badges"><span class="prompt-badge prompt-badge--marketing">Marketing</span></span>
+        <span class="prompt-row-body">
+          <span class="prompt-row-title">Social media contest</span>
+          <span class="prompt-row-desc">Concept, format, and participation rules.</span>
+          <span class="prompt-row-meta">ChatGPT · Social</span>
+        </span>
+        <span class="prompt-row-cta" aria-hidden="true">Open →</span>
+      </a>
+    </nav>
+
+    <p class="prompts-contribute">New prompt? Duplicate <a href="TEMPLATE.html">TEMPLATE.html</a> and add a row to this list with matching <span class="inline-code">data-*</span> attributes.</p>
+
+    <footer class="site-footer">
+      <p class="site-footer-main">Maintained by the .NET GenAI Adoption initiative · updated weekly.</p>
+      <p class="song-of-week"><a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=2KdymN0xDQQ&amp;list=RD2KdymN0xDQQ&amp;start_radio=1">♪ song of the week</a></p>
+    </footer>
+  </main>
+
+  <script>
+    (function () {
+      var search = document.getElementById('prompts-search');
+      var list = document.getElementById('prompt-list');
+      var empty = document.getElementById('prompts-empty');
+      var rows = list ? list.querySelectorAll('.prompt-row') : [];
+      var filters = { category: 'all', language: 'all', tool: 'all' };
+
+      function normalize(s) {
+        return (s || '').toLowerCase().trim();
+      }
+
+      function tokens(attr) {
+        return normalize(attr).split(/\s+/).filter(Boolean);
+      }
+
+      function matchToken(filterVal, attr) {
+        if (filterVal === 'all') return true;
+        var list = tokens(attr);
+        if (filterVal === 'any') return list.indexOf('any') !== -1;
+        return list.indexOf(filterVal) !== -1;
+      }
+
+      function applyFilters() {
+        var q = normalize(search && search.value);
+        var visible = 0;
+        rows.forEach(function (row) {
+          var hay = normalize(row.getAttribute('data-search')) + ' ' + normalize(row.textContent);
+          var searchOk = !q || hay.indexOf(q) !== -1;
+          var catOk = matchToken(filters.category, row.getAttribute('data-category'));
+          var langOk = matchToken(filters.language, row.getAttribute('data-language'));
+          var toolOk = matchToken(filters.tool, row.getAttribute('data-tool'));
+          var show = searchOk && catOk && langOk && toolOk;
+          row.hidden = !show;
+          if (show) visible++;
+        });
+        if (empty) empty.hidden = visible > 0;
+      }
+
+      if (search) search.addEventListener('input', applyFilters);
+
+      document.querySelectorAll('.filter-group .filter-chip').forEach(function (chip) {
+        chip.addEventListener('click', function () {
+          var group = chip.closest('[data-filter-key]');
+          if (!group) return;
+          var key = group.getAttribute('data-filter-key');
+          group.querySelectorAll('.filter-chip').forEach(function (c) { c.classList.remove('is-active'); });
+          chip.classList.add('is-active');
+          filters[key] = chip.getAttribute('data-filter') || 'all';
+          applyFilters();
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

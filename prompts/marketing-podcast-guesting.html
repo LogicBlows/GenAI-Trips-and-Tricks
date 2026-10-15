@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Podcast guesting opportunities — GenAI Adoption</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="prompt-page prompt-page--marketing">
+  <main class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a>
+      <span class="breadcrumb-sep" aria-hidden="true">›</span>
+      <a href="index.html">Useful prompts</a>
+      <span class="breadcrumb-sep" aria-hidden="true">›</span>
+      <span class="breadcrumb-current">Podcast guesting</span>
+    </nav>
+    <header class="site-header">
+      <div class="prompt-meta-row">
+        <span class="prompt-badge prompt-badge--marketing">Marketing</span>
+        <span class="prompt-meta-pill">ChatGPT</span>
+      </div>
+      <h1>Podcast guesting opportunities</h1>
+      <p class="subtitle">Find shows and hosts that fit your expertise and audience.</p>
+    </header>
+    <div class="prompt-panel" data-prompt-root>
+      <section class="prompt-customize" aria-label="Customize placeholders">
+        <h2 class="prompt-section-title">Customize</h2>
+        <div class="prompt-fields">
+          <label class="prompt-field"><span class="prompt-field-label">Industry</span>
+            <input type="text" class="prompt-input" data-prompt-var="industry" placeholder="fintech / .NET engineering" autocomplete="off"></label>
+          <label class="prompt-field"><span class="prompt-field-label">Number of podcasts</span>
+            <input type="text" class="prompt-input" data-prompt-var="number_of_podcasts" placeholder="10" autocomplete="off"></label>
+          <label class="prompt-field prompt-field--wide"><span class="prompt-field-label">Main areas of interest</span>
+            <textarea class="prompt-textarea" data-prompt-var="list_of_interests" rows="3" placeholder="AI adoption, platform engineering, developer productivity"></textarea></label>
+          <label class="prompt-field prompt-field--wide"><span class="prompt-field-label">Target audience</span>
+            <input type="text" class="prompt-input" data-prompt-var="target_audience" placeholder="engineering leaders and senior developers in regulated industries" autocomplete="off"></label>
+        </div>
+      </section>
+      <section class="prompt-output-wrap" aria-label="Prompt text">
+        <div class="prompt-output-header">
+          <h2 class="prompt-section-title">Prompt</h2>
+          <button type="button" class="prompt-copy-btn" data-prompt-copy><span class="prompt-copy-label" data-default-label="Copy prompt">Copy prompt</span></button>
+        </div>
+        <pre class="prompt-output"><code data-prompt-output></code></pre>
+      </section>
+      <script type="text/plain" data-prompt-template>I am looking for podcast guesting opportunities to promote my {industry} expertise and share insights with a wider audience.
+
+My main areas of interest are: {list_of_interests}
+My target audience is: {target_audience}
+
+Suggest a list of {number_of_podcasts} podcasts and their hosts that would be most relevant for me to approach.
+
+For each podcast include:
+- Show name and host(s)
+- Why it fits my topics and audience
+- Suggested episode angle (3 talking points)
+- Best way to pitch (email subject line + 2-sentence opener)
+
+Prefer active shows with recent episodes. Note if the show is interview-style vs panel. Flag any that require a formal booking process.</script>
+    </div>
+    <article class="prose prompt-notes"><p class="caveat">Verify show contact details yourself; do not share confidential client stories on air without approval.</p></article>
+    <footer class="site-footer">
+      <p class="site-footer-main">Maintained by the .NET GenAI Adoption initiative · updated weekly.</p>
+      <p class="song-of-week"><a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=2KdymN0xDQQ&amp;list=RD2KdymN0xDQQ&amp;start_radio=1">♪ song of the week</a></p>
+    </footer>
+  </main>
+  <script src="prompt-page.js"></script>
+</body>
+</html>

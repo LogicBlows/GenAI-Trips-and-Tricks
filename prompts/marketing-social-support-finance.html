@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Social customer support (finance) — GenAI Adoption</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="prompt-page prompt-page--marketing">
+  <main class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a>
+      <span class="breadcrumb-sep" aria-hidden="true">›</span>
+      <a href="index.html">Useful prompts</a>
+      <span class="breadcrumb-sep" aria-hidden="true">›</span>
+      <span class="breadcrumb-current">Social support</span>
+    </nav>
+    <header class="site-header">
+      <div class="prompt-meta-row">
+        <span class="prompt-badge prompt-badge--marketing">Marketing</span>
+        <span class="prompt-meta-pill">ChatGPT</span>
+      </div>
+      <h1>Social media customer support (finance)</h1>
+      <p class="subtitle">Program design: FAQs, guidelines, tracking, and improvement loop.</p>
+    </header>
+    <div class="prompt-panel" data-prompt-root>
+      <section class="prompt-customize" aria-label="Customize placeholders">
+        <h2 class="prompt-section-title">Customize</h2>
+        <div class="prompt-fields">
+          <label class="prompt-field prompt-field--wide"><span class="prompt-field-label">Target audience</span>
+            <input type="text" class="prompt-input" data-prompt-var="target_audience" placeholder="retail banking customers on X and LinkedIn" autocomplete="off"></label>
+          <label class="prompt-field prompt-field--wide"><span class="prompt-field-label">Common questions and concerns</span>
+            <textarea class="prompt-textarea" data-prompt-var="common_questions_concerns" rows="3" placeholder="card declines, branch hours, fraud alerts, loan status (no account specifics)"></textarea></label>
+          <label class="prompt-field prompt-field--wide"><span class="prompt-field-label">Policies and regulations</span>
+            <textarea class="prompt-textarea" data-prompt-var="policies_regulations" rows="2" placeholder="no advice on social, escalate PII to secure channel, FCA tone rules"></textarea></label>
+          <label class="prompt-field prompt-field--wide"><span class="prompt-field-label">Program goals</span>
+            <input type="text" class="prompt-input" data-prompt-var="goals" placeholder="faster response, consistent tone, deflect repeat FAQs" autocomplete="off"></label>
+        </div>
+      </section>
+      <section class="prompt-output-wrap" aria-label="Prompt text">
+        <div class="prompt-output-header">
+          <h2 class="prompt-section-title">Prompt</h2>
+          <button type="button" class="prompt-copy-btn" data-prompt-copy><span class="prompt-copy-label" data-default-label="Copy prompt">Copy prompt</span></button>
+        </div>
+        <pre class="prompt-output"><code data-prompt-output></code></pre>
+      </section>
+      <script type="text/plain" data-prompt-template>As a financial services expert, help me create and manage a social media customer support program.
+
+Target audience: {target_audience}
+Common questions/concerns: {common_questions_concerns}
+Policies/regulations: {policies_regulations}
+Goals: {goals}
+
+Deliver:
+1. FAQ list with pre-written response templates (short, empathetic, compliant — no account-specific advice on public channels)
+2. Guidelines: response time SLAs, tone of voice, when to take the thread private, escalation paths
+3. Tracking: categories, tags, sentiment checks, weekly dashboard metrics
+4. Feedback loop: how to refine templates and train staff using anonymised examples
+
+Flag phrases we must never use on social in regulated finance.</script>
+    </div>
+    <article class="prose prompt-notes"><p class="caveat">Never paste customer account details or authentication info into ChatGPT.</p></article>
+    <footer class="site-footer">
+      <p class="site-footer-main">Maintained by the .NET GenAI Adoption initiative · updated weekly.</p>
+      <p class="song-of-week"><a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=2KdymN0xDQQ&amp;list=RD2KdymN0xDQQ&amp;start_radio=1">♪ song of the week</a></p>
+    </footer>
+  </main>
+  <script src="prompt-page.js"></script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer upsell program — GenAI Adoption</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="prompt-page prompt-page--marketing">
+  <main class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a>
+      <span class="breadcrumb-sep" aria-hidden="true">›</span>
+      <a href="index.html">Useful prompts</a>
+      <span class="breadcrumb-sep" aria-hidden="true">›</span>
+      <span class="breadcrumb-current">Customer upsell</span>
+    </nav>
+    <header class="site-header">
+      <div class="prompt-meta-row">
+        <span class="prompt-badge prompt-badge--marketing">Marketing</span>
+        <span class="prompt-meta-pill">ChatGPT</span>
+      </div>
+      <h1>Customer upsell program</h1>
+      <p class="subtitle">Design identification, recommendations, and measurement for upsells.</p>
+    </header>
+    <div class="prompt-panel" data-prompt-root>
+      <section class="prompt-customize" aria-label="Customize placeholders">
+        <h2 class="prompt-section-title">Customize</h2>
+        <div class="prompt-fields">
+          <label class="prompt-field"><span class="prompt-field-label">Product or service (existing)</span>
+            <input type="text" class="prompt-input" data-prompt-var="product_or_service_one" placeholder="core banking API tier" autocomplete="off"></label>
+          <label class="prompt-field"><span class="prompt-field-label">Product or service (upsell)</span>
+            <input type="text" class="prompt-input" data-prompt-var="product_or_service_two" placeholder="premium analytics add-on" autocomplete="off"></label>
+          <label class="prompt-field"><span class="prompt-field-label">Upsell option example 1</span>
+            <input type="text" class="prompt-input" data-prompt-var="upsell_option_one" placeholder="annual plan with 15% discount" autocomplete="off"></label>
+          <label class="prompt-field"><span class="prompt-field-label">Upsell option example 2</span>
+            <input type="text" class="prompt-input" data-prompt-var="upsell_option_two" placeholder="bundle with onboarding workshop" autocomplete="off"></label>
+        </div>
+      </section>
+      <section class="prompt-output-wrap" aria-label="Prompt text">
+        <div class="prompt-output-header">
+          <h2 class="prompt-section-title">Prompt</h2>
+          <button type="button" class="prompt-copy-btn" data-prompt-copy><span class="prompt-copy-label" data-default-label="Copy prompt">Copy prompt</span></button>
+        </div>
+        <pre class="prompt-output"><code data-prompt-output></code></pre>
+      </section>
+      <script type="text/plain" data-prompt-template>Help me create and manage a customer upsell program.
+
+1) Identification
+Using purchasing history patterns (describe logic, not real PII), how would we identify customers who bought {product_or_service_one} and may be interested in {product_or_service_two}? List segmentation rules and data fields needed.
+
+2) Personalized recommendations
+Based on purchase history and preferences, suggest upsell options such as {upsell_option_one} or {upsell_option_two}. Provide email/in-app message templates (short) for each segment.
+
+3) Measurement
+How should we track success? Define KPIs, cohort views, and how to adjust the strategy when conversion lags.
+
+4) Governance
+Note compliance considerations for financial services (consent, fair treatment, no misleading claims).
+
+Use fictional customer names in examples only.</script>
+    </div>
+    <article class="prose prompt-notes"><p class="caveat">Never paste real customer purchase files or identifiers into external AI tools without approval.</p></article>
+    <footer class="site-footer">
+      <p class="site-footer-main">Maintained by the .NET GenAI Adoption initiative · updated weekly.</p>
+      <p class="song-of-week"><a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=2KdymN0xDQQ&amp;list=RD2KdymN0xDQQ&amp;start_radio=1">♪ song of the week</a></p>
+    </footer>
+  </main>
+  <script src="prompt-page.js"></script>
+</body>
+</html>

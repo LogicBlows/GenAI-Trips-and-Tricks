@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brand loyalty survey — GenAI Adoption</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="prompt-page prompt-page--marketing">
+  <main class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a>
+      <span class="breadcrumb-sep" aria-hidden="true">›</span>
+      <a href="index.html">Useful prompts</a>
+      <span class="breadcrumb-sep" aria-hidden="true">›</span>
+      <span class="breadcrumb-current">Brand loyalty survey</span>
+    </nav>
+    <header class="site-header">
+      <div class="prompt-meta-row">
+        <span class="prompt-badge prompt-badge--marketing">Marketing</span>
+        <span class="prompt-meta-pill">ChatGPT</span>
+      </div>
+      <h1>Brand loyalty survey</h1>
+      <p class="subtitle">Questions and design practices for satisfaction and loyalty.</p>
+    </header>
+    <div class="prompt-panel" data-prompt-root>
+      <section class="prompt-customize" aria-label="Customize placeholders">
+        <h2 class="prompt-section-title">Customize</h2>
+        <div class="prompt-fields">
+          <label class="prompt-field"><span class="prompt-field-label">Brand name</span>
+            <input type="text" class="prompt-input" data-prompt-var="brand_name" placeholder="Example Bank Digital" autocomplete="off"></label>
+          <label class="prompt-field"><span class="prompt-field-label">Number of questions</span>
+            <input type="text" class="prompt-input" data-prompt-var="number_of_questions" placeholder="12" autocomplete="off"></label>
+          <label class="prompt-field prompt-field--wide"><span class="prompt-field-label">Survey delivery method</span>
+            <input type="text" class="prompt-input" data-prompt-var="survey_delivery_method" placeholder="post-purchase email link, mobile app intercept" autocomplete="off"></label>
+        </div>
+      </section>
+      <section class="prompt-output-wrap" aria-label="Prompt text">
+        <div class="prompt-output-header">
+          <h2 class="prompt-section-title">Prompt</h2>
+          <button type="button" class="prompt-copy-btn" data-prompt-copy><span class="prompt-copy-label" data-default-label="Copy prompt">Copy prompt</span></button>
+        </div>
+        <pre class="prompt-output"><code data-prompt-output></code></pre>
+      </section>
+      <script type="text/plain" data-prompt-template>Create a brand loyalty survey for {brand_name}.
+
+Goals: customer satisfaction, brand loyalty, overall brand perception.
+Length: {number_of_questions} questions.
+Delivery: {survey_delivery_method}
+
+Provide:
+1. Full question list with response type (Likert, NPS, multiple choice, open text)
+2. Section flow (intro, core, demographics if needed, thank-you)
+3. Best practices for survey design (bias avoidance, length, incentives, GDPR-friendly wording)
+4. How to analyse results and tie insights to marketing actions
+
+Avoid leading questions. Include one open-ended “what would make you recommend us?” question.</script>
+    </div>
+    <footer class="site-footer">
+      <p class="site-footer-main">Maintained by the .NET GenAI Adoption initiative · updated weekly.</p>
+      <p class="song-of-week"><a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=2KdymN0xDQQ&amp;list=RD2KdymN0xDQQ&amp;start_radio=1">♪ song of the week</a></p>
+    </footer>
+  </main>
+  <script src="prompt-page.js"></script>
+</body>
+</html>

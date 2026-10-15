@@ -1,4 +1,4 @@
-# Song of the week (optional fun link)
+﻿# Song of the week (optional fun link)
 
 Update the href in footers on:
   - index.html
@@ -9,6 +9,6 @@ Update the href in footers on:
 Look for: class="song-of-week"
 
 Current link (Oct 2026):
-  https://www.youtube.com/watch?v=nVhNCTH8pDs&list=RDnVhNCTH8pDs&start_radio=1
+  https://www.youtube.com/watch?v=2KdymN0xDQQ&list=RD2KdymN0xDQQ&start_radio=1
 
 Keep label short; styling is already tiny (0.625rem) in styles.css.

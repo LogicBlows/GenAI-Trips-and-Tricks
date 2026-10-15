@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generate unit tests — GenAI Adoption</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="prompt-page prompt-page--programming">
+  <main class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a>
+      <span class="breadcrumb-sep" aria-hidden="true">›</span>
+      <a href="index.html">Useful prompts</a>
+      <span class="breadcrumb-sep" aria-hidden="true">›</span>
+      <span class="breadcrumb-current">Generate unit tests</span>
+    </nav>
+
+    <header class="site-header">
+      <div class="prompt-meta-row">
+        <span class="prompt-badge prompt-badge--programming">Programming</span>
+        <span class="prompt-meta-pill">Cursor</span>
+        <span class="prompt-meta-pill">ChatGPT</span>
+      </div>
+      <h1>Generate unit tests (Arrange–Act–Assert)</h1>
+      <p class="subtitle">Ask for focused tests on one class or module — attach the source file with @ in Cursor.</p>
+    </header>
+
+    <div class="prompt-panel" data-prompt-root>
+      <section class="prompt-customize" aria-label="Customize placeholders">
+        <h2 class="prompt-section-title">Customize</h2>
+        <div class="prompt-fields">
+          <label class="prompt-field">
+            <span class="prompt-field-label">Class or module</span>
+            <input type="text" class="prompt-input" data-prompt-var="target" placeholder="PaymentValidator" autocomplete="off">
+          </label>
+          <label class="prompt-field">
+            <span class="prompt-field-label">What to cover</span>
+            <input type="text" class="prompt-input" data-prompt-var="scope" placeholder="happy path, null inputs, boundary amounts" autocomplete="off">
+          </label>
+        </div>
+        <div class="prompt-lang-row">
+          <span class="prompt-field-label">Language</span>
+          <div class="filter-chips" role="group" aria-label="Prompt language">
+            <button type="button" class="filter-chip is-active" data-prompt-lang="csharp" aria-pressed="true">C#</button>
+            <button type="button" class="filter-chip" data-prompt-lang="python" aria-pressed="false">Python</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="prompt-output-wrap" aria-label="Prompt text">
+        <div class="prompt-output-header">
+          <h2 class="prompt-section-title">Prompt</h2>
+          <button type="button" class="prompt-copy-btn" data-prompt-copy>
+            <span class="prompt-copy-label" data-default-label="Copy prompt">Copy prompt</span>
+          </button>
+        </div>
+        <pre class="prompt-output"><code data-prompt-output></code></pre>
+      </section>
+
+      <script type="text/plain" data-prompt-template>Write unit tests for {target}.
+
+Scope: {scope}.
+
+{language_context}
+
+Rules:
+- Use clear Arrange / Act / Assert sections in comments or structure.
+- One behavior per test; name tests so failures are obvious.
+- No integration tests or real I/O — mock dependencies.
+- Do not change production code unless I ask; output test file(s) only.
+
+If context is missing, list assumptions before writing tests.</script>
+      <script type="text/plain" data-lang-snippet="csharp">Language: C# with xUnit and FluentAssertions. Match existing project test folder layout.</script>
+      <script type="text/plain" data-lang-snippet="python">Language: Python 3 with pytest. Use type hints and parametrize where it reduces duplication.</script>
+    </div>
+
+    <article class="prose prompt-notes">
+      <p><strong>Cursor tip:</strong> Start the chat with <span class="inline-code">@{target}.cs</span> (or the test file you want extended) so the model sees real signatures.</p>
+      <p class="caveat">Use synthetic or anonymized data in examples only.</p>
+    </article>
+
+    <footer class="site-footer">
+      <p class="site-footer-main">Maintained by the .NET GenAI Adoption initiative · updated weekly.</p>
+      <p class="song-of-week"><a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=2KdymN0xDQQ&amp;list=RD2KdymN0xDQQ&amp;start_radio=1">♪ song of the week</a></p>
+    </footer>
+  </main>
+  <script src="prompt-page.js"></script>
+</body>
+</html>
