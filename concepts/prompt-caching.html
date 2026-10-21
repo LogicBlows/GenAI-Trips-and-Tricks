@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prompt caching — GenAI Adoption</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css?v=4">
+</head>
+<body class="concept-page">
+  <main class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a>
+      <span class="breadcrumb-sep" aria-hidden="true">›</span>
+      <a href="index.html">AI fundamentals</a>
+      <span class="breadcrumb-sep" aria-hidden="true">›</span>
+      <span class="breadcrumb-current">Prompt caching</span>
+    </nav>
+
+    <header class="site-header">
+      <div class="tip-brand-row">
+        <img class="tip-tool-logo" src="../assets/brands/general.svg" alt="" width="28" height="28">
+        <span class="tip-brand-label">AI fundamentals</span>
+      </div>
+      <h1>Prompt caching</h1>
+      <p class="meta-line">
+        21 Oct 2026
+        <span class="meta-dot" aria-hidden="true">·</span>
+        Cost &amp; performance
+        <span class="meta-dot" aria-hidden="true">·</span>
+        ~5 min read
+      </p>
+    </header>
+
+    <article class="prose">
+      <div class="concept-badges" aria-label="Topic tags">
+        <span class="concept-badge">Everyone</span>
+        <span class="concept-badge">Fundamentals</span>
+        <span class="concept-badge">Builders</span>
+      </div>
+
+      <p class="concept-lead">When the <strong>start of your prompt stays the same</strong> — system instructions, tool definitions, long context — the provider can <strong>reuse prior computation</strong> instead of re-processing the full prompt on every request. You get <strong>faster responses</strong> and often <strong>lower cost</strong> on repeat calls.</p>
+
+      <h2 class="concept-section-title">Visual walkthrough</h2>
+      <p style="font-size:0.9375rem;color:var(--ink-soft);margin:0 0 0.75rem;">Swipe or scroll sideways on smaller screens. Same series shared in the competency group.</p>
+
+      <div class="concept-gallery" aria-label="Prompt caching infographic panels">
+        <figure class="concept-figure">
+          <img src="../assets/concepts/prompt-caching/prompt-caching-01-what-is.jpg" alt="Panel 1: What is prompt caching — reusing a cached prefix of system prompt and context" width="1280" height="720" loading="lazy">
+          <figcaption><strong>1. What it is.</strong> A stable prefix (system + tools + long context) can be stored and reused; only new tokens need full processing.</figcaption>
+        </figure>
+        <figure class="concept-figure">
+          <img src="../assets/concepts/prompt-caching/prompt-caching-02-without.jpg" alt="Panel 2: Without prompt caching — every request re-processes the entire prompt" width="1280" height="720" loading="lazy">
+          <figcaption><strong>2. Without caching.</strong> Each request pays the full cost and latency to process the entire prompt again.</figcaption>
+        </figure>
+        <figure class="concept-figure">
+          <img src="../assets/concepts/prompt-caching/prompt-caching-03-with.jpg" alt="Panel 3: With prompt caching — cache hit on the prefix, new user message only" width="1280" height="720" loading="lazy">
+          <figcaption><strong>3. With caching.</strong> The first call writes the cache; later calls with the same prefix hit the cache and process mainly what changed.</figcaption>
+        </figure>
+        <figure class="concept-figure">
+          <img src="../assets/concepts/prompt-caching/prompt-caching-04-practices.jpg" alt="Panel 4: What to cache and best practices" width="1280" height="720" loading="lazy">
+          <figcaption><strong>4. Practices.</strong> Cache stable blocks; keep variable content after them; mind TTL, minimum size, and pricing.</figcaption>
+        </figure>
+      </div>
+
+      <h2 class="concept-section-title">Why it matters</h2>
+      <div class="concept-table-wrap">
+        <table class="concept-table">
+          <thead>
+            <tr>
+              <th scope="col">Benefit</th>
+              <th scope="col">What you notice</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Lower cost</td>
+              <td>Cached input tokens are often billed less than uncached tokens on supported APIs.</td>
+            </tr>
+            <tr>
+              <td>Lower latency</td>
+              <td>Less work before the model starts generating (faster time to first token).</td>
+            </tr>
+            <tr>
+              <td>Better at scale</td>
+              <td>Agents, chat apps, and services that send the same large system prompt every turn.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="concept-section-title">Without vs with (in one minute)</h2>
+      <section class="steps" aria-label="Comparison">
+        <div class="step">
+          <div class="step-header">
+            <span class="step-num">↯</span>
+            <span class="step-title">Without caching</span>
+          </div>
+          <p style="font-size:0.9375rem;color:var(--ink-soft);">Every API or agent turn re-reads the full stack: system prompt, tools, documents, then the new user message.</p>
+        </div>
+        <div class="step">
+          <div class="step-header">
+            <span class="step-num">✓</span>
+            <span class="step-title">With caching</span>
+          </div>
+          <p style="font-size:0.9375rem;color:var(--ink-soft);">The identical <strong>prefix</strong> is reused; only the <strong>suffix</strong> (e.g. latest user message or fresh RAG hits) is processed as new.</p>
+        </div>
+      </section>
+
+      <h2 class="concept-section-title">What you can do today</h2>
+      <section class="steps" aria-label="Practical habits">
+        <div class="step">
+          <div class="step-header">
+            <span class="step-num">1.</span>
+            <span class="step-title">Separate stable from changing</span>
+          </div>
+          <p style="font-size:0.9375rem;color:var(--ink-soft);">Put policies, tool lists, and long reference text in a fixed block; put the user question and session-specific data after it.</p>
+        </div>
+        <div class="step">
+          <div class="step-header">
+            <span class="step-num">2.</span>
+            <span class="step-title">Use rules and skills (Cursor / ChatGPT)</span>
+          </div>
+          <p style="font-size:0.9375rem;color:var(--ink-soft);">You do not toggle “caching” in the UI — but stable User Rules, project rules, and skills mirror the same idea: don’t re-paste the same instructions every chat.</p>
+        </div>
+        <div class="step">
+          <div class="step-header">
+            <span class="step-num">3.</span>
+            <span class="step-title">Don’t break the prefix</span>
+          </div>
+          <p style="font-size:0.9375rem;color:var(--ink-soft);">Small edits, reordering, or extra whitespace in the cached section usually means a cache miss — the provider treats it as a new prompt.</p>
+        </div>
+      </section>
+
+      <p style="font-size:0.9375rem;color:var(--ink-soft);">Related tips: <a href="../tips/cursor-one-task-one-chat.html">One task, one chat</a> · <a href="../tips/general-say-what-you-dont-want.html">Say what you don’t want</a></p>
+
+      <section class="concept-advanced" aria-labelledby="advanced-heading">
+        <h2 id="advanced-heading" class="concept-section-title">Advanced — APIs and billing</h2>
+        <p style="font-size:0.9375rem;color:var(--ink-soft);">When you ship services on Claude, OpenAI, or similar:</p>
+        <ul style="font-size:0.9375rem;color:var(--ink-soft);line-height:1.55;padding-left:1.25rem;">
+          <li>Mark long static blocks for caching where the API supports it (e.g. ephemeral cache control on Claude).</li>
+          <li>OpenAI-style caching often applies automatically when the opening tokens match a recent request on supported models — still design prompts with a fixed prefix.</li>
+          <li>Watch <strong>cache write</strong> vs <strong>cache read</strong> pricing, <strong>TTL</strong> (cache expiry), and <strong>minimum token</strong> thresholds.</li>
+        </ul>
+        <p class="caveat">Provider behaviour and pricing change — confirm against current official docs before production estimates.</p>
+      </section>
+
+      <p class="caveat" style="margin-top:1.25rem;">We’ll go deeper on how this shows up in day-to-day tools and .NET services in upcoming competency sessions.</p>
+    </article>
+
+    <footer class="site-footer">
+      <p class="site-footer-main">Maintained by the .NET GenAI Adoption initiative · updated weekly.</p>
+      <p class="song-of-week"><a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=2KdymN0xDQQ&amp;list=RD2KdymN0xDQQ&amp;start_radio=1">♪ song of the week</a></p>
+    </footer>
+  </main>
+</body>
+</html>
