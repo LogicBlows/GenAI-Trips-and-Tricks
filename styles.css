@@ -713,6 +713,10 @@ pre code {
   --portal-accent: var(--brass);
 }
 
+.portal-concepts {
+  --portal-accent: #5b4bb4;
+}
+
 .portal:hover {
   border-color: color-mix(in srgb, var(--portal-accent) 35%, var(--line));
   box-shadow: 0 8px 28px rgba(22, 27, 46, 0.07);
@@ -771,6 +775,10 @@ pre code {
 
 .portal-prompts .portal-cta {
   color: #2a7b6f;
+}
+
+.portal-concepts .portal-cta {
+  color: #5b4bb4;
 }
 
 .portal-tips .portal-cta {
@@ -1292,6 +1300,115 @@ pre code {
 .tip-page--general .prose {
   border-top: 2px solid color-mix(in srgb, var(--brass) 35%, transparent);
   padding-top: 1.25rem;
+}
+
+/* AI fundamentals (concepts) */
+
+.concepts-list .tip-row:hover {
+  border-color: color-mix(in srgb, #5b4bb4 35%, var(--line));
+}
+
+.concept-page .prose {
+  border-top: 2px solid color-mix(in srgb, #5b4bb4 30%, transparent);
+  padding-top: 1.25rem;
+}
+
+.concept-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0 0 1rem;
+}
+
+.concept-badge {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, #5b4bb4 12%, var(--surface));
+  color: #4a3d9a;
+  border: 1px solid color-mix(in srgb, #5b4bb4 22%, var(--line));
+}
+
+.concept-lead {
+  font-size: 1.0625rem;
+  line-height: 1.55;
+  color: var(--ink);
+  margin: 0 0 1.25rem;
+}
+
+.concept-gallery {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 0.25rem 0 1rem;
+  margin: 0 0 1.5rem;
+  -webkit-overflow-scrolling: touch;
+}
+
+.concept-figure {
+  flex: 0 0 min(100%, 28rem);
+  scroll-snap-align: start;
+  margin: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.concept-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+.concept-figure figcaption {
+  font-size: 0.8125rem;
+  color: var(--ink-soft);
+  padding: 0.65rem 0.85rem;
+  line-height: 1.45;
+  border-top: 1px solid var(--line);
+}
+
+.concept-section-title {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 1.75rem 0 0.65rem;
+  color: var(--ink);
+}
+
+.concept-table-wrap {
+  overflow-x: auto;
+  margin: 0 0 1rem;
+}
+
+.concept-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.concept-table th,
+.concept-table td {
+  text-align: left;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid var(--line);
+}
+
+.concept-table th {
+  background: color-mix(in srgb, #5b4bb4 8%, var(--surface));
+  font-weight: 600;
+}
+
+.concept-advanced {
+  margin-top: 2rem;
+  padding-top: 1.25rem;
+  border-top: 1px dashed var(--line);
 }
 
 .tip-infographic {

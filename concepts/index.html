@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI fundamentals — GenAI Adoption</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css?v=4">
+</head>
+<body>
+  <main class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a>
+      <span class="breadcrumb-sep" aria-hidden="true">›</span>
+      <span class="breadcrumb-current">AI fundamentals</span>
+    </nav>
+
+    <header class="site-header">
+      <h1>AI fundamentals</h1>
+      <p class="subtitle">Concept explainers with visuals — vendor-neutral where possible. Deeper builder notes live on each topic page.</p>
+    </header>
+
+    <div class="tips-toolbar">
+      <label class="tips-search-wrap">
+        <span class="visually-hidden">Search topics</span>
+        <input type="search" class="tips-search" id="concepts-search" placeholder="Search topics…" autocomplete="off">
+      </label>
+      <div class="filter-chips" role="group" aria-label="Filter by level">
+        <button type="button" class="filter-chip is-active" data-filter="all">All</button>
+        <button type="button" class="filter-chip" data-filter="fundamentals">Fundamentals</button>
+        <button type="button" class="filter-chip" data-filter="advanced">Advanced</button>
+      </div>
+    </div>
+
+    <p class="tips-empty" id="concepts-empty" hidden>No topics match your search.</p>
+
+    <nav class="tip-list concepts-list" id="concept-list" aria-label="All topics">
+      <a class="tip-row" href="prompt-caching.html" data-level="fundamentals" data-search="prompt caching tokens cost latency api agents system prompt prefix kv cache">
+        <img class="tip-row-logo" src="../assets/brands/general.svg" alt="" width="24" height="24">
+        <span class="tip-row-body">
+          <span class="tip-row-title">Prompt caching</span>
+          <span class="tip-row-desc">Reuse the unchanged start of a prompt for faster, cheaper repeat calls — in tools and APIs.</span>
+        </span>
+        <time class="tip-row-date" datetime="2026-10-21">21 Oct 2026</time>
+      </a>
+    </nav>
+
+    <footer class="site-footer">
+      <p class="site-footer-main">Maintained by the .NET GenAI Adoption initiative · updated weekly.</p>
+      <p class="song-of-week"><a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=2KdymN0xDQQ&amp;list=RD2KdymN0xDQQ&amp;start_radio=1">♪ song of the week</a></p>
+    </footer>
+  </main>
+
+  <script>
+    (function () {
+      var search = document.getElementById('concepts-search');
+      var list = document.getElementById('concept-list');
+      var empty = document.getElementById('concepts-empty');
+      var chips = document.querySelectorAll('.filter-chip');
+      var rows = list ? list.querySelectorAll('.tip-row') : [];
+      var levelFilter = 'all';
+
+      function normalize(s) {
+        return (s || '').toLowerCase().trim();
+      }
+
+      function applyFilters() {
+        var q = normalize(search && search.value);
+        var visible = 0;
+        rows.forEach(function (row) {
+          var level = row.getAttribute('data-level');
+          var hay = normalize(row.getAttribute('data-search')) + ' ' + normalize(row.textContent);
+          var levelOk = levelFilter === 'all' || level === levelFilter;
+          var searchOk = !q || hay.indexOf(q) !== -1;
+          var show = levelOk && searchOk;
+          row.hidden = !show;
+          if (show) visible++;
+        });
+        if (empty) empty.hidden = visible > 0;
+      }
+
+      if (search) search.addEventListener('input', applyFilters);
+      chips.forEach(function (chip) {
+        chip.addEventListener('click', function () {
+          chips.forEach(function (c) { c.classList.remove('is-active'); });
+          chip.classList.add('is-active');
+          levelFilter = chip.getAttribute('data-filter') || 'all';
+          applyFilters();
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
