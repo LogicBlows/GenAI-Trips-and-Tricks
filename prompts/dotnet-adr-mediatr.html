@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ADR — MediatR CQRS — GenAI Adoption</title>
+  <link rel="stylesheet" href="../styles.css?v=3">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body class="prompt-page prompt-page--programming">
+  <main class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span class="breadcrumb-sep">›</span><a href="index.html">Useful prompts</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">ADR MediatR</span></nav>
+    <header class="site-header">
+      <div class="prompt-meta-row"><span class="prompt-badge prompt-badge--programming">Programming</span><span class="prompt-meta-pill">Architecture</span></div>
+      <h1>Write ADR for MediatR adoption</h1>
+    </header>
+    <div class="prompt-panel" data-prompt-root>
+      <section class="prompt-customize" aria-label="Customize placeholders">
+        <label class="prompt-field"><span class="prompt-field-label">ADR template path</span>
+          <input type="text" class="prompt-input" data-prompt-var="adr_template" value="docs/decisions/ADR-001.md" autocomplete="off"></label>
+        <label class="prompt-field"><span class="prompt-field-label">New ADR number</span>
+          <input type="text" class="prompt-input" data-prompt-var="adr_number" value="002" autocomplete="off"></label>
+      </section>
+      <section class="prompt-output-wrap" aria-label="Prompt text">
+        <div class="prompt-output-header"><h2 class="prompt-section-title">Prompt</h2>
+          <button type="button" class="prompt-copy-btn" data-prompt-copy><span class="prompt-copy-label" data-default-label="Copy prompt">Copy prompt</span></button></div>
+        <pre class="prompt-output"><code data-prompt-output></code></pre>
+      </section>
+      <script type="text/plain" data-prompt-template>We've decided to use MediatR for our CQRS implementation going forward.
+
+Write an Architecture Decision Record (ADR) for this decision.
+
+Context:
+- We evaluated MediatR vs a hand-rolled command dispatcher
+- MediatR won on: existing team familiarity, pipeline behaviour support, less boilerplate
+- Concerns noted: adds a dependency, slightly more indirection
+- Decision: adopt MediatR for all new command/query handlers; existing code migrated incrementally
+
+Format the ADR as a markdown file following the template in {adr_template}.
+Suggested filename: ADR-{adr_number}-mediatr-cqrs.md
+
+Include status, date, decision makers placeholder, and consequences (positive and negative).</script>
+    </div>
+    <footer class="site-footer"><p class="site-footer-main">Maintained by the .NET GenAI Adoption initiative · updated weekly.</p></footer>
+  </main>
+  <script src="prompt-page.js"></script>
+</body>
+</html>

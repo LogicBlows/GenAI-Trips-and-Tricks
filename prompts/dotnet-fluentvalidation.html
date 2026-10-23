@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FluentValidation — CreateOrderRequest — GenAI Adoption</title>
+  <link rel="stylesheet" href="../styles.css?v=3">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body class="prompt-page prompt-page--programming">
+  <main class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span class="breadcrumb-sep">›</span><a href="index.html">Useful prompts</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">FluentValidation</span></nav>
+    <header class="site-header">
+      <div class="prompt-meta-row"><span class="prompt-badge prompt-badge--programming">Programming</span><span class="prompt-meta-pill">.NET</span></div>
+      <h1>FluentValidation for CreateOrderRequest</h1>
+    </header>
+    <div class="prompt-panel" data-prompt-root>
+      <section class="prompt-customize" aria-label="Customize placeholders">
+        <div class="prompt-fields">
+          <label class="prompt-field"><span class="prompt-field-label">Request DTO file</span>
+            <input type="text" class="prompt-input" data-prompt-var="request_file" value="CreateOrderRequest.cs" autocomplete="off"></label>
+          <label class="prompt-field"><span class="prompt-field-label">Program / startup file</span>
+            <input type="text" class="prompt-input" data-prompt-var="program_file" value="Program.cs" autocomplete="off"></label>
+        </div>
+      </section>
+      <section class="prompt-output-wrap" aria-label="Prompt text">
+        <div class="prompt-output-header"><h2 class="prompt-section-title">Prompt</h2>
+          <button type="button" class="prompt-copy-btn" data-prompt-copy><span class="prompt-copy-label" data-default-label="Copy prompt">Copy prompt</span></button></div>
+        <pre class="prompt-output"><code data-prompt-output></code></pre>
+      </section>
+      <script type="text/plain" data-prompt-template>Add a FluentValidation validator for CreateOrderRequest ({request_file}).
+
+Rules:
+- CustomerId: required, must be a non-empty Guid
+- Items: required, at least one item
+- Each item: ProductId required, Quantity between 1 and 100
+- ShippingAddress: required, all fields required
+
+Register the validator in {program_file} following the existing registration pattern.
+
+Match validator class naming and folder layout used elsewhere in the solution. Add validator unit tests only if the project already tests validators.</script>
+    </div>
+    <footer class="site-footer"><p class="site-footer-main">Maintained by the .NET GenAI Adoption initiative · updated weekly.</p></footer>
+  </main>
+  <script src="prompt-page.js"></script>
+</body>
+</html>

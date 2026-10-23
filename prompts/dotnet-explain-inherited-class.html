@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Explain inherited code — GenAI Adoption</title>
+  <link rel="stylesheet" href="../styles.css?v=3">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body class="prompt-page prompt-page--programming">
+  <main class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span class="breadcrumb-sep">›</span><a href="index.html">Useful prompts</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Explain class</span></nav>
+    <header class="site-header">
+      <div class="prompt-meta-row"><span class="prompt-badge prompt-badge--programming">Programming</span><span class="prompt-meta-pill">Cursor</span></div>
+      <h1>Explain inherited code before changing it</h1>
+    </header>
+    <div class="prompt-panel" data-prompt-root>
+      <section class="prompt-customize" aria-label="Customize placeholders">
+        <label class="prompt-field"><span class="prompt-field-label">Class file</span>
+          <input type="text" class="prompt-input" data-prompt-var="class_file" value="EventPublisher.cs" autocomplete="off"></label>
+      </section>
+      <section class="prompt-output-wrap" aria-label="Prompt text">
+        <div class="prompt-output-header"><h2 class="prompt-section-title">Prompt</h2>
+          <button type="button" class="prompt-copy-btn" data-prompt-copy><span class="prompt-copy-label" data-default-label="Copy prompt">Copy prompt</span></button></div>
+        <pre class="prompt-output"><code data-prompt-output></code></pre>
+      </section>
+      <script type="text/plain" data-prompt-template>Explain what {class_file} does, how it fits into the system, and what I should know before modifying it.
+
+Specifically:
+- What is its responsibility?
+- What are the main failure modes?
+- What would break if I changed the retry logic?
+- Is there anything here that looks unusual or worth questioning?
+
+Trace callers and dependencies in the solution. Use a short diagram or bullet flow if helpful.</script>
+    </div>
+    <footer class="site-footer"><p class="site-footer-main">Maintained by the .NET GenAI Adoption initiative · updated weekly.</p></footer>
+  </main>
+  <script src="prompt-page.js"></script>
+</body>
+</html>

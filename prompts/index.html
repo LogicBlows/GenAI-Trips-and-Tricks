@@ -19,7 +19,7 @@
 
     <header class="site-header">
       <h1>Useful prompts</h1>
-      <p class="subtitle">Copy-ready templates for programming, data, marketing, and everyday tasks — filter by category, language, and tool.</p>
+      <p class="subtitle">Copy-ready templates for .NET, data, marketing, and everyday tasks — filter by category, stack, and tool.</p>
     </header>
 
     <aside class="prompts-howto" aria-label="How to use this library">
@@ -48,6 +48,7 @@
         <div class="filter-chips" role="group" aria-label="Filter by language" data-filter-key="language">
           <button type="button" class="filter-chip is-active" data-filter="all">All</button>
           <button type="button" class="filter-chip" data-filter="csharp">C#</button>
+          <button type="button" class="filter-chip" data-filter="dotnet">.NET</button>
           <button type="button" class="filter-chip" data-filter="python">Python</button>
           <button type="button" class="filter-chip" data-filter="sql">SQL</button>
           <button type="button" class="filter-chip" data-filter="any">Any</button>
@@ -93,6 +94,138 @@
           <span class="prompt-row-title">Focused code review</span>
           <span class="prompt-row-desc">Security, correctness, and maintainability — with @ files in Cursor.</span>
           <span class="prompt-row-meta">Any language · Cursor · ChatGPT</span>
+        </span>
+        <span class="prompt-row-cta" aria-hidden="true">Open →</span>
+      </a>
+
+      <a class="prompt-row" href="dotnet-api-cancel-order.html"
+         data-category="programming" data-language="csharp dotnet" data-tool="cursor"
+         data-search="aspnet api post endpoint cancel order controller">
+        <span class="prompt-row-badges"><span class="prompt-badge prompt-badge--programming">.NET</span></span>
+        <span class="prompt-row-body">
+          <span class="prompt-row-title">POST cancel order endpoint</span>
+          <span class="prompt-row-desc">OrdersController + OrderService.CancelAsync, 204/404/409.</span>
+          <span class="prompt-row-meta">ASP.NET Core · Cursor</span>
+        </span>
+        <span class="prompt-row-cta" aria-hidden="true">Open →</span>
+      </a>
+
+      <a class="prompt-row" href="dotnet-repository-date-range.html"
+         data-category="programming" data-language="csharp dotnet" data-tool="cursor"
+         data-search="ef core repository customer date range orders">
+        <span class="prompt-row-badges"><span class="prompt-badge prompt-badge--programming">.NET</span></span>
+        <span class="prompt-row-body">
+          <span class="prompt-row-title">Repository — orders by date range</span>
+          <span class="prompt-row-desc">GetByCustomerAndDateRangeAsync + interface.</span>
+          <span class="prompt-row-meta">EF Core · Cursor</span>
+        </span>
+        <span class="prompt-row-cta" aria-hidden="true">Open →</span>
+      </a>
+
+      <a class="prompt-row" href="dotnet-unit-tests-cancel-async.html"
+         data-category="programming" data-language="csharp dotnet" data-tool="cursor"
+         data-search="xunit moq cancelasync unit tests orderservice">
+        <span class="prompt-row-badges"><span class="prompt-badge prompt-badge--programming">.NET</span></span>
+        <span class="prompt-row-body">
+          <span class="prompt-row-title">Unit tests — CancelAsync</span>
+          <span class="prompt-row-desc">Happy path, not found, already cancelled — AAA.</span>
+          <span class="prompt-row-meta">xUnit · Moq</span>
+        </span>
+        <span class="prompt-row-cta" aria-hidden="true">Open →</span>
+      </a>
+
+      <a class="prompt-row" href="dotnet-fluentvalidation.html"
+         data-category="programming" data-language="csharp dotnet" data-tool="cursor"
+         data-search="fluentvalidation createorderrequest program.cs">
+        <span class="prompt-row-badges"><span class="prompt-badge prompt-badge--programming">.NET</span></span>
+        <span class="prompt-row-body">
+          <span class="prompt-row-title">FluentValidation — CreateOrderRequest</span>
+          <span class="prompt-row-desc">Rules + registration in Program.cs.</span>
+          <span class="prompt-row-meta">Validation · Cursor</span>
+        </span>
+        <span class="prompt-row-cta" aria-hidden="true">Open →</span>
+      </a>
+
+      <a class="prompt-row" href="dotnet-request-logging-middleware.html"
+         data-category="programming" data-language="csharp dotnet" data-tool="cursor"
+         data-search="middleware request logging ilogger health check">
+        <span class="prompt-row-badges"><span class="prompt-badge prompt-badge--programming">.NET</span></span>
+        <span class="prompt-row-body">
+          <span class="prompt-row-title">Request logging middleware</span>
+          <span class="prompt-row-desc">Duration, status codes, skip health checks.</span>
+          <span class="prompt-row-meta">ASP.NET Core</span>
+        </span>
+        <span class="prompt-row-cta" aria-hidden="true">Open →</span>
+      </a>
+
+      <a class="prompt-row" href="dotnet-ef-owned-entity-migration.html"
+         data-category="programming" data-language="csharp dotnet" data-tool="cursor"
+         data-search="ef core owned entity shippingaddress migration">
+        <span class="prompt-row-badges"><span class="prompt-badge prompt-badge--programming">.NET</span></span>
+        <span class="prompt-row-body">
+          <span class="prompt-row-title">EF owned entity + migration review</span>
+          <span class="prompt-row-desc">Shipping_ column prefix, Up/Down verification.</span>
+          <span class="prompt-row-meta">EF Core</span>
+        </span>
+        <span class="prompt-row-cta" aria-hidden="true">Open →</span>
+      </a>
+
+      <a class="prompt-row" href="dotnet-security-review.html"
+         data-category="programming" data-language="csharp dotnet" data-tool="cursor chatgpt"
+         data-search="security authorization orders controller idor">
+        <span class="prompt-row-badges"><span class="prompt-badge prompt-badge--programming">.NET</span></span>
+        <span class="prompt-row-body">
+          <span class="prompt-row-title">Security review — orders API</span>
+          <span class="prompt-row-desc">Authz, validation, sensitive data, injection.</span>
+          <span class="prompt-row-meta">Security · Cursor</span>
+        </span>
+        <span class="prompt-row-cta" aria-hidden="true">Open →</span>
+      </a>
+
+      <a class="prompt-row" href="dotnet-ef-performance.html"
+         data-category="programming" data-language="csharp dotnet" data-tool="cursor"
+         data-search="ef core slow query n+1 index dashboard">
+        <span class="prompt-row-badges"><span class="prompt-badge prompt-badge--programming">.NET</span></span>
+        <span class="prompt-row-body">
+          <span class="prompt-row-title">Diagnose slow EF query</span>
+          <span class="prompt-row-desc">SQL shape, indexes, N+1, rewrite options.</span>
+          <span class="prompt-row-meta">Performance · EF Core</span>
+        </span>
+        <span class="prompt-row-cta" aria-hidden="true">Open →</span>
+      </a>
+
+      <a class="prompt-row" href="dotnet-explain-inherited-class.html"
+         data-category="programming" data-language="csharp dotnet" data-tool="cursor"
+         data-search="explain legacy class eventpublisher failure modes">
+        <span class="prompt-row-badges"><span class="prompt-badge prompt-badge--programming">.NET</span></span>
+        <span class="prompt-row-body">
+          <span class="prompt-row-title">Explain inherited code</span>
+          <span class="prompt-row-desc">Responsibility, failures, safe change boundaries.</span>
+          <span class="prompt-row-meta">Cursor · Onboarding</span>
+        </span>
+        <span class="prompt-row-cta" aria-hidden="true">Open →</span>
+      </a>
+
+      <a class="prompt-row" href="dotnet-migrate-result-pattern.html"
+         data-category="programming" data-language="csharp dotnet" data-tool="cursor"
+         data-search="result pattern cqrs exceptions domain">
+        <span class="prompt-row-badges"><span class="prompt-badge prompt-badge--programming">.NET</span></span>
+        <span class="prompt-row-body">
+          <span class="prompt-row-title">Migrate to Result&lt;T&gt;</span>
+          <span class="prompt-row-desc">Match PlaceOrderAsync style in RegisterAsync.</span>
+          <span class="prompt-row-meta">Domain · Refactor</span>
+        </span>
+        <span class="prompt-row-cta" aria-hidden="true">Open →</span>
+      </a>
+
+      <a class="prompt-row" href="dotnet-adr-mediatr.html"
+         data-category="programming" data-language="csharp dotnet" data-tool="cursor chatgpt"
+         data-search="adr architecture decision record mediatr cqrs">
+        <span class="prompt-row-badges"><span class="prompt-badge prompt-badge--programming">.NET</span></span>
+        <span class="prompt-row-body">
+          <span class="prompt-row-title">ADR — adopt MediatR</span>
+          <span class="prompt-row-desc">CQRS decision doc from team template.</span>
+          <span class="prompt-row-meta">Architecture</span>
         </span>
         <span class="prompt-row-cta" aria-hidden="true">Open →</span>
       </a>
@@ -307,6 +440,8 @@
         if (filterVal === 'all') return true;
         var list = tokens(attr);
         if (filterVal === 'any') return list.indexOf('any') !== -1;
+        if (filterVal === 'csharp' && list.indexOf('dotnet') !== -1) return true;
+        if (filterVal === 'dotnet' && list.indexOf('csharp') !== -1) return true;
         if (list.indexOf('any') !== -1) return true;
         return list.indexOf(filterVal) !== -1;
       }
