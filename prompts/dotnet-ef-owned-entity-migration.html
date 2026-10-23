@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EF Core owned entity migration — GenAI Adoption</title>
+  <link rel="stylesheet" href="../styles.css?v=3">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body class="prompt-page prompt-page--programming">
+  <main class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span class="breadcrumb-sep">›</span><a href="index.html">Useful prompts</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">EF migration</span></nav>
+    <header class="site-header">
+      <div class="prompt-meta-row"><span class="prompt-badge prompt-badge--programming">Programming</span><span class="prompt-meta-pill">EF Core</span></div>
+      <h1>Owned entity configuration and migration review</h1>
+    </header>
+    <div class="prompt-panel" data-prompt-root>
+      <section class="prompt-customize" aria-label="Customize placeholders">
+        <div class="prompt-fields">
+          <label class="prompt-field"><span class="prompt-field-label">Entity file</span>
+            <input type="text" class="prompt-input" data-prompt-var="order_file" value="Order.cs" autocomplete="off"></label>
+          <label class="prompt-field"><span class="prompt-field-label">DbContext file</span>
+            <input type="text" class="prompt-input" data-prompt-var="context_file" value="DataContext.cs" autocomplete="off"></label>
+          <label class="prompt-field"><span class="prompt-field-label">Configuration file</span>
+            <input type="text" class="prompt-input" data-prompt-var="config_file" value="OrderConfiguration.cs" autocomplete="off"></label>
+        </div>
+      </section>
+      <section class="prompt-output-wrap" aria-label="Prompt text">
+        <div class="prompt-output-header"><h2 class="prompt-section-title">Prompt</h2>
+          <button type="button" class="prompt-copy-btn" data-prompt-copy><span class="prompt-copy-label" data-default-label="Copy prompt">Copy prompt</span></button></div>
+        <pre class="prompt-output"><code data-prompt-output></code></pre>
+      </section>
+      <script type="text/plain" data-prompt-template>I've added a new ShippingAddress value object to the Order entity ({order_file}, {context_file}).
+
+Generate:
+1. The EF Core configuration for ShippingAddress (owned entity, mapped to columns with prefix "Shipping_")
+2. The migration class — I will run dotnet ef migrations add myself, but show what the Up() and Down() methods should contain so I can verify the generated migration is correct
+
+Follow the existing entity configuration pattern in {config_file}. Use OwnsOne / nested configuration consistent with the project's EF version.</script>
+    </div>
+    <footer class="site-footer"><p class="site-footer-main">Maintained by the .NET GenAI Adoption initiative · updated weekly.</p></footer>
+  </main>
+  <script src="prompt-page.js"></script>
+</body>
+</html>

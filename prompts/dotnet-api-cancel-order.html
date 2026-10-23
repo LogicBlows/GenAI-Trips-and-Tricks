@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>API endpoint — cancel order — GenAI Adoption</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css?v=3">
+</head>
+<body class="prompt-page prompt-page--programming">
+  <main class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a><span class="breadcrumb-sep" aria-hidden="true">›</span>
+      <a href="index.html">Useful prompts</a><span class="breadcrumb-sep" aria-hidden="true">›</span>
+      <span class="breadcrumb-current">Cancel order endpoint</span>
+    </nav>
+    <header class="site-header">
+      <div class="prompt-meta-row">
+        <span class="prompt-badge prompt-badge--programming">Programming</span>
+        <span class="prompt-meta-pill">.NET</span>
+        <span class="prompt-meta-pill">Cursor</span>
+      </div>
+      <h1>Add POST cancel order endpoint</h1>
+      <p class="subtitle">Controller + service method following existing patterns. Attach files with @ in Cursor.</p>
+    </header>
+    <div class="prompt-panel" data-prompt-root>
+      <section class="prompt-customize" aria-label="Customize placeholders">
+        <h2 class="prompt-section-title">Customize</h2>
+        <div class="prompt-fields">
+          <label class="prompt-field"><span class="prompt-field-label">Controller file</span>
+            <input type="text" class="prompt-input" data-prompt-var="controller_file" placeholder="OrdersController.cs" autocomplete="off"></label>
+          <label class="prompt-field"><span class="prompt-field-label">Service file</span>
+            <input type="text" class="prompt-input" data-prompt-var="service_file" placeholder="OrderService.cs" autocomplete="off"></label>
+        </div>
+      </section>
+      <section class="prompt-output-wrap" aria-label="Prompt text">
+        <div class="prompt-output-header">
+          <h2 class="prompt-section-title">Prompt</h2>
+          <button type="button" class="prompt-copy-btn" data-prompt-copy><span class="prompt-copy-label" data-default-label="Copy prompt">Copy prompt</span></button>
+        </div>
+        <pre class="prompt-output"><code data-prompt-output></code></pre>
+      </section>
+      <script type="text/plain" data-prompt-template>Add a POST endpoint to {controller_file} for cancelling an order.
+
+Requirements:
+- Route: POST /api/orders/{orderId}/cancel
+- Accept a CancellationRequest body with a Reason property
+- Call OrderService.CancelAsync (not yet implemented — add it in {service_file})
+- Return 204 No Content on success, 404 if order not found, 409 if already cancelled
+- Follow the same pattern as the existing endpoints in the controller
+
+Before coding, read the existing controller and service. Match naming, DI, exception mapping, and response types used elsewhere in the project.</script>
+    </div>
+    <article class="prose prompt-notes"><p><strong>Cursor:</strong> Include {controller_file}, {service_file}, and related DTOs in context.</p></article>
+    <footer class="site-footer">
+      <p class="site-footer-main">Maintained by the .NET GenAI Adoption initiative · updated weekly.</p>
+      <p class="song-of-week"><a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=2KdymN0xDQQ&amp;list=RD2KdymN0xDQQ&amp;start_radio=1">♪ song of the week</a></p>
+    </footer>
+  </main>
+  <script src="prompt-page.js"></script>
+</body>
+</html>
