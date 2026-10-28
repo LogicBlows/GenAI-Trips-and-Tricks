@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Internationalization strategy — GenAI Adoption</title>
+  <link rel="stylesheet" href="../styles.css?v=3">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body class="prompt-page prompt-page--product">
+  <main class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span class="breadcrumb-sep">›</span><a href="index.html">Useful prompts</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Internationalization</span></nav>
+    <header class="site-header">
+      <div class="prompt-meta-row"><span class="prompt-badge prompt-badge--product">Product Management</span><span class="prompt-meta-pill">ChatGPT</span></div>
+      <h1>Internationalization strategy</h1>
+    </header>
+    <div class="prompt-panel" data-prompt-root>
+      <section class="prompt-customize" aria-label="Customize placeholders">
+        <div class="prompt-fields">
+          <label class="prompt-field"><span class="prompt-field-label">Product name</span>
+            <input type="text" class="prompt-input" data-prompt-var="product_name" autocomplete="off"></label>
+          <label class="prompt-field"><span class="prompt-field-label">Target market</span>
+            <input type="text" class="prompt-input" data-prompt-var="target_market" placeholder="Germany / DACH" autocomplete="off"></label>
+          <label class="prompt-field"><span class="prompt-field-label">Budget</span>
+            <input type="text" class="prompt-input" data-prompt-var="budget" placeholder="£150k first year" autocomplete="off"></label>
+          <label class="prompt-field"><span class="prompt-field-label">Cultural customs</span>
+            <input type="text" class="prompt-input" data-prompt-var="cultural_customs" placeholder="formal business tone, GDPR sensitivity" autocomplete="off"></label>
+          <label class="prompt-field"><span class="prompt-field-label">Language</span>
+            <input type="text" class="prompt-input" data-prompt-var="language" placeholder="German (de-DE)" autocomplete="off"></label>
+          <label class="prompt-field"><span class="prompt-field-label">Market trends</span>
+            <input type="text" class="prompt-input" data-prompt-var="market_trends" placeholder="AI regulation, local cloud preference" autocomplete="off"></label>
+          <label class="prompt-field prompt-field--wide"><span class="prompt-field-label">Product features (to adapt)</span>
+            <textarea class="prompt-textarea" data-prompt-var="product_features" rows="2" placeholder="onboarding, billing, support hours"></textarea></label>
+        </div>
+      </section>
+      <section class="prompt-output-wrap" aria-label="Prompt text">
+        <div class="prompt-output-header"><h2 class="prompt-section-title">Prompt</h2>
+          <button type="button" class="prompt-copy-btn" data-prompt-copy><span class="prompt-copy-label" data-default-label="Copy prompt">Copy prompt</span></button></div>
+        <pre class="prompt-output"><code data-prompt-output></code></pre>
+      </section>
+      <script type="text/plain" data-prompt-template>I am the product manager for {product_name}, and I am looking to expand our market to {target_market}.
+
+I need guidance on developing an internationalization strategy that takes into account {cultural_customs}, {language}, and {market_trends} specific to this market.
+
+Based on budget {budget}, provide recommendations on the best approach to adapt our product for this market, including potential changes to {product_features}, marketing strategy, pricing, and distribution channels.
+
+Include a phased rollout (0–90 days, 90–180 days), risks, and what to validate with local users before full launch.</script>
+    </div>
+    <footer class="site-footer">
+      <p class="site-footer-main">Maintained by the .NET GenAI Adoption initiative · updated weekly.</p>
+      <p class="song-of-week"><a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=fu7vlU0Quow&amp;list=RDfu7vlU0Quow&amp;start_radio=1">♪ song of the week</a></p>
+    </footer>
+  </main>
+  <script src="prompt-page.js"></script>
+</body>
+</html>

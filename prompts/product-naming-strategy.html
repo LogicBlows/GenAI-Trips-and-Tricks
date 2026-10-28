@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product naming strategy — GenAI Adoption</title>
+  <link rel="stylesheet" href="../styles.css?v=3">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body class="prompt-page prompt-page--product">
+  <main class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span class="breadcrumb-sep">›</span><a href="index.html">Useful prompts</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Product naming</span></nav>
+    <header class="site-header">
+      <div class="prompt-meta-row"><span class="prompt-badge prompt-badge--product">Product Management</span><span class="prompt-meta-pill">ChatGPT</span></div>
+      <h1>Product naming strategy</h1>
+      <p class="subtitle">Name ideas aligned to function, audience, and brand adjectives.</p>
+    </header>
+    <div class="prompt-panel" data-prompt-root>
+      <section class="prompt-customize" aria-label="Customize placeholders">
+        <div class="prompt-fields">
+          <label class="prompt-field prompt-field--wide"><span class="prompt-field-label">Product function</span>
+            <textarea class="prompt-textarea" data-prompt-var="product_function" rows="2" placeholder="help teams track AI adoption across engineering squads"></textarea></label>
+          <label class="prompt-field prompt-field--wide"><span class="prompt-field-label">Target audience</span>
+            <input type="text" class="prompt-input" data-prompt-var="target_audience" placeholder="engineering managers in regulated banks" autocomplete="off"></label>
+          <label class="prompt-field"><span class="prompt-field-label">Name quality 1</span>
+            <input type="text" class="prompt-input" data-prompt-var="adjective_one" placeholder="memorable" autocomplete="off"></label>
+          <label class="prompt-field"><span class="prompt-field-label">Name quality 2</span>
+            <input type="text" class="prompt-input" data-prompt-var="adjective_two" placeholder="professional" autocomplete="off"></label>
+          <label class="prompt-field"><span class="prompt-field-label">Name quality 3</span>
+            <input type="text" class="prompt-input" data-prompt-var="adjective_three" placeholder="easy to pronounce globally" autocomplete="off"></label>
+        </div>
+      </section>
+      <section class="prompt-output-wrap" aria-label="Prompt text">
+        <div class="prompt-output-header"><h2 class="prompt-section-title">Prompt</h2>
+          <button type="button" class="prompt-copy-btn" data-prompt-copy><span class="prompt-copy-label" data-default-label="Copy prompt">Copy prompt</span></button></div>
+        <pre class="prompt-output"><code data-prompt-output></code></pre>
+      </section>
+      <script type="text/plain" data-prompt-template>I am working on a new product and need help coming up with a name.
+
+The product is designed to {product_function}.
+Our target audience is {target_audience}.
+
+The name should be {adjective_one}, {adjective_two}, and {adjective_three}.
+
+Give me potential product names grouped by theme (descriptive, abstract, compound). For each name include:
+- Why it fits the audience and function
+- Possible tagline (one line)
+- Risks (trademark confusion, awkward meaning in other languages — flag for manual check)
+
+Do not use real competitor product names.</script>
+    </div>
+    <footer class="site-footer">
+      <p class="site-footer-main">Maintained by the .NET GenAI Adoption initiative · updated weekly.</p>
+      <p class="song-of-week"><a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=fu7vlU0Quow&amp;list=RDfu7vlU0Quow&amp;start_radio=1">♪ song of the week</a></p>
+    </footer>
+  </main>
+  <script src="prompt-page.js"></script>
+</body>
+</html>
