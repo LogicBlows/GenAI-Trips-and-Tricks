@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buyer persona refinement — GenAI Adoption</title>
+  <link rel="stylesheet" href="../styles.css?v=3">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body class="prompt-page prompt-page--product">
+  <main class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span class="breadcrumb-sep">›</span><a href="index.html">Useful prompts</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Buyer persona</span></nav>
+    <header class="site-header">
+      <div class="prompt-meta-row"><span class="prompt-badge prompt-badge--product">Product</span><span class="prompt-meta-pill">ChatGPT</span></div>
+      <h1>Buyer persona refinement</h1>
+    </header>
+    <div class="prompt-panel" data-prompt-root>
+      <section class="prompt-customize" aria-label="Customize placeholders">
+        <label class="prompt-field"><span class="prompt-field-label">Product name</span>
+          <input type="text" class="prompt-input" data-prompt-var="product_name" placeholder="Internal AI adoption hub" autocomplete="off"></label>
+        <label class="prompt-field prompt-field--wide"><span class="prompt-field-label">Current persona attributes</span>
+          <textarea class="prompt-textarea" data-prompt-var="list_of_attributes" rows="4" placeholder="role: tech lead, company size: 500+, goals: faster delivery, pain: tool sprawl"></textarea></label>
+      </section>
+      <section class="prompt-output-wrap" aria-label="Prompt text">
+        <div class="prompt-output-header"><h2 class="prompt-section-title">Prompt</h2>
+          <button type="button" class="prompt-copy-btn" data-prompt-copy><span class="prompt-copy-label" data-default-label="Copy prompt">Copy prompt</span></button></div>
+        <pre class="prompt-output"><code data-prompt-output></code></pre>
+      </section>
+      <script type="text/plain" data-prompt-template>As a Product Manager, I need to refine my buyer persona for {product_name}.
+
+My current buyer persona includes: {list_of_attributes}
+
+I need to improve it to better understand my target audience's needs and pain points.
+
+Provide insights and recommendations on how to refine this persona based on customer data, including:
+- Demographics and firmographics to validate or add
+- Behaviors (jobs to be done, buying triggers)
+- Pain points and motivations (ranked)
+- Questions to ask in interviews or surveys
+- Gaps in the current persona and how to test them
+
+Use synthetic example quotes only — do not invent real customer names or confidential metrics.</script>
+    </div>
+    <footer class="site-footer"><p class="site-footer-main">Maintained by the .NET GenAI Adoption initiative · updated weekly.</p></footer>
+  </main>
+  <script src="prompt-page.js"></script>
+</body>
+</html>

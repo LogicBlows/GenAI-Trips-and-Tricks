@@ -972,6 +972,11 @@ pre code {
   color: #8a3d62;
 }
 
+.prompt-badge--product {
+  background: color-mix(in srgb, var(--brand) 12%, var(--surface));
+  color: var(--brand);
+}
+
 .prompt-row-body {
   display: flex;
   flex-direction: column;
