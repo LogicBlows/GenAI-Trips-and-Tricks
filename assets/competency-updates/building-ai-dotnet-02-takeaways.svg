@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0A1628"/>
+      <stop offset="100%" stop-color="#12162A"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="720" fill="url(#bg2)"/>
+  <rect x="56" y="48" width="88" height="36" rx="18" fill="#00E5FF" opacity="0.2" stroke="#00E5FF" stroke-width="1"/>
+  <text x="68" y="72" fill="#00E5FF" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="600">RECAP</text>
+  <text x="56" y="130" fill="#FFFFFF" font-family="Segoe UI, Arial, sans-serif" font-size="42" font-weight="700">Key takeaways</text>
+  <rect x="56" y="148" width="320" height="4" fill="#00E5FF"/>
+  <g font-family="Segoe UI, Arial, sans-serif">
+    <rect x="56" y="190" width="1168" height="88" rx="12" fill="#1A2844"/>
+    <text x="80" y="228" fill="#00E5FF" font-size="22" font-weight="700">01</text>
+    <text x="130" y="228" fill="#FFFFFF" font-size="22" font-weight="600">IChatClient</text>
+    <text x="130" y="258" fill="#B8C5D6" font-size="19">Write once; switch providers by changing one line (same pattern as ILogger).</text>
+    <rect x="56" y="292" width="1168" height="88" rx="12" fill="#1A2844"/>
+    <text x="80" y="330" fill="#00E5FF" font-size="22" font-weight="700">02</text>
+    <text x="130" y="330" fill="#FFFFFF" font-size="22" font-weight="600">Structured output</text>
+    <text x="130" y="360" fill="#B8C5D6" font-size="19">Name fields, fix allowed values, JSON only - then validate in C#.</text>
+    <rect x="56" y="394" width="1168" height="88" rx="12" fill="#1A2844"/>
+    <text x="80" y="432" fill="#00E5FF" font-size="22" font-weight="700">03</text>
+    <text x="130" y="432" fill="#FFFFFF" font-size="22" font-weight="600">Embeddings</text>
+    <text x="130" y="462" fill="#B8C5D6" font-size="19">Meaning as numbers; cosine similarity compares direction, not word overlap.</text>
+    <rect x="56" y="496" width="1168" height="88" rx="12" fill="#1A2844"/>
+    <text x="80" y="534" fill="#00E5FF" font-size="22" font-weight="700">04</text>
+    <text x="130" y="534" fill="#FFFFFF" font-size="22" font-weight="600">Vectors vs SQL</text>
+    <text x="130" y="564" fill="#B8C5D6" font-size="19">Similar to this (vectors) + exactly this (SQL) - hybrid search in real systems.</text>
+  </g>
+  <rect x="56" y="608" width="1168" height="76" rx="12" fill="#003D4D" stroke="#00E5FF" stroke-width="1"/>
+  <text x="80" y="652" fill="#00E5FF" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="600">Up next: Vector stores and RAG</text>
+</svg>

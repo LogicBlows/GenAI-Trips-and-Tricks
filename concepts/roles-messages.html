@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roles — system, user, assistant — GenAI Adoption</title>
+  <link rel="stylesheet" href="../styles.css?v=5">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body class="concept-page">
+  <main class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a><span class="breadcrumb-sep">›</span><a href="index.html">AI fundamentals</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Roles</span>
+    </nav>
+    <header class="site-header">
+      <div class="tip-brand-row">
+        <img class="tip-tool-logo" src="../assets/brands/general.svg" alt="" width="28" height="28">
+        <span class="tip-brand-label">AI fundamentals</span>
+      </div>
+      <h1>Roles: system, user, assistant</h1>
+      <p class="meta-line">30 Oct 2026 <span class="meta-dot">·</span> Phase 0 · ~4 min read</p>
+    </header>
+    <article class="prose">
+      <div class="concept-badges"><span class="concept-badge">Everyone</span><span class="concept-badge">Fundamentals</span></div>
+      <p class="concept-lead">Chat APIs send a <strong>list of messages</strong>, each with a <strong>role</strong>. The model uses roles to know what is policy, what is the human, and what it already said. Multi-turn chat is usually the <strong>full list resent on every call</strong>, not a hidden server memory.</p>
+
+      <h2 class="concept-section-title">From the deck</h2>
+      <div class="concept-gallery" aria-label="Roles deck slide">
+        <figure class="concept-figure">
+          <img src="../assets/concepts/roles-messages/roles-01-deck.svg" alt="Deck: system, user, and assistant messages in order" width="1280" height="720" loading="lazy">
+          <figcaption><strong>Phase 0.</strong> System sets rules; user asks; assistant is prior model text in the thread.</figcaption>
+        </figure>
+      </div>
+
+      <h2 class="concept-section-title">The three core roles</h2>
+      <div class="concept-table-wrap">
+        <table class="concept-table">
+          <thead><tr><th scope="col">Role</th><th scope="col">Purpose</th><th scope="col">Examples</th></tr></thead>
+          <tbody>
+            <tr><td><strong>system</strong></td><td>Rules, persona, tools policy, format</td><td>“You are a .NET code reviewer. Never output secrets.”</td></tr>
+            <tr><td><strong>user</strong></td><td>Human or app input</td><td>Question, pasted logs, JSON payload</td></tr>
+            <tr><td><strong>assistant</strong></td><td>Prior model replies</td><td>Last answer in the thread — keeps continuity</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h2 class="concept-section-title">How this maps to tools you use</h2>
+      <section class="steps" aria-label="Mapping">
+        <div class="step">
+          <div class="step-header"><span class="step-num">Cursor</span><span class="step-title">Rules &amp; context</span></div>
+          <p style="font-size:0.9375rem;color:var(--ink-soft);">Project rules and @ files act like extra system/user context — still bounded by the context window.</p>
+        </div>
+        <div class="step">
+          <div class="step-header"><span class="step-num">ChatGPT</span><span class="step-title">Projects</span></div>
+          <p style="font-size:0.9375rem;color:var(--ink-soft);">Project instructions behave like a persistent system layer for that project’s chats.</p>
+        </div>
+        <div class="step">
+          <div class="step-header"><span class="step-num">.NET</span><span class="step-title">ChatMessage</span></div>
+          <p style="font-size:0.9375rem;color:var(--ink-soft);"><span class="inline-code">ChatRole.System</span>, <span class="inline-code">User</span>, <span class="inline-code">Assistant</span> in Microsoft.Extensions.AI mirror the same idea.</p>
+        </div>
+      </section>
+      <p style="font-size:0.9375rem;color:var(--ink-soft);">Related: <a href="../tips/cursor-one-task-one-chat.html">One task, one chat</a> · <a href="controlling-output.html">Controlling the output</a></p>
+
+      <h2 class="concept-section-title">Examples</h2>
+      <section class="example-block" aria-labelledby="ex-roles-json">
+        <h2 id="ex-roles-json" class="example-heading">API shape (simplified JSON)</h2>
+        <pre><code>{
+  "messages": [
+    { "role": "system", "content": "You answer in British English. Refuse if asked for credentials." },
+    { "role": "user", "content": "Draft release notes for v2.1." },
+    { "role": "assistant", "content": "Here is a draft..." },
+    { "role": "user", "content": "Make it shorter." }
+  ]
+}</code></pre>
+      </section>
+      <section class="example-block" aria-labelledby="ex-roles-turn">
+        <h2 id="ex-roles-turn" class="example-heading">Turn 2 still sends turn 1</h2>
+        <p style="font-size:0.9375rem;color:var(--ink-soft);">The second user message includes the assistant’s first reply in the list — that is why long chats hit context limits. Starting a <strong>new chat</strong> drops history but keeps rules (Project / rules files).</p>
+      </section>
+    </article>
+    <footer class="site-footer">
+      <p class="site-footer-main">Maintained by the .NET GenAI Adoption initiative · updated weekly.</p>
+      <p class="song-of-week"><a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=fu7vlU0Quow&amp;list=RDfu7vlU0Quow&amp;start_radio=1">♪ song of the week</a></p>
+    </footer>
+  </main>
+</body>
+</html>

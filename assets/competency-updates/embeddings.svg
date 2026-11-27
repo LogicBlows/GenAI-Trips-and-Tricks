@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img">
+  <defs>
+    <linearGradient id="bgE" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0A1628"/>
+      <stop offset="100%" stop-color="#12162A"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="720" fill="url(#bgE)"/>
+  <text x="56" y="56" fill="#00E5FF" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" letter-spacing="2">.NET COMPETENCY</text>
+  <text x="268" y="56" fill="#8FA3BF" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="500">Contributed by Harshit Gupta</text>
+  <text x="56" y="118" fill="#FFFFFF" font-family="Segoe UI, Arial, sans-serif" font-size="44" font-weight="700">Embeddings</text>
+  <rect x="56" y="132" width="280" height="4" fill="#00E5FF"/>
+  <text x="56" y="178" fill="#B8C5D6" font-family="Segoe UI, Arial, sans-serif" font-size="22">Meaning as numbers - not keywords.</text>
+
+  <rect x="56" y="200" width="386" height="468" rx="14" fill="#1A2844" stroke="#2A3A5C"/>
+  <text x="80" y="238" fill="#00E5FF" font-family="Segoe UI, Arial, sans-serif" font-size="17" font-weight="700">WHAT IT IS</text>
+  <text x="80" y="274" fill="#E8EDF4" font-family="Segoe UI, Arial, sans-serif" font-size="17">An embedding model maps text to a</text>
+  <text x="80" y="300" fill="#E8EDF4" font-family="Segoe UI, Arial, sans-serif" font-size="17">fixed-length list of floats.</text>
+  <text x="80" y="340" fill="#8FA3BF" font-family="Segoe UI, Arial, sans-serif" font-size="15">Each number alone means little;</text>
+  <text x="80" y="364" fill="#8FA3BF" font-family="Segoe UI, Arial, sans-serif" font-size="15">together they place text in</text>
+  <text x="80" y="388" fill="#8FA3BF" font-family="Segoe UI, Arial, sans-serif" font-size="15">meaning space.</text>
+  <text x="80" y="434" fill="#8FF7C4" font-family="Consolas, monospace" font-size="13">"Annual leave allowance"</text>
+  <text x="80" y="462" fill="#8FA3BF" font-family="Segoe UI, Arial, sans-serif" font-size="14">sits near</text>
+  <text x="80" y="488" fill="#8FF7C4" font-family="Consolas, monospace" font-size="13">"How many holidays do I get?"</text>
+  <text x="80" y="532" fill="#8FA3BF" font-family="Segoe UI, Arial, sans-serif" font-size="14">Different words, similar intent.</text>
+
+  <rect x="462" y="200" width="386" height="468" rx="14" fill="#1A2844" stroke="#2A3A5C"/>
+  <text x="486" y="238" fill="#00E5FF" font-family="Segoe UI, Arial, sans-serif" font-size="17" font-weight="700">HOW TO USE</text>
+  <text x="486" y="274" fill="#E8EDF4" font-family="Segoe UI, Arial, sans-serif" font-size="16">1. Pick one embed model per pipeline</text>
+  <text x="486" y="300" fill="#E8EDF4" font-family="Segoe UI, Arial, sans-serif" font-size="16">2. Embed text with IEmbeddingGenerator</text>
+  <text x="486" y="326" fill="#E8EDF4" font-family="Segoe UI, Arial, sans-serif" font-size="16">3. Compare vectors (cosine similarity)</text>
+  <text x="486" y="352" fill="#E8EDF4" font-family="Segoe UI, Arial, sans-serif" font-size="16">4. Rank closest matches for the user</text>
+  <text x="486" y="398" fill="#8FA3BF" font-family="Segoe UI, Arial, sans-serif" font-size="14">Swap Ollama / Azure / OpenAI in</text>
+  <text x="486" y="422" fill="#8FA3BF" font-family="Segoe UI, Arial, sans-serif" font-size="14">Infrastructure - same app code.</text>
+  <text x="486" y="468" fill="#8FF7C4" font-family="Consolas, monospace" font-size="12">await generator.GenerateVectorAsync(text);</text>
+
+  <rect x="868" y="200" width="356" height="228" rx="14" fill="#1A2844" stroke="#2A3A5C"/>
+  <text x="892" y="238" fill="#00E5FF" font-family="Segoe UI, Arial, sans-serif" font-size="17" font-weight="700">STRUCTURE</text>
+  <text x="892" y="274" fill="#8FF7C4" font-family="Consolas, monospace" font-size="12">IEmbeddingGenerator&lt;string,</text>
+  <text x="892" y="294" fill="#8FF7C4" font-family="Consolas, monospace" font-size="12">  Embedding&lt;float&gt;&gt;</text>
+  <text x="892" y="330" fill="#E8EDF4" font-family="Segoe UI, Arial, sans-serif" font-size="15">Output: ReadOnlyMemory&lt;float&gt;</text>
+  <text x="892" y="356" fill="#8FA3BF" font-family="Segoe UI, Arial, sans-serif" font-size="14">nomic-embed-text: 768 dims</text>
+  <text x="892" y="380" fill="#8FA3BF" font-family="Segoe UI, Arial, sans-serif" font-size="14">text-embedding-3-small: 1536</text>
+  <text x="892" y="412" fill="#FF9B9B" font-family="Segoe UI, Arial, sans-serif" font-size="14">Index and query: same size + model</text>
+
+  <rect x="868" y="444" width="356" height="224" rx="14" fill="#003D4D" stroke="#00E5FF" stroke-width="1"/>
+  <text x="892" y="482" fill="#00E5FF" font-family="Segoe UI, Arial, sans-serif" font-size="17" font-weight="700">USE CASE</text>
+  <text x="892" y="518" fill="#E8EDF4" font-family="Segoe UI, Arial, sans-serif" font-size="15">Semantic search in docs</text>
+  <text x="892" y="544" fill="#E8EDF4" font-family="Segoe UI, Arial, sans-serif" font-size="15">Match tickets / FAQs by meaning</text>
+  <text x="892" y="570" fill="#E8EDF4" font-family="Segoe UI, Arial, sans-serif" font-size="15">Prep for RAG (retrieve then answer)</text>
+  <text x="892" y="596" fill="#E8EDF4" font-family="Segoe UI, Arial, sans-serif" font-size="15">Resume-to-job similarity</text>
+
+  <text x="56" y="698" fill="#5B6070" font-family="Segoe UI, Arial, sans-serif" font-size="15">Building AI Features in .NET</text>
+</svg>

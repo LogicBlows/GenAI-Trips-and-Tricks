@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What is an LLM? — GenAI Adoption</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css?v=5">
+</head>
+<body class="concept-page">
+  <main class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a>
+      <span class="breadcrumb-sep" aria-hidden="true">›</span>
+      <a href="index.html">AI fundamentals</a>
+      <span class="breadcrumb-sep" aria-hidden="true">›</span>
+      <span class="breadcrumb-current">What is an LLM?</span>
+    </nav>
+    <header class="site-header">
+      <div class="tip-brand-row">
+        <img class="tip-tool-logo" src="../assets/brands/general.svg" alt="" width="28" height="28">
+        <span class="tip-brand-label">AI fundamentals</span>
+      </div>
+      <h1>What is an LLM?</h1>
+      <p class="meta-line">30 Oct 2026 <span class="meta-dot" aria-hidden="true">·</span> Phase 0 · ~4 min read</p>
+    </header>
+    <article class="prose">
+      <div class="concept-badges"><span class="concept-badge">Everyone</span><span class="concept-badge">Fundamentals</span></div>
+      <p class="concept-lead">A <strong>large language model (LLM)</strong> is a neural network trained to predict the next token in text. At runtime it does not “look things up” in a database like SQL — it <strong>generates</strong> likely continuations from patterns learned during training, guided by your prompt.</p>
+
+      <h2 class="concept-section-title">From the deck</h2>
+      <div class="concept-gallery" aria-label="LLM deck slide">
+        <figure class="concept-figure">
+          <img src="../assets/concepts/what-is-llm/what-is-llm-01-deck.svg" alt="Deck: prompt in, model predicts tokens out" width="1280" height="720" loading="lazy">
+          <figcaption><strong>Phase 0.</strong> Text in → model predicts next tokens → text out. Your app owns validation and side effects.</figcaption>
+        </figure>
+      </div>
+
+      <h2 class="concept-section-title">What it is (and is not)</h2>
+      <div class="concept-table-wrap">
+        <table class="concept-table">
+          <thead><tr><th scope="col">It is</th><th scope="col">It is not</th></tr></thead>
+          <tbody>
+            <tr><td>A text-in, text-out prediction engine</td><td>A guaranteed source of truth</td></tr>
+            <tr><td>Strong at language, code, and reasoning patterns</td><td>Your production database or auth system</td></tr>
+            <tr><td>Updated via prompts + tools + retrieval you add</td><td>Trained on your private data unless you connect it</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h2 class="concept-section-title">Why backend engineers care</h2>
+      <p style="font-size:0.9375rem;color:var(--ink-soft);">Applied AI engineering is mostly <strong>APIs, reliability, and boundaries</strong>: you wrap the model in services, validate outputs, log tokens, handle failures, and keep customer data out of prompts. You rarely train models from scratch — you <strong>integrate</strong> them like any other dependency.</p>
+      <section class="steps" aria-label="Mental model">
+        <div class="step">
+          <div class="step-header"><span class="step-num">1.</span><span class="step-title">Input</span></div>
+          <p style="font-size:0.9375rem;color:var(--ink-soft);">Messages and settings you send (see <a href="roles-messages.html">Roles</a> and <a href="context-window-tokens.html">Tokens &amp; context</a>).</p>
+        </div>
+        <div class="step">
+          <div class="step-header"><span class="step-num">2.</span><span class="step-title">Output</span></div>
+          <p style="font-size:0.9375rem;color:var(--ink-soft);">Generated tokens until a stop condition — shaped by <a href="controlling-output.html">Controlling the output</a>.</p>
+        </div>
+        <div class="step">
+          <div class="step-header"><span class="step-num">3.</span><span class="step-title">Your code</span></div>
+          <p style="font-size:0.9375rem;color:var(--ink-soft);">Parse, validate, persist, and decide when to call the model again.</p>
+        </div>
+      </section>
+
+      <h2 class="concept-section-title">Examples</h2>
+      <section class="example-block" aria-labelledby="ex-llm-heading">
+        <h2 id="ex-llm-heading" class="example-heading">Everyday vs backend</h2>
+        <div class="example-row">
+          <p class="example-label">ChatGPT / Cursor chat</p>
+          <pre><code>You ask: "Summarise this PR" → model generates a summary (may be wrong — you review).</code></pre>
+        </div>
+        <div class="example-row">
+          <p class="example-label">Your ASP.NET Core API</p>
+          <pre><code>POST /chat with IChatClient → stream tokens to UI → log usage → never auto-execute SQL from model text.</code></pre>
+        </div>
+        <div class="example-row">
+          <p class="example-label">Not an LLM job alone</p>
+          <pre class="code-dim"><code>"What is customer 12345's balance?" → needs your DB + auth, not guessing.</code></pre>
+        </div>
+      </section>
+
+      <p class="caveat">Internal use only. Do not paste customer data or secrets into public chat tools.</p>
+    </article>
+    <footer class="site-footer">
+      <p class="site-footer-main">Maintained by the .NET GenAI Adoption initiative · updated weekly.</p>
+      <p class="song-of-week"><a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=fu7vlU0Quow&amp;list=RDfu7vlU0Quow&amp;start_radio=1">♪ song of the week</a></p>
+    </footer>
+  </main>
+</body>
+</html>

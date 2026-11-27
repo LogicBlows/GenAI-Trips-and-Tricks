@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img">
+  <rect width="1280" height="720" fill="#F7F5EF"/>
+  <rect x="48" y="48" width="1184" height="96" rx="12" fill="#2a7b6f"/>
+  <text x="80" y="108" fill="#fff" font-family="Segoe UI, Arial, sans-serif" font-size="38" font-weight="700">Context window and tokens</text>
+  <text x="80" y="190" fill="#161B2E" font-family="Segoe UI, Arial, sans-serif" font-size="24">One request = input tokens + output tokens (within a max window)</text>
+  <rect x="80" y="230" width="1120" height="48" rx="8" fill="#E4E0D6"/>
+  <rect x="80" y="230" width="720" height="48" rx="8" fill="#3D3FC9" opacity="0.85"/>
+  <rect x="800" y="230" width="200" height="48" fill="#9C7A3C"/>
+  <text x="100" y="262" fill="#fff" font-family="Segoe UI, Arial, sans-serif" font-size="18">Input (system + history + user)</text>
+  <text x="820" y="262" fill="#fff" font-family="Segoe UI, Arial, sans-serif" font-size="18">Output</text>
+  <text x="80" y="330" fill="#5B6070" font-family="Segoe UI, Arial, sans-serif" font-size="20">Example: 6,000 input + 800 output = 6,800 tokens billed</text>
+  <text x="80" y="380" fill="#161B2E" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="600">Why it matters</text>
+  <text x="80" y="420" fill="#161B2E" font-family="Segoe UI, Arial, sans-serif" font-size="20">Cost scales with tokens</text>
+  <text x="80" y="455" fill="#161B2E" font-family="Segoe UI, Arial, sans-serif" font-size="20">Latency grows with long input</text>
+  <text x="80" y="490" fill="#161B2E" font-family="Segoe UI, Arial, sans-serif" font-size="20">Overflow drops or truncates context</text>
+</svg>

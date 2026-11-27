@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img">
+  <defs>
+    <linearGradient id="bgLlm" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0A1628"/>
+      <stop offset="100%" stop-color="#12162A"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="720" fill="url(#bgLlm)"/>
+  <text x="56" y="56" fill="#00E5FF" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" letter-spacing="2">.NET COMPETENCY</text>
+  <text x="56" y="118" fill="#FFFFFF" font-family="Segoe UI, Arial, sans-serif" font-size="48" font-weight="700">LLM Fundamentals</text>
+  <rect x="56" y="132" width="320" height="4" fill="#00E5FF"/>
+  <text x="56" y="178" fill="#B8C5D6" font-family="Segoe UI, Arial, sans-serif" font-size="22">From prompts to parameters</text>
+  <text x="56" y="212" fill="#8FA3BF" font-family="Segoe UI, Arial, sans-serif" font-size="18">Tokens, context windows, roles, and request settings</text>
+  <g font-family="Segoe UI, Arial, sans-serif">
+    <rect x="56" y="250" width="1168" height="72" rx="12" fill="#1A2844"/>
+    <text x="80" y="294" fill="#00E5FF" font-size="22" font-weight="700">01</text>
+    <text x="130" y="294" fill="#FFFFFF" font-size="20" font-weight="600">How LLM calls work</text>
+    <text x="400" y="294" fill="#B8C5D6" font-size="18">Independent calls; full history resent every turn</text>
+    <rect x="56" y="334" width="1168" height="72" rx="12" fill="#1A2844"/>
+    <text x="80" y="378" fill="#00E5FF" font-size="22" font-weight="700">02</text>
+    <text x="130" y="378" fill="#FFFFFF" font-size="20" font-weight="600">Tokens and context</text>
+    <text x="400" y="378" fill="#B8C5D6" font-size="18">Next-token prediction, windows, cost and latency</text>
+    <rect x="56" y="418" width="1168" height="72" rx="12" fill="#1A2844"/>
+    <text x="80" y="462" fill="#00E5FF" font-size="22" font-weight="700">03</text>
+    <text x="130" y="462" fill="#FFFFFF" font-size="20" font-weight="600">Roles</text>
+    <text x="400" y="462" fill="#B8C5D6" font-size="18">System, user, assistant - with real examples</text>
+    <rect x="56" y="502" width="1168" height="72" rx="12" fill="#1A2844"/>
+    <text x="80" y="546" fill="#00E5FF" font-size="22" font-weight="700">04</text>
+    <text x="130" y="546" fill="#FFFFFF" font-size="20" font-weight="600">Controlling the output</text>
+    <text x="400" y="546" fill="#B8C5D6" font-size="18">Temperature, top-p, top-k and related settings</text>
+  </g>
+  <text x="56" y="640" fill="#8FA3BF" font-family="Segoe UI, Arial, sans-serif" font-size="17">Full guide on GenAI Adoption - AI fundamentals</text>
+  <text x="56" y="678" fill="#5B6070" font-family="Segoe UI, Arial, sans-serif" font-size="15">Contributed by Ashish V Spencer</text>
+</svg>

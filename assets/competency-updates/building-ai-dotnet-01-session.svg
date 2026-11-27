@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0A1628"/>
+      <stop offset="100%" stop-color="#12162A"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="720" fill="url(#bg)"/>
+  <rect x="56" y="48" width="72" height="36" rx="18" fill="#00E5FF" opacity="0.2" stroke="#00E5FF" stroke-width="1"/>
+  <text x="72" y="72" fill="#00E5FF" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="600">UPDATE</text>
+  <text x="56" y="140" fill="#FFFFFF" font-family="Segoe UI, Arial, sans-serif" font-size="22">.NET COMPETENCY · INTERNAL</text>
+  <text x="56" y="200" fill="#FFFFFF" font-family="Segoe UI, Arial, sans-serif" font-size="48" font-weight="700">Building AI Features in .NET</text>
+  <rect x="56" y="218" width="420" height="4" fill="#00E5FF"/>
+  <text x="56" y="270" fill="#B8C5D6" font-family="Segoe UI, Arial, sans-serif" font-size="26">IChatClient, structured output, embeddings</text>
+  <text x="56" y="310" fill="#8FA3BF" font-family="Segoe UI, Arial, sans-serif" font-size="20">One interface for any model</text>
+  <g font-family="Segoe UI, Arial, sans-serif" font-size="20" fill="#E8EDF4">
+    <circle cx="76" cy="378" r="6" fill="#00E5FF"/>
+    <text x="96" y="384">Structured output: JSON your code can parse</text>
+    <circle cx="76" cy="428" r="6" fill="#00E5FF"/>
+    <text x="96" y="434">IChatClient: switch Ollama / Azure / OpenAI in one line</text>
+    <circle cx="76" cy="478" r="6" fill="#00E5FF"/>
+    <text x="96" y="484">Embeddings and cosine similarity (meaning as numbers)</text>
+    <circle cx="76" cy="528" r="6" fill="#00E5FF"/>
+    <text x="96" y="534">Live demo: AiBuildingBlocks solution</text>
+  </g>
+  <rect x="56" y="580" width="1168" height="100" rx="12" fill="#1A2844" stroke="#2A3A5C" stroke-width="1"/>
+  <text x="80" y="624" fill="#00E5FF" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="600">Session</text>
+  <text x="180" y="624" fill="#FFFFFF" font-family="Segoe UI, Arial, sans-serif" font-size="18">27 November 2026 · Harshit Gupta, Senior Software Engineer</text>
+  <text x="80" y="658" fill="#8FA3BF" font-family="Segoe UI, Arial, sans-serif" font-size="17">Site: GenAI Adoption ’ AI fundamentals + prompts library</text>
+</svg>

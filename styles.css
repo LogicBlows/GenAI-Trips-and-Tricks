@@ -1346,6 +1346,7 @@ pre code {
 
 .concept-gallery {
   display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
@@ -1355,7 +1356,9 @@ pre code {
 }
 
 .concept-figure {
-  flex: 0 0 min(100%, 28rem);
+  flex: 1 1 min(100%, 28rem);
+  min-width: min(100%, 20rem);
+  max-width: 100%;
   scroll-snap-align: start;
   margin: 0;
   border: 1px solid var(--line);

@@ -13,3 +13,5 @@
 # See assets/tips/README.txt
 #
 # Prompt library pages → prompts/ (hub + detail pages; icon prompts.svg in assets/brands/)
+#
+# Competency group PNGs → assets/competency-updates/ (see README.txt)

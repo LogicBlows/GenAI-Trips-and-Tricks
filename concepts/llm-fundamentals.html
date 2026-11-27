@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LLM fundamentals — GenAI Adoption</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css?v=5">
+</head>
+<body class="concept-page">
+  <main class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a>
+      <span class="breadcrumb-sep" aria-hidden="true">›</span>
+      <a href="index.html">AI fundamentals</a>
+      <span class="breadcrumb-sep" aria-hidden="true">›</span>
+      <span class="breadcrumb-current">LLM fundamentals</span>
+    </nav>
+    <header class="site-header">
+      <div class="tip-brand-row">
+        <img class="tip-tool-logo" src="../assets/brands/general.svg" alt="" width="28" height="28">
+        <span class="tip-brand-label">AI fundamentals</span>
+      </div>
+      <h1>LLM fundamentals</h1>
+      <p class="meta-line">27 Nov 2026 <span class="meta-dot" aria-hidden="true">·</span> ~18 min read <span class="meta-dot" aria-hidden="true">·</span> Contributed by Ashish V Spencer</p>
+    </header>
+    <article class="prose">
+      <div class="concept-badges">
+        <span class="concept-badge">Everyone</span>
+        <span class="concept-badge">Fundamentals</span>
+      </div>
+      <p class="concept-lead">From prompts to parameters: how LLM calls work, what <strong>tokens</strong> and <strong>context windows</strong> mean, how <strong>roles</strong> shape a conversation, and which <strong>request settings</strong> control every answer.</p>
+
+      <figure class="concept-figure" style="max-width:100%;margin:0 0 1.5rem;">
+        <img src="../assets/competency-updates/llm-fundamentals-card.png" alt="LLM fundamentals overview: calls, tokens, roles, controlling output" width="1280" height="720" loading="lazy">
+      </figure>
+
+      <h2 class="concept-section-title">On this page</h2>
+      <ol style="font-size:0.9375rem;color:var(--ink-soft);line-height:1.55;padding-left:1.35rem;margin:0 0 1.5rem;">
+        <li><a href="#calls">How LLM calls work</a></li>
+        <li><a href="#tokens">Tokens and context</a></li>
+        <li><a href="#roles">Roles</a></li>
+        <li><a href="#controlling">Controlling the output</a></li>
+        <li><a href="#takeaways">Key takeaways</a></li>
+      </ol>
+
+      <h2 id="calls" class="concept-section-title">How LLM calls work</h2>
+      <figure class="concept-figure" style="max-width:100%;margin:0 0 1rem;">
+        <img src="../assets/concepts/what-is-llm/what-is-llm-01-deck.svg" alt="Prompt in, model predicts tokens out" width="1280" height="720" loading="lazy">
+      </figure>
+      <p style="font-size:0.9375rem;color:var(--ink-soft);"><strong>Every API call is independent.</strong> Each request is processed on its own. Nothing carries over to the next call. There is no session or state on the model side. Anything the model needs must be in the request. Any “memory” is your app’s job.</p>
+      <p style="font-size:0.9375rem;color:var(--ink-soft);"><strong>The model doesn’t remember.</strong> In call 1 you might say “My name is Ashish” and get a friendly reply. In call 2, if you send only “What’s my name?”, the model answers that it doesn’t know — unless your app resends earlier turns.</p>
+      <p style="font-size:0.9375rem;color:var(--ink-soft);">Chat apps only <em>seem</em> to remember: they store history and send it again on every call. See also <a href="what-is-llm.html">What is an LLM?</a></p>
+
+      <h3 class="concept-section-title" style="font-size:1rem;">Each call resends the whole chat</h3>
+      <section class="example-block" aria-labelledby="ex-messages-turn3">
+        <h2 id="ex-messages-turn3" class="example-heading">Request shape for turn 3 (simplified)</h2>
+        <pre><code>messages: [
+  { "role": "system", "content": "You are a concise…" },
+  { "role": "user", "content": "hi" },
+  { "role": "assistant", "content": "How can I assist…" },
+  { "role": "user", "content": "what's schengen?" },
+  { "role": "assistant", "content": "I couldn't find…" },
+  { "role": "user", "content": "what is Pink Floyd?" }
+]</code></pre>
+      </section>
+      <div class="concept-table-wrap">
+        <table class="concept-table">
+          <thead><tr><th scope="col">Turn</th><th scope="col">Messages</th><th scope="col">Input tokens (example)</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>2</td><td>43</td></tr>
+            <tr><td>2</td><td>4</td><td>72</td></tr>
+            <tr><td>3</td><td>6</td><td>145</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:0.9375rem;color:var(--ink-soft);">Measured on a local Llama 3.2 model through Ollama. Questions stayed short, but input kept growing because every earlier turn is sent again.</p>
+
+      <h2 id="tokens" class="concept-section-title">Tokens and context</h2>
+      <figure class="concept-figure" style="max-width:100%;margin:0 0 1rem;">
+        <img src="../assets/concepts/context-window-tokens/context-window-01-deck.svg" alt="Input and output tokens within context window" width="1280" height="720" loading="lazy">
+      </figure>
+      <p style="font-size:0.9375rem;color:var(--ink-soft);"><strong>LLMs predict the next token.</strong> A token is a chunk of text — a word, part of a word, or punctuation. The model writes its answer one token at a time. It predicts plausible text; it doesn’t look facts up. That’s why it can sound confident and still be wrong.</p>
+      <ul style="font-size:0.9375rem;color:var(--ink-soft);line-height:1.55;padding-left:1.25rem;">
+        <li>~4 characters ≈ 1 token in English text (rough rule)</li>
+        <li>~1,000 words ≈ 1,300 tokens in English</li>
+        <li>More tokens per word for code, JSON, Hindi, Urdu, and other scripts</li>
+      </ul>
+
+      <h3 class="concept-section-title" style="font-size:1rem;">Context window: the limit per call</h3>
+      <p style="font-size:0.9375rem;color:var(--ink-soft);">Example: a 128,000-token window. Input and output must both fit inside it.</p>
+      <div class="concept-table-wrap">
+        <table class="concept-table">
+          <thead><tr><th scope="col">Part of the call</th><th scope="col">Tokens (example)</th></tr></thead>
+          <tbody>
+            <tr><td>History: 10 questions + 10 answers</td><td>15,000</td></tr>
+            <tr><td>Your new question</td><td>100</td></tr>
+            <tr><td>Room left for the reply</td><td>up to ~112,900</td></tr>
+            <tr><td><strong>Context window (limit)</strong></td><td><strong>128,000</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:0.9375rem;color:var(--ink-soft);"><strong>When it overflows:</strong> the app drops the oldest messages, summarizes old turns, or the API returns an error. Bigger isn’t always better — details buried in the middle of very long inputs get less reliable attention. More: <a href="context-window-tokens.html">Context window &amp; tokens</a>.</p>
+
+      <h3 class="concept-section-title" style="font-size:1rem;">Tokens drive cost and latency</h3>
+      <ul style="font-size:0.9375rem;color:var(--ink-soft);line-height:1.55;padding-left:1.25rem;">
+        <li><strong>Input tokens</strong> — everything you send: system prompt, chat history, documents, and the new question.</li>
+        <li><strong>Output tokens</strong> — everything the model writes. Often priced higher per token than input.</li>
+        <li><strong>Latency</strong> — more input to read and more output to generate means a longer wait.</li>
+      </ul>
+      <p style="font-size:0.9375rem;color:var(--ink-soft);">Long chats get slower and costlier because every turn resends all earlier turns. Controlling what goes into the prompt is a core AI engineering skill.</p>
+
+      <h3 class="concept-section-title" style="font-size:1rem;">Try it: the tokenizer</h3>
+      <p style="font-size:0.9375rem;color:var(--ink-soft);">Paste text into a tokenizer and compare characters with tokens. Each model family splits text its own way.</p>
+      <section class="example-block" aria-labelledby="ex-tokenizer">
+        <h2 id="ex-tokenizer" class="example-heading">Compare these in a tokenizer</h2>
+        <pre><code>English: The quick brown fox jumps over the lazy dog.
+C#:      public int Add(int a, int b) => a + b;
+
+Tool: OpenAI Tokenizer (platform.openai.com/tokenizer)</code></pre>
+      </section>
+
+      <h2 id="roles" class="concept-section-title">Roles</h2>
+      <figure class="concept-figure" style="max-width:100%;margin:0 0 1rem;">
+        <img src="../assets/concepts/roles-messages/roles-01-deck.svg" alt="System, user, and assistant messages" width="1280" height="720" loading="lazy">
+      </figure>
+      <div class="concept-table-wrap">
+        <table class="concept-table">
+          <thead><tr><th scope="col">Role</th><th scope="col">Purpose</th></tr></thead>
+          <tbody>
+            <tr><td><strong>system</strong></td><td>The developer’s standing rules — persona, tone, format, limits. Sent first, with every call. Users usually never see it.</td></tr>
+            <tr><td><strong>user</strong></td><td>The person’s input — questions, requests, pasted text. Your code can add content here too (e.g. an email to classify).</td></tr>
+            <tr><td><strong>assistant</strong></td><td>The model’s earlier replies — sent back as history so it knows what it said. You can also write example answers here (few-shot).</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:0.9375rem;color:var(--ink-soft);">A conversation is an ordered list: system → user → assistant → user → … (model writes the next assistant message). Later: a <strong>tool</strong> role can carry results from functions your code runs. More: <a href="roles-messages.html">Roles: system, user, assistant</a>.</p>
+
+      <h3 class="concept-section-title" style="font-size:1rem;">Example: food delivery support bot</h3>
+      <section class="example-block" aria-labelledby="ex-swiggy">
+        <h2 id="ex-swiggy" class="example-heading">System (written once by the developer)</h2>
+        <pre><code>You are a food-delivery support assistant.
+Only help with food orders. Be polite.
+Never promise refunds over a fixed limit.</code></pre>
+        <p style="font-size:0.9375rem;color:var(--ink-soft);margin-top:0.75rem;"><strong>User:</strong> My biryani arrived cold. <strong>Assistant:</strong> Apology plus refund within policy. The customer never sees the system message, but it shapes tone, topic, and limits.</p>
+      </section>
+
+      <h3 class="concept-section-title" style="font-size:1rem;">Example: code review assistant</h3>
+      <section class="example-block" aria-labelledby="ex-review">
+        <h2 id="ex-review" class="example-heading">Multi-turn review</h2>
+        <pre><code>system:    You are a senior .NET reviewer for a banking team. List security issues first.
+user:      Review: new SqlCommand("SELECT Name FROM Users WHERE Id = " + id)
+assistant: 1. SQL injection: id is concatenated. Use a parameter.
+user:      Show me the fixed version.</code></pre>
+        <p style="font-size:0.9375rem;color:var(--ink-soft);margin-top:0.75rem;">“Show me the fixed version” only makes sense because the assistant reply is in the list. Remove it and the model no longer knows what to fix.</p>
+      </section>
+
+      <h3 class="concept-section-title" style="font-size:1rem;">Role says who; content says what</h3>
+      <div class="concept-table-wrap">
+        <table class="concept-table">
+          <thead><tr><th scope="col">Role</th><th scope="col">Written by</th><th scope="col">Required?</th></tr></thead>
+          <tbody>
+            <tr><td>system</td><td>The developer</td><td>Optional; used in almost every app</td></tr>
+            <tr><td>user</td><td>The person, or your code</td><td>Yes — the model replies to it</td></tr>
+            <tr><td>assistant</td><td>The model, or you for examples</td><td>Optional — history or few-shot</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:0.9375rem;color:var(--ink-soft);">Putting rules only in a user message is weaker — a later user message can override them. Prefer durable rules in <code>system</code>.</p>
+
+      <h2 id="controlling" class="concept-section-title">Controlling the output</h2>
+      <figure class="concept-figure" style="max-width:100%;margin:0 0 1rem;">
+        <img src="../assets/concepts/controlling-output/controlling-output-01-api-deck.svg" alt="API generation settings" width="1280" height="720" loading="lazy">
+      </figure>
+      <p style="font-size:0.9375rem;color:var(--ink-soft);">For each next-token step, the model ranks candidates. <strong>Top-k</strong> and <strong>top-p</strong> decide which candidates stay in the running. <strong>Temperature</strong> decides how adventurous the pick is among what remains. These are <strong>request settings</strong>, not prompt text — writing “use temperature 0” in the prompt changes nothing.</p>
+
+      <div class="concept-table-wrap">
+        <table class="concept-table">
+          <thead><tr><th scope="col">Parameter</th><th scope="col">What it controls</th><th scope="col">Typical values</th><th scope="col">Ollama name</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Temperature</strong></td><td>Randomness of word choice</td><td>0–0.3 facts, 0.7 chat, 1+ creative</td><td><code>temperature</code></td></tr>
+            <tr><td><strong>Top-p</strong></td><td>Keep top tokens whose cumulative probability ≤ p</td><td>0.9–1.0</td><td><code>top_p</code></td></tr>
+            <tr><td><strong>Top-k</strong></td><td>Keep only the k most likely tokens</td><td>20–50</td><td><code>top_k</code></td></tr>
+            <tr><td><strong>Max tokens</strong></td><td>Hard limit on output length</td><td>Task-dependent</td><td><code>num_predict</code></td></tr>
+            <tr><td><strong>Stop sequences</strong></td><td>Stop when this text appears</td><td><code>\n\n</code>, <code>END</code></td><td><code>stop</code></td></tr>
+            <tr><td><strong>Repeat penalty</strong></td><td>Discourages repeating words</td><td>1.0 (off) to 1.2</td><td><code>repeat_penalty</code></td></tr>
+            <tr><td><strong>Seed</strong></td><td>Same seed → more repeatable output</td><td>e.g. 42</td><td><code>seed</code></td></tr>
+            <tr><td><strong>Context size</strong></td><td>How much context Ollama uses</td><td>e.g. 8192</td><td><code>num_ctx</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:0.9375rem;color:var(--ink-soft);">Prompt levers (instructions, few-shot, JSON, templates) are covered in <a href="controlling-output.html">Controlling the output</a>.</p>
+
+      <h3 class="concept-section-title" style="font-size:1rem;">Temperature</h3>
+      <ul style="font-size:0.9375rem;color:var(--ink-soft);line-height:1.55;padding-left:1.25rem;">
+        <li><strong>Low (0–0.3)</strong> — almost always picks the top candidate. Classification, extraction, code, facts.</li>
+        <li><strong>Medium (~0.7)</strong> — variety while staying sensible. General chat and explanations.</li>
+        <li><strong>High (1.0+)</strong> — lower-ranked tokens appear more often. Brainstorming and creative writing — more drift and mistakes.</li>
+      </ul>
+      <p style="font-size:0.9375rem;color:var(--ink-soft);">Even at 0, answers can vary slightly between runs. Don’t depend on identical output.</p>
+
+      <h3 class="concept-section-title" style="font-size:1rem;">Top-p (nucleus sampling)</h3>
+      <p style="font-size:0.9375rem;color:var(--ink-soft);">Keep adding candidates from the ranked list until their probabilities sum to <em>p</em>. Drop the long tail of unlikely tokens. It adapts: when the model is confident, few tokens stay; when unsure, more stay. Rule of thumb: tune temperature <em>or</em> top-p aggressively, not both without reason.</p>
+
+      <h3 class="concept-section-title" style="font-size:1rem;">Top-k</h3>
+      <p style="font-size:0.9375rem;color:var(--ink-soft);"><code>k = 1</code> keeps only the top candidate (near-identical output). <code>k = 50</code> filters almost nothing. Weakness: same count whether the model is 99% sure or unsure — top-p adapts; top-k doesn’t. OpenAI’s API has no top-k; Claude, Gemini, and Ollama support it.</p>
+
+      <h3 class="concept-section-title" style="font-size:1rem;">How settings work together</h3>
+      <p style="font-size:0.9375rem;color:var(--ink-soft);">Top-k and top-p fence in the candidates; temperature decides how adventurous the pick is inside that fence.</p>
+      <div class="concept-table-wrap">
+        <table class="concept-table">
+          <thead><tr><th scope="col">Temperature</th><th scope="col">Top-p</th><th scope="col">Top-k</th><th scope="col">Result</th></tr></thead>
+          <tbody>
+            <tr><td>0</td><td>0.9</td><td>40</td><td>Same answer every time (mostly)</td></tr>
+            <tr><td>0.7</td><td>0.9</td><td>40</td><td>Some variety, sensible answers</td></tr>
+            <tr><td>1.5</td><td>0.95</td><td>100</td><td>Lots of variety, some odd answers</td></tr>
+            <tr><td>1.5</td><td>0.3</td><td>5</td><td>Variety without as much nonsense</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="concept-section-title" style="font-size:1rem;">Strengths and trade-offs</h3>
+      <div class="concept-table-wrap">
+        <table class="concept-table">
+          <thead><tr><th scope="col">Setting</th><th scope="col">Best for</th><th scope="col">Watch out</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Temperature</strong></td><td>Every app — low for facts and code, higher for ideas</td><td>Doesn’t remove bad candidates; high values drift</td></tr>
+            <tr><td><strong>Top-p</strong></td><td>Fence creative output at high temperature</td><td>Harder to reason about with temperature</td></tr>
+            <tr><td><strong>Top-k</strong></td><td>Small local models, testing, debugging</td><td>Doesn’t adapt; not in OpenAI API</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:0.9375rem;color:var(--ink-soft);"><strong>Practical rule:</strong> tune temperature first, add top-p only if output turns odd, and don’t change all three at once.</p>
+
+      <h3 class="concept-section-title" style="font-size:1rem;">Which setting for which job?</h3>
+      <p style="font-size:0.9375rem;color:var(--ink-soft);">Ask: “If I ran this twice and got different answers, would that be a problem?”</p>
+      <div class="concept-table-wrap">
+        <table class="concept-table">
+          <thead><tr><th scope="col">If…</th><th scope="col">Settings</th><th scope="col">Examples</th></tr></thead>
+          <tbody>
+            <tr><td>A different answer is a <strong>bug</strong></td><td>Temp 0–0.2</td><td>Tag transactions, extract JSON, code from policy, support email classification</td></tr>
+            <tr><td>Slightly different is <strong>fine</strong></td><td>Temp 0.5–0.7</td><td>Customer support tone, explaining concepts, meeting summaries</td></tr>
+            <tr><td>Different is the <strong>point</strong></td><td>Temp 0.9–1.2 + top-p 0.9</td><td>Product names, A/B subject lines, quiz questions, hackathon ideas</td></tr>
+            <tr><td>Need <strong>identical</strong> results</td><td>Temp 0 + top-k 1 + seed</td><td>Automated tests of AI features, debugging a prompt change</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="takeaways" class="concept-section-title">Key takeaways</h2>
+      <ol style="font-size:0.9375rem;color:var(--ink-soft);line-height:1.55;padding-left:1.35rem;">
+        <li>Every call is independent: the app resends the whole conversation.</li>
+        <li>Tokens drive cost, latency, and the context window limit.</li>
+        <li>System sets the rules, user asks, assistant carries the history.</li>
+        <li>Temperature, top-p, and top-k are request settings, not prompt text.</li>
+      </ol>
+
+      <p class="caveat">Internal use only.</p>
+    </article>
+    <footer class="site-footer">
+      <p class="site-footer-main">Maintained by the .NET GenAI Adoption initiative · updated weekly.</p>
+      <p class="song-of-week"><a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=fu7vlU0Quow&amp;list=RDfu7vlU0Quow&amp;start_radio=1">♪ song of the week</a></p>
+    </footer>
+  </main>
+</body>
+</html>

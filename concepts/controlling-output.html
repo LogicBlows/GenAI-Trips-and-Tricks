@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Controlling the output — GenAI Adoption</title>
+  <link rel="stylesheet" href="../styles.css?v=5">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body class="concept-page">
+  <main class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a><span class="breadcrumb-sep">›</span><a href="index.html">AI fundamentals</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Controlling output</span>
+    </nav>
+    <header class="site-header">
+      <div class="tip-brand-row">
+        <img class="tip-tool-logo" src="../assets/brands/general.svg" alt="" width="28" height="28">
+        <span class="tip-brand-label">AI fundamentals</span>
+      </div>
+      <h1>Controlling the output</h1>
+      <p class="meta-line">30 Oct 2026 <span class="meta-dot">·</span> Phase 0 · ~8 min read</p>
+    </header>
+    <article class="prose">
+      <div class="concept-badges"><span class="concept-badge">Everyone</span><span class="concept-badge">Fundamentals</span><span class="concept-badge">Builders</span></div>
+      <p class="concept-lead">Phase 0 treats “control” as three layers: <strong>generation settings</strong> on the API, <strong>prompt design</strong> in the message list, and <strong>structured output + validation</strong> in your application. Tokens and roles have their own topics — linked below — but they directly affect what you can steer.</p>
+
+      <h2 class="concept-section-title">From the deck</h2>
+      <div class="concept-gallery" aria-label="Controlling output deck slides">
+        <figure class="concept-figure">
+          <img src="../assets/concepts/controlling-output/controlling-output-01-api-deck.svg" alt="Deck: temperature, top-p, max tokens, stop, streaming" width="1280" height="720" loading="lazy">
+          <figcaption><strong>API levers.</strong> Sampling and caps change wording and length; streaming is how tokens reach the UI, not a separate “quality” knob.</figcaption>
+        </figure>
+        <figure class="concept-figure">
+          <img src="../assets/concepts/controlling-output/controlling-output-02-prompt-deck.svg" alt="Deck: instructions, few-shot, role, chain-of-thought, templates, JSON schema" width="1280" height="720" loading="lazy">
+          <figcaption><strong>Prompt + app levers.</strong> Instructions and examples in text; schema and parsers in code.</figcaption>
+        </figure>
+      </div>
+
+      <h2 class="concept-section-title">Phase 0 checklist — everything that shapes output</h2>
+      <p style="font-size:0.9375rem;color:var(--ink-soft);">Use this as a map. Items marked <em>topic</em> have dedicated pages; the rest are covered here.</p>
+      <ul style="font-size:0.9375rem;color:var(--ink-soft);line-height:1.55;padding-left:1.25rem;">
+        <li><a href="context-window-tokens.html">Tokens &amp; context window</a> <em>(topic)</em> — how much text fits; drives truncation and cost.</li>
+        <li><a href="roles-messages.html">System, user, assistant roles</a> <em>(topic)</em> — where policy and conversation live.</li>
+        <li><strong>Temperature</strong> — randomness of word choice (see table below).</li>
+        <li><strong>Top-p</strong> (nucleus sampling) — alternative/complement to temperature.</li>
+        <li><strong>Max tokens</strong> — hard cap on completion length.</li>
+        <li><strong>Stop sequences</strong> — strings that halt generation early.</li>
+        <li><strong>Streaming</strong> — deliver partial output as tokens arrive (UX/latency, same underlying generation).</li>
+        <li><strong>Structured output</strong> — JSON (or tools) constrained by a schema; validate after parse.</li>
+        <li><strong>Clear instructions</strong> — explicit task, format, and boundaries.</li>
+        <li><strong>Few-shot examples</strong> — input/output pairs in the prompt.</li>
+        <li><strong>Role &amp; constraints</strong> — persona and rules (usually system message).</li>
+        <li><strong>Chain-of-thought (CoT)</strong> — step-by-step reasoning when the task is hard; hide steps from users if needed.</li>
+        <li><strong>Prompt templates</strong> — reusable shells with placeholders for user data.</li>
+        <li><strong>Grounding &amp; hallucination defences</strong> — RAG, citations, “say I don’t know”, human review (Phase 0 awareness).</li>
+      </ul>
+
+      <h2 class="concept-section-title">Generation settings (API)</h2>
+      <div class="concept-table-wrap">
+        <table class="concept-table">
+          <thead><tr><th scope="col">Setting</th><th scope="col">Effect</th><th scope="col">Typical use</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Temperature</strong></td><td>Lower = more deterministic; higher = more varied wording (not “smarter”).</td><td>0–0.3 extraction, code, compliance; 0.7+ brainstorming copy.</td></tr>
+            <tr><td><strong>Top-p</strong></td><td>Sample only from the smallest set of tokens whose cumulative probability ≥ p.</td><td>Often set one of temperature or top-p; check provider guidance.</td></tr>
+            <tr><td><strong>Max tokens</strong></td><td>Caps completion size — avoids runaway cost and truncated mid-answer.</td><td>Set from expected JSON size or summary length + buffer.</td></tr>
+            <tr><td><strong>Stop sequences</strong></td><td>End generation when the model emits a given string.</td><td>Delimiters between sections, end of JSON array, tool markers.</td></tr>
+            <tr><td><strong>Streaming</strong></td><td>Tokens sent incrementally over HTTP/SSE.</td><td>Chat UIs; still apply max tokens and validation on the full result.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="concept-section-title">Prompt engineering (same request)</h2>
+      <div class="concept-table-wrap">
+        <table class="concept-table">
+          <thead><tr><th scope="col">Lever</th><th scope="col">What to do</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Clear instructions</strong></td><td>State task, audience, format (bullets, JSON keys), and forbidden actions in plain language.</td></tr>
+            <tr><td><strong>Few-shot examples</strong></td><td>Show 1–3 ideal input → output pairs before the real user input.</td></tr>
+            <tr><td><strong>Role &amp; constraints</strong></td><td>System message: expert persona, tone, and hard rules (see <a href="roles-messages.html">Roles</a>).</td></tr>
+            <tr><td><strong>Chain-of-thought</strong></td><td>Ask for steps on complex logic; for production, parse only the final answer field.</td></tr>
+            <tr><td><strong>Prompt templates</strong></td><td>Store stable text in repo or config; inject <code>{{variables}}</code> at runtime — same pattern as <a href="../prompts/index.html">Useful prompts</a>.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="concept-section-title">Structured output in .NET services</h2>
+      <p style="font-size:0.9375rem;color:var(--ink-soft);">Ask for JSON matching a schema (native structured-output or JSON mode + schema in the prompt), then <strong>deserialize and validate</strong> (FluentValidation, <code>JsonSerializer</code>, source generators). Retry or fail closed on parse errors. Never trust raw model text for security, money, or irreversible actions without checks.</p>
+      <p style="font-size:0.9375rem;color:var(--ink-soft);">Related patterns: tool/function calling (model emits structured calls you execute), and RAG for factual grounding — both reduce free-form hallucination.</p>
+
+      <h2 class="concept-section-title">Examples</h2>
+      <section class="example-block" aria-labelledby="ex-api-heading">
+        <h2 id="ex-api-heading" class="example-heading">API request (illustrative JSON)</h2>
+        <pre><code>{
+  "model": "gpt-4o-mini",
+  "messages": [ { "role": "user", "content": "List three risks for go-live." } ],
+  "temperature": 0.2,
+  "top_p": 1.0,
+  "max_tokens": 400,
+  "stop": ["\n\n---"],
+  "stream": true
+}</code></pre>
+      </section>
+      <section class="example-block" aria-labelledby="ex-fewshot-heading">
+        <h2 id="ex-fewshot-heading" class="example-heading">Few-shot + constraints (prompt excerpt)</h2>
+        <pre><code>Return JSON only: { "title": string, "severity": "low"|"medium"|"high" }
+
+Example:
+Input: "TLS cert expires tomorrow"
+Output: { "title": "Certificate expiry", "severity": "high" }
+
+Input: "Typo in footer link"
+Output: { "title": "Broken footer link", "severity": "low" }
+
+Now classify: "No rollback tested for DB migration"</code></pre>
+      </section>
+      <section class="example-block" aria-labelledby="ex-template-heading">
+        <h2 id="ex-template-heading" class="example-heading">Prompt template (backend)</h2>
+        <pre><code>// appsettings or embedded resource
+"You are a release-notes assistant. Max 120 words. British English.
+Service: {{ServiceName}}  Version: {{Version}}
+Changes:
+{{ChangeList}}"</code></pre>
+      </section>
+      <section class="example-block" aria-labelledby="ex-cot-heading">
+        <h2 id="ex-cot-heading" class="example-heading">Chain-of-thought (then extract)</h2>
+        <pre><code>User: "Should we enable feature flag X for 10% of users first?"
+Assistant (internal): [steps: blast radius, metrics, rollback...]
+Final answer only: "Yes — canary 10% for 48h with error-rate alert &gt; 2%."</code></pre>
+        <p style="font-size:0.9375rem;color:var(--ink-soft);margin-top:0.75rem;">In UIs you may show steps; in APIs strip to the field you validate.</p>
+      </section>
+      <section class="example-block" aria-labelledby="ex-structured-heading">
+        <h2 id="ex-structured-heading" class="example-heading">Structured output + validation (C# sketch)</h2>
+        <pre><code>var json = await chatClient.GetCompletionAsync(...);
+var dto = JsonSerializer.Deserialize&lt;RiskDto&gt;(json);
+if (dto is null || !validator.Validate(dto).IsValid)
+    throw new InvalidOperationException("Model output failed validation");</code></pre>
+      </section>
+
+      <section class="concept-advanced" aria-labelledby="advanced-heading">
+        <h2 id="advanced-heading" class="concept-section-title">Advanced</h2>
+        <p style="font-size:0.9375rem;color:var(--ink-soft);">Combine low temperature + schema validation for extraction; use higher temperature only where humans review. Log settings per request for reproducibility. See <a href="what-is-llm.html">What is an LLM?</a> for why the model still guesses without grounding.</p>
+      </section>
+      <p class="caveat">Provider parameter names differ — check Azure OpenAI / OpenAI docs for your deployment.</p>
+    </article>
+    <footer class="site-footer">
+      <p class="site-footer-main">Maintained by the .NET GenAI Adoption initiative · updated weekly.</p>
+      <p class="song-of-week"><a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=fu7vlU0Quow&amp;list=RDfu7vlU0Quow&amp;start_radio=1">♪ song of the week</a></p>
+    </footer>
+  </main>
+</body>
+</html>
