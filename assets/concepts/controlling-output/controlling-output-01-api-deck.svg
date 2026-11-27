@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img">
+  <rect width="1280" height="720" fill="#F7F5EF"/>
+  <rect x="48" y="48" width="1184" height="96" rx="12" fill="#3D3FC9"/>
+  <text x="80" y="108" fill="#fff" font-family="Segoe UI, Arial, sans-serif" font-size="36" font-weight="700">API parameters (generation settings)</text>
+  <text x="80" y="200" fill="#161B2E" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="600">temperature, top_p, max_tokens, stop, streaming</text>
+  <g font-family="Segoe UI, Arial, sans-serif" font-size="20" fill="#161B2E">
+    <text x="80" y="260">temperature - randomness (0 = deterministic, 1 = creative)</text>
+    <text x="80" y="300">top_p - nucleus sampling cap</text>
+    <text x="80" y="340">max_tokens - limit completion length</text>
+    <text x="80" y="380">stop - end generation on delimiter</text>
+    <text x="80" y="420">stream - tokens arrive incrementally (UX + TTFB)</text>
+  </g>
+</svg>

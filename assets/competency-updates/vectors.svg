@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img">
+  <defs>
+    <linearGradient id="bgV" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0A1628"/>
+      <stop offset="100%" stop-color="#12162A"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="720" fill="url(#bgV)"/>
+  <text x="56" y="56" fill="#00E5FF" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" letter-spacing="2">.NET COMPETENCY</text>
+  <text x="268" y="56" fill="#8FA3BF" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="500">Contributed by Harshit Gupta</text>
+  <text x="56" y="118" fill="#FFFFFF" font-family="Segoe UI, Arial, sans-serif" font-size="44" font-weight="700">Vectors</text>
+  <rect x="56" y="132" width="200" height="4" fill="#00E5FF"/>
+  <text x="56" y="178" fill="#B8C5D6" font-family="Segoe UI, Arial, sans-serif" font-size="22">Similar to this - not exactly this.</text>
+
+  <rect x="56" y="200" width="386" height="468" rx="14" fill="#1A2844" stroke="#2A3A5C"/>
+  <text x="80" y="238" fill="#00E5FF" font-family="Segoe UI, Arial, sans-serif" font-size="17" font-weight="700">WHAT IT IS</text>
+  <text x="80" y="274" fill="#E8EDF4" font-family="Segoe UI, Arial, sans-serif" font-size="17">A vector is the numeric output of</text>
+  <text x="80" y="300" fill="#E8EDF4" font-family="Segoe UI, Arial, sans-serif" font-size="17">an embedding: floats in meaning space.</text>
+  <text x="80" y="340" fill="#8FA3BF" font-family="Segoe UI, Arial, sans-serif" font-size="15">Direction matters more than length.</text>
+  <text x="80" y="376" fill="#8FA3BF" font-family="Segoe UI, Arial, sans-serif" font-size="15">Cosine similarity ~1 = same topic;</text>
+  <text x="80" y="400" fill="#8FA3BF" font-family="Segoe UI, Arial, sans-serif" font-size="15">~0 = unrelated (see pair tests, not</text>
+  <text x="80" y="424" fill="#8FA3BF" font-family="Segoe UI, Arial, sans-serif" font-size="15">one magic threshold).</text>
+  <text x="80" y="470" fill="#8FF7C4" font-family="Consolas, monospace" font-size="12">cos = (A dot B) / (|A| |B|)</text>
+
+  <rect x="462" y="200" width="386" height="468" rx="14" fill="#1A2844" stroke="#2A3A5C"/>
+  <text x="486" y="238" fill="#00E5FF" font-family="Segoe UI, Arial, sans-serif" font-size="17" font-weight="700">HOW TO USE</text>
+  <text x="486" y="274" fill="#E8EDF4" font-family="Segoe UI, Arial, sans-serif" font-size="16">Index time (once):</text>
+  <text x="486" y="300" fill="#8FA3BF" font-family="Segoe UI, Arial, sans-serif" font-size="15">Documents - embed - store in vector DB</text>
+  <text x="486" y="340" fill="#E8EDF4" font-family="Segoe UI, Arial, sans-serif" font-size="16">Query time (every question):</text>
+  <text x="486" y="366" fill="#8FA3BF" font-family="Segoe UI, Arial, sans-serif" font-size="15">Embed question - search top-k - rank</text>
+  <text x="486" y="402" fill="#E8EDF4" font-family="Segoe UI, Arial, sans-serif" font-size="16">Hybrid (production):</text>
+  <text x="486" y="428" fill="#8FA3BF" font-family="Segoe UI, Arial, sans-serif" font-size="15">SQL filter exact IDs/dates, then</text>
+  <text x="486" y="452" fill="#8FA3BF" font-family="Segoe UI, Arial, sans-serif" font-size="15">vectors rank by meaning.</text>
+
+  <rect x="868" y="200" width="356" height="228" rx="14" fill="#1A2844" stroke="#2A3A5C"/>
+  <text x="892" y="238" fill="#00E5FF" font-family="Segoe UI, Arial, sans-serif" font-size="17" font-weight="700">STRUCTURE</text>
+  <text x="892" y="274" fill="#8FF7C4" font-family="Consolas, monospace" font-size="12">float[] v = [0.01, -0.08, ...]</text>
+  <text x="892" y="306" fill="#E8EDF4" font-family="Segoe UI, Arial, sans-serif" font-size="15">Vector store: collection + id +</text>
+  <text x="892" y="330" fill="#E8EDF4" font-family="Segoe UI, Arial, sans-serif" font-size="15">payload metadata</text>
+  <text x="892" y="362" fill="#8FA3BF" font-family="Segoe UI, Arial, sans-serif" font-size="14">[VectorStoreKey] [VectorStoreVector]</text>
+  <text x="892" y="386" fill="#8FA3BF" font-family="Segoe UI, Arial, sans-serif" font-size="14">Same dimensions as embed model</text>
+
+  <rect x="868" y="444" width="356" height="224" rx="14" fill="#003D4D" stroke="#00E5FF" stroke-width="1"/>
+  <text x="892" y="482" fill="#00E5FF" font-family="Segoe UI, Arial, sans-serif" font-size="17" font-weight="700">USE CASE</text>
+  <text x="892" y="518" fill="#E8EDF4" font-family="Segoe UI, Arial, sans-serif" font-size="15">Natural-language search on policies</text>
+  <text x="892" y="544" fill="#E8EDF4" font-family="Segoe UI, Arial, sans-serif" font-size="15">RAG chatbots (HR / IT from docs)</text>
+  <text x="892" y="570" fill="#E8EDF4" font-family="Segoe UI, Arial, sans-serif" font-size="15">Duplicate tickets, email routing</text>
+  <text x="892" y="596" fill="#E8EDF4" font-family="Segoe UI, Arial, sans-serif" font-size="15">Recommendations and anomaly hints</text>
+
+  <text x="56" y="698" fill="#5B6070" font-family="Segoe UI, Arial, sans-serif" font-size="15">Building AI Features in .NET</text>
+</svg>

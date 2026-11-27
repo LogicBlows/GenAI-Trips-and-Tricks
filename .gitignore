@@ -5,6 +5,9 @@ graphify-out/
 # Vendored reference clone (not part of the static site)
 chatgpt-skills-packages/
 
+# Local SVG-to-PNG tooling
+.tmp-resvg/
+
 # OS
 Thumbs.db
 Desktop.ini

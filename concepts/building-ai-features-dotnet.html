@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Building AI features in .NET — GenAI Adoption</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css?v=5">
+</head>
+<body class="concept-page">
+  <main class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a>
+      <span class="breadcrumb-sep" aria-hidden="true">›</span>
+      <a href="index.html">AI fundamentals</a>
+      <span class="breadcrumb-sep" aria-hidden="true">›</span>
+      <span class="breadcrumb-current">Building AI features in .NET</span>
+    </nav>
+    <header class="site-header">
+      <div class="tip-brand-row">
+        <img class="tip-tool-logo" src="../assets/brands/general.svg" alt="" width="28" height="28">
+        <span class="tip-brand-label">AI fundamentals</span>
+      </div>
+      <h1>Building AI features in .NET</h1>
+      <p class="meta-line">27 Nov 2026 <span class="meta-dot" aria-hidden="true">·</span> ~12 min read <span class="meta-dot" aria-hidden="true">·</span> Contributed by Harshit Gupta</p>
+    </header>
+    <article class="prose">
+      <div class="concept-badges">
+        <span class="concept-badge">Builders</span>
+        <span class="concept-badge">.NET</span>
+        <span class="concept-badge">Advanced</span>
+      </div>
+      <p class="concept-lead"><strong>IChatClient</strong>, <strong>structured output</strong>, and <strong>embeddings</strong>: one Microsoft.Extensions.AI interface whether you run Ollama locally or Azure OpenAI in production.</p>
+
+      <h2 class="concept-section-title">On this page</h2>
+      <ol style="font-size:0.9375rem;color:var(--ink-soft);line-height:1.55;padding-left:1.35rem;margin:0 0 1.5rem;">
+        <li><a href="#structured-output">Structured output</a></li>
+        <li><a href="#ichatclient">Why one interface (IChatClient)</a></li>
+        <li><a href="#embeddings">Embeddings</a></li>
+        <li><a href="#vectors">Vectors and use cases</a></li>
+        <li><a href="#demo">Sample solution</a></li>
+        <li><a href="#takeaways">Key takeaways</a></li>
+      </ol>
+
+      <h2 id="structured-output" class="concept-section-title">Structured output</h2>
+      <p style="font-size:0.9375rem;color:var(--ink-soft);"><strong>Text is for people; JSON is for code.</strong> A customer might write: “My biryani arrived cold and the raita was missing.” The model can reply in friendly prose — a person understands it, but your service cannot reliably read <code>category</code> or <code>priority</code> from that text.</p>
+      <figure class="concept-figure" style="max-width:100%;margin:0 0 1.25rem;">
+        <img src="../assets/competency-updates/structured-output-json.png" alt="Structured JSON: what it is and what makes it reliable" width="1280" height="720" loading="lazy">
+        <figcaption>Structured JSON — what it is and what makes it reliable.</figcaption>
+      </figure>
+      <p style="font-size:0.9375rem;color:var(--ink-soft);">Instead, ask for JSON your code can deserialize:</p>
+      <section class="example-block" aria-labelledby="ex-complaint-json">
+        <h2 id="ex-complaint-json" class="example-heading">Example response</h2>
+        <pre><code>{
+  "category": "order_quality",
+  "priority": "high",
+  "refundEligible": true
+}</code></pre>
+        <pre><code>if (complaint.Priority == "high") Escalate(complaint);</code></pre>
+      </section>
+
+      <h3 class="concept-section-title" style="font-size:1rem;margin-top:1.25rem;">Example: classify a complaint</h3>
+      <section class="example-block" aria-labelledby="ex-classify-prompt">
+        <h2 id="ex-classify-prompt" class="example-heading">Prompt to paste</h2>
+        <pre><code>Classify this customer complaint.
+Reply with JSON only, no other text, using exactly these fields:
+- category: "food_quality", "missing_item", "delivery_delay" or "other"
+- priority: "low", "medium" or "high"
+- refund_eligible: true or false
+
+Complaint: "My biryani arrived cold and the raita was missing."</code></pre>
+        <p style="font-size:0.9375rem;color:var(--ink-soft);margin-top:0.75rem;"><strong>Expected answer:</strong> <code>category: food_quality</code>, <code>priority: high</code>, <code>refund_eligible: true</code>. Then change the complaint, remove format rules, or paste the same prompt into Claude and compare.</p>
+      </section>
+
+      <h3 class="concept-section-title" style="font-size:1rem;">What makes the JSON reliable</h3>
+      <div class="concept-table-wrap">
+        <table class="concept-table">
+          <thead><tr><th scope="col">Practice</th><th scope="col">Why</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Name every field</strong></td><td>Use the exact names your C# types expect — e.g. <code>category</code>, <code>priority</code>.</td></tr>
+            <tr><td><strong>Fix the values</strong></td><td>Allowed lists instead of free text: <code>low</code> | <code>medium</code> | <code>high</code>.</td></tr>
+            <tr><td><strong>Say “JSON only”</strong></td><td>No greeting, no explanation, no markdown fences.</td></tr>
+            <tr><td><strong>Show an example</strong></td><td>One sample input/output teaches the shape.</td></tr>
+            <tr><td><strong>Validate in code</strong></td><td>Format can be right and the answer still wrong. Deserialize, then validate (FluentValidation, business rules). APIs can enforce a JSON schema (structured outputs); prompt rules still apply.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:0.9375rem;color:var(--ink-soft);"><strong>Use cases:</strong> classify support tickets and emails, extract fields from invoices and resumes, turn natural language into form fields, pass data between steps of an AI workflow. See also <a href="controlling-output.html">Controlling the output</a>.</p>
+
+      <h2 id="ichatclient" class="concept-section-title">Why one interface (IChatClient)</h2>
+      <p style="font-size:0.9375rem;color:var(--ink-soft);">Your .NET app talks to <strong>IChatClient</strong> (Microsoft.Extensions.AI). You plug in Ollama, OpenAI, Azure OpenAI, or other providers at startup — the same idea as <strong>ILogger</strong>: code against one interface, swap implementation in DI.</p>
+      <p style="font-size:0.9375rem;color:var(--ink-soft);">Without an abstraction, each vendor has different endpoints, response shapes, and parameter names. Switching models means rewriting integration code.</p>
+      <div class="concept-table-wrap">
+        <table class="concept-table">
+          <thead><tr><th scope="col">Provider</th><th scope="col">Endpoint</th><th scope="col">Answer path</th><th scope="col">Max length param</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Ollama</strong></td><td><code>POST /api/chat</code></td><td><code>message.content</code></td><td><code>options.num_predict</code></td></tr>
+            <tr><td><strong>OpenAI</strong></td><td><code>POST /v1/chat/completions</code></td><td><code>choices[0].message.content</code></td><td><code>max_completion_tokens</code></td></tr>
+            <tr><td><strong>Anthropic</strong></td><td><code>POST /v1/messages</code></td><td><code>content[0].text</code></td><td><code>max_tokens</code> (required)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="concept-section-title" style="font-size:1rem;">Switch providers by changing one line</h3>
+      <section class="example-block" aria-labelledby="ex-ollama">
+        <h2 id="ex-ollama" class="example-heading">Ollama (local)</h2>
+        <pre><code>IChatClient client =
+    new OllamaApiClient(
+        new Uri(ollamaUrl),
+        "llama3.2");</code></pre>
+      </section>
+      <section class="example-block" aria-labelledby="ex-azure">
+        <h2 id="ex-azure" class="example-heading">Azure OpenAI</h2>
+        <pre><code>IChatClient client =
+    new AzureOpenAIClient(new Uri(endpoint), credential)
+        .GetChatClient("gpt-4o-mini")
+        .AsIChatClient();</code></pre>
+      </section>
+      <section class="example-block" aria-labelledby="ex-openai">
+        <h2 id="ex-openai" class="example-heading">OpenAI</h2>
+        <pre><code>IChatClient client =
+    new OpenAIClient(apiKey)
+        .GetChatClient("gpt-4o-mini")
+        .AsIChatClient();</code></pre>
+      </section>
+      <p style="font-size:0.9375rem;color:var(--ink-soft);">Everything after client creation stays the same: messages, options, and every <code>GetResponseAsync</code> / streaming call.</p>
+
+      <h2 id="embeddings" class="concept-section-title">Embeddings</h2>
+      <p style="font-size:0.9375rem;color:var(--ink-soft);">An <strong>embedding model</strong> turns text into a fixed list of numbers — e.g. “How many holidays do I get?” becomes hundreds of floats. Each number alone means little; together they place the text in a <strong>meaning space</strong>. Similar questions (annual leave, vacation days) sit close together even with different words.</p>
+      <figure class="concept-figure" style="max-width:100%;margin:0 0 1.25rem;">
+        <img src="../assets/competency-updates/embeddings.png" alt="Embeddings: what it is, how to use, structure, use cases" width="1280" height="720" loading="lazy">
+      </figure>
+
+      <h3 class="concept-section-title" style="font-size:1rem;">Cosine similarity</h3>
+      <p style="font-size:0.9375rem;color:var(--ink-soft);">Similarity measures the <strong>angle</strong> between two vectors, not their length. Same direction ≈ same meaning. Values near <strong>1</strong> = very similar; near <strong>0</strong> = unrelated. Compare scores relative to each other — not against one fixed threshold.</p>
+      <section class="example-block" aria-labelledby="ex-cosine">
+        <h2 id="ex-cosine" class="example-heading">Formula (illustrative C#)</h2>
+        <pre><code>dot += a[i] * b[i];
+magA += a[i] * a[i];
+magB += b[i] * b[i];
+return dot / (Math.Sqrt(magA) * Math.Sqrt(magB));</code></pre>
+      </section>
+      <div class="concept-table-wrap">
+        <table class="concept-table">
+          <thead><tr><th scope="col">Pair</th><th scope="col">Expected</th></tr></thead>
+          <tbody>
+            <tr><td>“How many holidays do I get?” vs “What is the annual leave allowance?”</td><td>High</td></tr>
+            <tr><td>“How many holidays do I get?” vs “How do I reset my laptop password?”</td><td>Low</td></tr>
+            <tr><td>“I enjoy writing C# code” vs “Programming in .NET is fun”</td><td>High</td></tr>
+            <tr><td>“The bank approved my loan” vs “I sat on the river bank”</td><td>Low — shared word, different meaning</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="concept-section-title" style="font-size:1rem;">IEmbeddingGenerator (same pattern as chat)</h3>
+      <section class="example-block" aria-labelledby="ex-embed-gen">
+        <h2 id="ex-embed-gen" class="example-heading">Generate a vector</h2>
+        <pre><code>IEmbeddingGenerator&lt;string, Embedding&lt;float&gt;&gt; generator =
+    new OllamaApiClient(
+        new Uri("http://localhost:11434"),
+        "nomic-embed-text");
+
+ReadOnlyMemory&lt;float&gt; vector =
+    await generator.GenerateVectorAsync("Dependency injection in .NET");
+
+Console.WriteLine(vector.Length); // 768 with nomic-embed-text</code></pre>
+      </section>
+      <p style="font-size:0.9375rem;color:var(--ink-soft);">Swap providers in Infrastructure: <code>.GetEmbeddingClient("text-embedding-3-small").AsIEmbeddingGenerator()</code>. Similarity, search, and RAG code stay the same. Vector <strong>size depends on the model</strong> — nomic-embed-text: 768; text-embedding-3-small: 1536. The vector store must use the same size and model for index and query.</p>
+
+      <h2 id="vectors" class="concept-section-title">Vectors and use cases</h2>
+      <p style="font-size:0.9375rem;color:var(--ink-soft);">A <strong>vector</strong> is the numeric output you store and search. Use it anywhere you need <strong>“similar to this”</strong>:</p>
+      <figure class="concept-figure" style="max-width:100%;margin:0 0 1.25rem;">
+        <img src="../assets/competency-updates/vectors.png" alt="Vectors: what it is, how to use, structure, use cases" width="1280" height="720" loading="lazy">
+      </figure>
+      <ul style="font-size:0.9375rem;color:var(--ink-soft);line-height:1.55;padding-left:1.25rem;">
+        <li><strong>Semantic search</strong> — “Can I carry forward my holidays?” finds the leave policy.</li>
+        <li><strong>RAG chatbots</strong> — HR or IT helpdesk answers from company documents.</li>
+        <li><strong>Recommendations</strong> — courses, articles, resumes matched to jobs.</li>
+        <li><strong>Duplicate detection</strong> — support tickets describing the same bug in different words.</li>
+        <li><strong>Classification</strong> — route email to billing or technical without training a custom model.</li>
+        <li><strong>Anomaly detection</strong> — transaction patterns unlike a customer’s usual behaviour.</li>
+      </ul>
+
+      <h3 class="concept-section-title" style="font-size:1rem;">Vectors or SQL?</h3>
+      <div class="concept-table-wrap">
+        <table class="concept-table">
+          <thead><tr><th scope="col">Use vectors</th><th scope="col">Use SQL</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>“What’s similar to this?” — natural-language questions, related documents or tickets, recommendations, theme grouping.</td>
+              <td>“What exactly matches this?” — order, account, or employee ID lookups; transactions over a threshold; small fixed lists with clear keywords.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:0.9375rem;color:var(--ink-soft);">Production systems often use <strong>hybrid search</strong>: filter with SQL for exact conditions, then rank by vector similarity.</p>
+
+      <h2 id="demo" class="concept-section-title">Sample solution: AiBuildingBlocks</h2>
+      <pre class="code-dim" style="font-size:0.875rem;"><code>AiBuildingBlocks.sln
+├── Application     (interfaces, models, use cases)
+├── Infrastructure  (IChatClient, IEmbeddingGenerator)
+└── ConsoleApp      (DI, logging, demos)</code></pre>
+      <p style="font-size:0.9375rem;color:var(--ink-soft);"><strong>Application</strong> references no AI package. Swapping Ollama for Azure OpenAI only touches <strong>Infrastructure</strong>.</p>
+      <section class="example-block" aria-labelledby="ex-run-demo">
+        <h2 id="ex-run-demo" class="example-heading">Run locally</h2>
+        <pre><code>ollama pull llama3.2
+ollama pull nomic-embed-text
+dotnet run</code></pre>
+      </section>
+      <div class="concept-table-wrap">
+        <table class="concept-table">
+          <thead><tr><th scope="col">Walkthrough</th><th scope="col">What it shows</th></tr></thead>
+          <tbody>
+            <tr><td>IChatClient</td><td>Token counts and a streamed answer</td></tr>
+            <tr><td>Embeddings</td><td>768-dimensional vectors; similarity scores by meaning</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="takeaways" class="concept-section-title">Key takeaways</h2>
+      <ol style="font-size:0.9375rem;color:var(--ink-soft);line-height:1.55;padding-left:1.35rem;">
+        <li><strong>IChatClient</strong> — write once; switch providers by changing one line.</li>
+        <li><strong>Structured output</strong> — name fields, fix values, JSON only, then validate.</li>
+        <li><strong>Embeddings</strong> — meaning as numbers; cosine similarity compares direction.</li>
+        <li><strong>Vectors vs SQL</strong> — similar vs exact; hybrid in real systems.</li>
+      </ol>
+
+      <p class="caveat">Internal use only.</p>
+    </article>
+    <footer class="site-footer">
+      <p class="site-footer-main">Maintained by the .NET GenAI Adoption initiative · updated weekly.</p>
+      <p class="song-of-week"><a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=fu7vlU0Quow&amp;list=RDfu7vlU0Quow&amp;start_radio=1">♪ song of the week</a></p>
+    </footer>
+  </main>
+</body>
+</html>

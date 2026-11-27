@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../styles.css?v=4">
+  <link rel="stylesheet" href="../styles.css?v=5">
 </head>
 <body>
   <main class="container">
@@ -19,7 +19,7 @@
 
     <header class="site-header">
       <h1>AI fundamentals</h1>
-      <p class="subtitle">Concept explainers with visuals — vendor-neutral where possible. Deeper builder notes live on each topic page.</p>
+      <p class="subtitle">Concept explainers with visuals — start with Phase 0 fundamentals, then deeper topics. Builder notes on each page.</p>
     </header>
 
     <div class="tips-toolbar">
@@ -37,6 +37,51 @@
     <p class="tips-empty" id="concepts-empty" hidden>No topics match your search.</p>
 
     <nav class="tip-list concepts-list" id="concept-list" aria-label="All topics">
+      <a class="tip-row" href="llm-fundamentals.html" data-level="fundamentals" data-search="llm fundamentals tokens context roles temperature top-p top-k calls memory">
+        <img class="tip-row-logo" src="../assets/brands/general.svg" alt="" width="24" height="24">
+        <span class="tip-row-body">
+          <span class="tip-row-title">LLM fundamentals</span>
+          <span class="tip-row-desc">Full guide: how calls work, tokens, roles, and controlling output (temperature, top-p, top-k).</span>
+        </span>
+        <time class="tip-row-date" datetime="2026-11-27">27 Nov 2026</time>
+      </a>
+
+      <a class="tip-row" href="what-is-llm.html" data-level="fundamentals" data-search="llm large language model what is ai prediction">
+        <img class="tip-row-logo" src="../assets/brands/general.svg" alt="" width="24" height="24">
+        <span class="tip-row-body">
+          <span class="tip-row-title">What is an LLM?</span>
+          <span class="tip-row-desc">Prediction, not lookup — what models are and are not for backend engineers.</span>
+        </span>
+        <time class="tip-row-date" datetime="2026-10-30">30 Oct 2026</time>
+      </a>
+
+      <a class="tip-row" href="context-window-tokens.html" data-level="fundamentals" data-search="context window input output tokens cost latency">
+        <img class="tip-row-logo" src="../assets/brands/general.svg" alt="" width="24" height="24">
+        <span class="tip-row-body">
+          <span class="tip-row-title">Context window &amp; tokens</span>
+          <span class="tip-row-desc">Input vs output tokens, limits, cost, and latency.</span>
+        </span>
+        <time class="tip-row-date" datetime="2026-10-30">30 Oct 2026</time>
+      </a>
+
+      <a class="tip-row" href="roles-messages.html" data-level="fundamentals" data-search="system user assistant roles messages chat api">
+        <img class="tip-row-logo" src="../assets/brands/general.svg" alt="" width="24" height="24">
+        <span class="tip-row-body">
+          <span class="tip-row-title">Roles: system, user, assistant</span>
+          <span class="tip-row-desc">Message list, multi-turn chat, and how tools map to roles.</span>
+        </span>
+        <time class="tip-row-date" datetime="2026-10-30">30 Oct 2026</time>
+      </a>
+
+      <a class="tip-row" href="controlling-output.html" data-level="fundamentals" data-search="temperature top-p max tokens structured output json schema">
+        <img class="tip-row-logo" src="../assets/brands/general.svg" alt="" width="24" height="24">
+        <span class="tip-row-body">
+          <span class="tip-row-title">Controlling the output</span>
+          <span class="tip-row-desc">Temperature, limits, prompts, and structured JSON for apps.</span>
+        </span>
+        <time class="tip-row-date" datetime="2026-10-30">30 Oct 2026</time>
+      </a>
+
       <a class="tip-row" href="prompt-caching.html" data-level="fundamentals" data-search="prompt caching tokens cost latency api agents system prompt prefix kv cache">
         <img class="tip-row-logo" src="../assets/brands/general.svg" alt="" width="24" height="24">
         <span class="tip-row-body">
@@ -44,6 +89,15 @@
           <span class="tip-row-desc">Reuse the unchanged start of a prompt for faster, cheaper repeat calls — in tools and APIs.</span>
         </span>
         <time class="tip-row-date" datetime="2026-10-21">21 Oct 2026</time>
+      </a>
+
+      <a class="tip-row" href="building-ai-features-dotnet.html" data-level="advanced" data-search="building ai features dotnet ichatclient structured output embeddings vectors rag microsoft.extensions.ai ollama azure">
+        <img class="tip-row-logo" src="../assets/brands/general.svg" alt="" width="24" height="24">
+        <span class="tip-row-body">
+          <span class="tip-row-title">Building AI features in .NET</span>
+          <span class="tip-row-desc">Structured JSON, IChatClient, embeddings, vectors, and a sample .NET solution layout.</span>
+        </span>
+        <time class="tip-row-date" datetime="2026-11-27">27 Nov 2026</time>
       </a>
     </nav>
 

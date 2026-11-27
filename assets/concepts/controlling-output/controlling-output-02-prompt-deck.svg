@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img">
+  <rect width="1280" height="720" fill="#F7F5EF"/>
+  <rect x="48" y="48" width="1184" height="96" rx="12" fill="#2a7b6f"/>
+  <text x="80" y="108" fill="#fff" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="700">Prompt levers + structured output</text>
+  <g font-family="Segoe UI, Arial, sans-serif" font-size="19" fill="#161B2E">
+    <text x="80" y="200" font-weight="600">Prompt engineering</text>
+    <text x="80" y="235">Clear instructions, few-shot examples, role and constraints</text>
+    <text x="80" y="270">Chain-of-thought, reusable prompt templates</text>
+    <text x="80" y="330" font-weight="600">Structured output</text>
+    <text x="80" y="365">JSON matching a schema - deserialize - validate in C#</text>
+    <text x="80" y="420" font-weight="600">Hallucination defences (related)</text>
+    <text x="80" y="455">Grounding, citations, refuse when unsure</text>
+  </g>
+</svg>

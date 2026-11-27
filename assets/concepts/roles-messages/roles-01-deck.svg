@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img">
+  <rect width="1280" height="720" fill="#F7F5EF"/>
+  <rect x="48" y="48" width="1184" height="96" rx="12" fill="#9C7A3C"/>
+  <text x="80" y="108" fill="#fff" font-family="Segoe UI, Arial, sans-serif" font-size="40" font-weight="700">Roles: system, user, assistant</text>
+  <rect x="80" y="180" width="1120" height="70" rx="10" fill="#ECEBFB"/>
+  <text x="100" y="225" fill="#3D3FC9" font-family="Consolas, monospace" font-size="20">system: You are a concise .NET reviewer. No secrets in answers.</text>
+  <rect x="80" y="270" width="1120" height="70" rx="10" fill="#fff" stroke="#E4E0D6"/>
+  <text x="100" y="315" fill="#161B2E" font-family="Consolas, monospace" font-size="20">user: Review this controller for auth gaps.</text>
+  <rect x="80" y="360" width="1120" height="70" rx="10" fill="#F2EBDA"/>
+  <text x="100" y="405" fill="#161B2E" font-family="Consolas, monospace" font-size="20">assistant: I checked OrdersController - ensure UserId matches...</text>
+  <text x="80" y="480" fill="#5B6070" font-family="Segoe UI, Arial, sans-serif" font-size="22">Every API call resends the full message list (multi-turn).</text>
+</svg>
